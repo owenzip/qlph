@@ -1,0 +1,18 @@
+Html, body{
+    height:100%;
+    max-width: 100%;
+    overflow-x: hidden;
+ }
+.grandParentContaniner{
+    display:table;
+    height:100%;
+    margin: 0 auto;
+}
+.parentContainer{
+    display:table-cell;
+    vertical-align:middle;
+}
+table {
+    border-style: none;
+}
+
