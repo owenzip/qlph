@@ -5,21 +5,31 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
-    <title>$Title$</title>
+    <jsp:include page="resource.jsp"/>
+    <title>PHẦN MỀM QUẢN LÝ THƯ VIỆN</title>
 </head>
 <body>
-LOGIN
-<p class="h5 text-center py-4">ĐĂNG NHẬP</p>
-<label>Tài khoản</label>
-<input id="tenDangNhap" name="tenDangNhap" type="text" placeholder="Nhập tài khoản" value="admin">
-<br>
-<label>Mật khẩu</label>
-<input id="matKhau" name="matKhau" type="password" placeholder="Nhập mật khẩu" value="admin">
-<div class="text-center" style="margin-top: 20px">
-    <button id="btnConfirm" class="btn btn-mdb-color">XÁC NHẬN</button>
+<div class="grandParentContaniner">
+    <div class="parentContainer">
+        <h3 class="text-center">HỆ THỐNG</h3>
+        <h3 class="text-center">QUẢN LÝ THƯ VIỆN</h3>
+        <form>
+            <div class="card text-center">
+                <div class="card-header">
+                    <h4 class="text-center">Đăng nhập</h4>
+                </div>
+                <div class="card-body">
+                    <input type="text" id="tenDangNhap" class="form-control">
+                    <input type="password" id="matKhau" class="form-control">
+                    <div class="text-center mt-4">
+                        <button class="btn btn-indigo" type="submit">Login</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
 </div>
 </body>
-<script type="text/javascript" src="<c:url value="/resources/js/others/jquery-3.3.1.min.js"/>"></script>
-<script type="text/javascript" src="<c:url value='/resources/js/forms/login.js'/>"></script>
+<script type="text/javascript" src="<c:url value="../../resources/js/forms/login.js"/>"></script>
 </html>
 
