@@ -6,53 +6,7 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="669c1eb3-2d4b-4ba5-a5e8-985f1c5747ba" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/vn/dntu/qlph/model/LoginVO.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/vn/dntu/qlph/service/LoginService.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/vn/dntu/qlph/service/impl/LoginImpl.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/vn/dntu/qlph/web/LoginController.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/vn/dntu/qlph/web/PageController.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/log4j.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/sqlmap/login.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/servlet-context.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/index.jsp" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/datatables.css" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/font-awesome.min.css" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/jquery-confirm.css" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/mdb.css" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/mdb.min.css" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/style.css" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/fonts/roboto/Roboto-Bold.eot" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/fonts/roboto/Roboto-Bold.ttf" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/fonts/roboto/Roboto-Bold.woff" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/fonts/roboto/Roboto-Bold.woff2" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/fonts/roboto/Roboto-Light.eot" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/fonts/roboto/Roboto-Light.ttf" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/fonts/roboto/Roboto-Light.woff" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/fonts/roboto/Roboto-Light.woff2" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/fonts/roboto/Roboto-Medium.eot" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/fonts/roboto/Roboto-Medium.ttf" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/fonts/roboto/Roboto-Medium.woff" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/fonts/roboto/Roboto-Medium.woff2" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/fonts/roboto/Roboto-Regular.eot" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/fonts/roboto/Roboto-Regular.ttf" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/fonts/roboto/Roboto-Regular.woff" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/fonts/roboto/Roboto-Regular.woff2" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/fonts/roboto/Roboto-Thin.eot" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/fonts/roboto/Roboto-Thin.ttf" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/fonts/roboto/Roboto-Thin.woff" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/fonts/roboto/Roboto-Thin.woff2" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/forms/login.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/others/bootstrap.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/others/datatables.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/others/jquery-3.3.1.min.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/others/jquery-confirm.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/others/mdb.js" />
-      <change beforePath="$PROJECT_DIR$/README.md" afterPath="" />
-    </list>
+    <list default="true" id="669c1eb3-2d4b-4ba5-a5e8-985f1c5747ba" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -579,12 +533,12 @@
       <option name="presentableId" value="Default" />
       <updated>1524455816799</updated>
       <workItem from="1524455820095" duration="1568000" />
-      <workItem from="1524457501693" duration="12915000" />
+      <workItem from="1524457501693" duration="13088000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="14483000" />
+    <option name="totallyTimeSpent" value="14656000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1096" extended-state="7" />
