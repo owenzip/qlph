@@ -23,8 +23,7 @@
                 <input maxlength='30' pattern='.{6,}' required='required' type='password'>
                 <lable>Mật khẩu<span>mật khẩu của bạn</span></lable>
             </div>
-            <button href="/qltv/homepage.do">Sign In</button></a>
-
+            <a href="<c:url value="/qltv/homepage.do"/>"><button>Sign In</button></a>
         </fieldset>
         </br>
         <div class='love'>
@@ -34,6 +33,5 @@
 </div>
 </body>
 <script type="text/javascript" src="<c:url value="../../resources/js/forms/login.js"/>"></script>
-
 </html>
 
