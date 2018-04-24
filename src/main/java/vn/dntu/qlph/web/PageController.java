@@ -13,7 +13,10 @@ public class PageController {
     }
 
     @RequestMapping(value = "/qltv",method = RequestMethod.GET)
-    public String loginPage2() {
+    public String loginPageRoot() {
         return "index";
     }
+
+    @RequestMapping(value = "/qltv/homepage.do",method = RequestMethod.GET)
+    public String homePage() { return "homepage"; }
 }
