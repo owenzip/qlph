@@ -22,9 +22,9 @@
 </div>
 <div class="center-contaniner">
     <div class="parent-container">
-        <div class="card" style="width: 86%;margin-left: 7%">
+        <div class="card" style="width: 86%;margin-left: 7%;background-color:#B73030">
             <div class="card-body">
-                <label style="color: #B73030"><b>ĐĂNG NHẬP</b></label>
+                <label class="text-white"><b>ĐĂNG NHẬP</b></label>
                 <div class="form-group">
                     <input id="mssv" name="mssv" type="text" class="form-control" placeholder="MSSV" value="admin">
                     <input style="margin-top: 3px" id="matKhau" name="matKhau" type="password" class="form-control" placeholder="Mật khẩu" value="123456">
@@ -32,10 +32,10 @@
                 <div class="row">
                     <div class="col-md-12 form-inline">
                         <div class="text-center col-md-5">
-                            <a id="btnContact" style="width: 113%" class="btn btn-link" data-toggle="modal" data-target="#contactModal"><b style="color: #B73030">LIÊN HỆ</b></a>
+                            <a id="btnContact" style="width: 113%" class="btn btn-link" data-toggle="modal" data-target="#contactModal"><b class="text-white">LIÊN HỆ</b></a>
                         </div>
                         <div class="text-center col-md-7">
-                            <a id="btnConfirm"  class="btn btn-red">ĐĂNG NHẬP</a>
+                            <a id="btnConfirm" class="btn">ĐĂNG NHẬP</a>
                         </div>
                     </div>
                 </div>

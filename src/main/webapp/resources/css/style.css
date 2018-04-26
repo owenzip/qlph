@@ -101,3 +101,41 @@ Html, body {
     margin-bottom: 0px;
 }
 
+.btn-menu {
+    width: 200px;
+}
+.div-menu-dropdown {
+    margin-left: 25px;
+    width: 200px;
+}
+
+.div-info-room {
+    margin-top: 7px;
+    background: white;
+    padding: 13px 0px 12px 13px;
+    font-size: .81rem;
+    -webkit-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+    border: 1px solid transparent;
+    border-radius: .125rem;
+    cursor: pointer;
+    text-transform: uppercase;
+    white-space: normal;
+    box-shadow: 1px 1px 3px -2px;
+}
+
+.div-info-room:hover {
+    margin-top: 7px;
+    background: white;
+    padding: 13px 0px 12px 13px;
+    font-size: .81rem;
+    -webkit-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+    border: 1px solid transparent;
+    border-radius: .125rem;
+    cursor: pointer;
+    text-transform: uppercase;
+    white-space: normal;
+    box-shadow: 1px 1px 10px -2px;
+}
+
