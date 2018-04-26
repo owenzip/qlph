@@ -1,0 +1,12 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="vn.dntu.qlph.service.CategoryService">
+
+    <resultMap id="CategoryVO" type="CategoryVO">
+        <result property="idVanDe" column="idvande"/>
+        <result property="vanDe" column="vande"/>
+    </resultMap>
+
+    <select id="selectListProblem" resultMap="CategoryVO">
+        SELECT * FROM dmvande
+    </select>
+</mapper>

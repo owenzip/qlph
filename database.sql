@@ -4,7 +4,7 @@ USE `qlph`;
 --
 -- Host: localhost    Database: qlph
 -- ------------------------------------------------------
--- Server version	5.7.20-log
+-- Server version	5.7.21-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -39,6 +39,56 @@ LOCK TABLES `dmphong` WRITE;
 /*!40000 ALTER TABLE `dmphong` DISABLE KEYS */;
 INSERT INTO `dmphong` VALUES (1,'Phòng học nhóm 1'),(2,'Phòng học nhóm 2'),(3,'Phòng học nhóm 3'),(4,'Phòng học nhóm 4'),(5,'Phòng học nhóm 5'),(6,'Phòng học nhóm 6'),(7,'Phòng học nhóm 7'),(8,'Phòng hội thảo'),(9,'Phòng học sau Đại Học'),(10,'Khu vực phòng đọc sách 1'),(11,'Khu vực phòng đọc sách 2'),(12,'Khu vực phòng đọc sách 3'),(13,'Khu vực phòng đọc sách 4'),(14,'Khu vực phòng đọc sách 5');
 /*!40000 ALTER TABLE `dmphong` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `dmvande`
+--
+
+DROP TABLE IF EXISTS `dmvande`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `dmvande` (
+  `idvande` int(11) NOT NULL AUTO_INCREMENT,
+  `vande` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`idvande`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `dmvande`
+--
+
+LOCK TABLES `dmvande` WRITE;
+/*!40000 ALTER TABLE `dmvande` DISABLE KEYS */;
+INSERT INTO `dmvande` VALUES (1,'Quên mật khẩu'),(2,'Lỗi mạng'),(3,'Lỗi hệ thống'),(4,'vấn đề khác');
+/*!40000 ALTER TABLE `dmvande` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `lienhe`
+--
+
+DROP TABLE IF EXISTS `lienhe`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `lienhe` (
+  `idlienhe` int(11) NOT NULL AUTO_INCREMENT,
+  `idvande` int(11) DEFAULT NULL,
+  `sdt` int(11) DEFAULT NULL,
+  `noidung` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`idlienhe`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `lienhe`
+--
+
+LOCK TABLES `lienhe` WRITE;
+/*!40000 ALTER TABLE `lienhe` DISABLE KEYS */;
+INSERT INTO `lienhe` VALUES (1,1,12345676,'Đây là nội dung'),(2,1,123456789,'đưaădă');
+/*!40000 ALTER TABLE `lienhe` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -78,7 +128,7 @@ CREATE TABLE `nguoidung` (
   `mssv` int(11) DEFAULT NULL,
   `lop` varchar(45) DEFAULT NULL,
   `idnganh` int(11) DEFAULT NULL,
-  `idtaikhoan` int(11) DEFAULT NULL,
+  `matkhau` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`idnguoidung`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -89,7 +139,7 @@ CREATE TABLE `nguoidung` (
 
 LOCK TABLES `nguoidung` WRITE;
 /*!40000 ALTER TABLE `nguoidung` DISABLE KEYS */;
-INSERT INTO `nguoidung` VALUES (1,'Nguyễn Minh Nhựt',1407168,'14DTH1',1,2),(2,'Adminitrator',0,'0',0,1),(3,'Nguyễn Quốc Thái',1406652,'16DTH1',2,2),(4,'Phạm Ái Bảo',1403539,'14DTH2',3,2),(5,'Nguyễn Hải Đăng',1408787,'13DXD1',4,2);
+INSERT INTO `nguoidung` VALUES (1,'Nguyễn Minh Nhựt',1407168,'14DTH1',1,'123'),(2,'Nguyễn Quốc Thái',1406652,'16DTH1',2,'123'),(3,'Phạm Ái Bảo',1403539,'14DTH2',3,'123'),(4,'Nguyễn Hải Đăng',1408787,'13DXD1',4,'123');
 /*!40000 ALTER TABLE `nguoidung` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -171,32 +221,6 @@ INSERT INTO `quyen` VALUES (1,'ADMIN'),(2,'USER');
 UNLOCK TABLES;
 
 --
--- Table structure for table `taikhoan`
---
-
-DROP TABLE IF EXISTS `taikhoan`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `taikhoan` (
-  `idtaikhoan` int(11) NOT NULL AUTO_INCREMENT,
-  `tentaikhoan` varchar(45) DEFAULT NULL,
-  `matkhau` varchar(45) DEFAULT NULL,
-  `idquyen` int(11) DEFAULT NULL,
-  PRIMARY KEY (`idtaikhoan`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `taikhoan`
---
-
-LOCK TABLES `taikhoan` WRITE;
-/*!40000 ALTER TABLE `taikhoan` DISABLE KEYS */;
-INSERT INTO `taikhoan` VALUES (1,'admin','123456',1),(2,'nhutnguyen','123456',2),(3,'user','123456',2);
-/*!40000 ALTER TABLE `taikhoan` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `thongtinphong`
 --
 
@@ -229,4 +253,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-04-24  0:14:54
+-- Dump completed on 2018-04-26 18:17:25

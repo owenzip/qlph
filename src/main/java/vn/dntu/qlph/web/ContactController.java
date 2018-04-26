@@ -5,24 +5,23 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import vn.dntu.qlph.model.UserVO;
-import vn.dntu.qlph.service.impl.LoginImpl;
+import vn.dntu.qlph.service.impl.ContactImpl;
 
 @Controller
-public class LoginController {
+public class ContactController {
 
     @Autowired
-    LoginImpl loginImpl;
+    ContactImpl contactImpl;
 
-    @RequestMapping(value = "/checkLogin.do")
+    @RequestMapping(value = "/insertContact.do")
     @ResponseBody
-    public UserVO checkLogins(@RequestParam("mssv") String mssv, @RequestParam("matKhau") String matKhau) {
+    public boolean insertContact(@RequestParam("idVanDe") int idVanDe, @RequestParam("sdt") int sdt,@RequestParam("noiDung") String noiDung) {
         try {
-            UserVO loginVO = loginImpl.checkLogin(mssv, matKhau);
-            return loginVO;
+            contactImpl.insertContact(idVanDe,sdt,noiDung);
+            return true;
         } catch (Exception e) {
             e.printStackTrace();
-            return null;
+            return false;
         }
     }
 

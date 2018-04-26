@@ -4667,7 +4667,7 @@ a.waves-effect, a.waves-light {
   .btn-red:focus, .btn-red:active, .btn-red.active {
     background-color: #811b1b; }
   .btn-red.dropdown-toggle {
-    background-color: #d32f2f !important; }
+    /*background-color: #d32f2f !important;*/ }
     .btn-red.dropdown-toggle:hover, .btn-red.dropdown-toggle:focus {
       background-color: #d74444 !important; }
   .btn-red:not([disabled]):not(.disabled):active, .btn-red:not([disabled]):not(.disabled).active,
@@ -5495,8 +5495,7 @@ a.waves-effect, a.waves-light {
     .navbar .dropdown-menu a {
       padding: 10px;
       font-size: 0.9375rem;
-      font-weight: 300;
-      color: #000000 !important; }
+      font-weight: 300;}
   .navbar.navbar-light .navbar-nav .nav-item .nav-link.disbled {
     color: rgba(0, 0, 0, 0.5); }
     .navbar.navbar-light .navbar-nav .nav-item .nav-link.disbled:hover {

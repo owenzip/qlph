@@ -5280,7 +5280,7 @@ a.waves-effect, a.waves-light {
 }
 
 .btn {
-    padding: .84rem 2.14rem;
+    /*padding: .84rem 2.14rem;*/
     font-size: .81rem;
     -webkit-transition: all .2s ease-in-out;
     transition: all .2s ease-in-out;
@@ -5928,7 +5928,7 @@ a.waves-effect, a.waves-light {
 }
 
 .btn-red {
-    background-color: #d32f2f !important;
+    background-color: #B73030 !important;
     color: #fff !important
 }
 
@@ -5941,7 +5941,7 @@ a.waves-effect, a.waves-light {
 }
 
 .btn-red.dropdown-toggle {
-    background-color: #d32f2f !important
+   /* background-color: #d32f2f !important*/
 }
 
 .btn-red.dropdown-toggle:focus, .btn-red.dropdown-toggle:hover {
@@ -7178,7 +7178,6 @@ a.waves-effect, a.waves-light {
     padding: 10px;
     font-size: .9375rem;
     font-weight: 300;
-    color: #000 !important
 }
 
 .navbar.navbar-light .navbar-nav .nav-item .nav-link.disbled, .navbar.navbar-light .navbar-nav .nav-item .nav-link.disbled:hover {
