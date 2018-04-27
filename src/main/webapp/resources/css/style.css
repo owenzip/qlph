@@ -91,13 +91,13 @@ Html, body {
 }
 .ver-menu-a {
     color: #B73030;
-    font-weight: bold;
+    font-weight: bold !important;
     margin-bottom: 0px;
 }
 
 .ver-menu-a:hover {
     color: #B73030;
-    font-weight: normal;
+    font-size: 17px;
     margin-bottom: 0px;
 }
 
@@ -105,7 +105,7 @@ Html, body {
     width: 200px;
 }
 .div-menu-dropdown {
-    margin-left: 25px;
+    margin-left: 71px;
     width: 200px;
 }
 
@@ -137,5 +137,16 @@ Html, body {
     text-transform: uppercase;
     white-space: normal;
     box-shadow: 1px 1px 10px -2px;
+}
+
+.text-title {
+    color: #B73030;
+    font-weight: normal;
+}
+label {
+    font-weight: normal !important;
+}
+.mrg {
+    margin-top: 10px;
 }
 

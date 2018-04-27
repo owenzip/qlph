@@ -6,19 +6,20 @@
 <html>
 <head>
     <jsp:include page="resource.jsp"/>
-    <title>GIỚI THIỆU</title>
+    <title>SỰ KIỆN</title>
 </head>
 <body class="bg-gray">
 <jsp:include page="nav-menu.jsp"/>
 <div class="container" style="margin-top: 5%">
     <div class="row">
-        <jsp:include page="intro-menu.jsp"/>
-        <div class="col-md-9">
-            <h5 style="padding-bottom: 17px;margin-top: 2px">Trang giới thiệu thư viện trường DNTU</h5>
+        <div class="col-md-12 text-center">
+            <h5 id="homePageTitle" style="padding-bottom: 17px;margin-top: 2px">Các sự kiện đã đang và sắp diễn ra tại thư viện được hiện ở đây</h5>
+            <p>*Hiện theo từng card</p>
         </div>
     </div>
 </div>
 </body>
 <jsp:include page="footer.jsp"/>
+<script type="text/javascript" src="<c:url value="../../resources/js/forms/homepage.js"/>"></script>
 </html>
 

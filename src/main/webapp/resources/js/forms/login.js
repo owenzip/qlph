@@ -47,7 +47,7 @@ $(function () {
                     , type: "POST"
                     , success: function (data) {
                         if (data) {
-                            window.location.href = "/qltv/homepage.do";
+                            window.location.href = "/room.do";
                         } else {
                             $.confirm({
                                 title: 'Đăng nhập không thành công',

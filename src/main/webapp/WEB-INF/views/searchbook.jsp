@@ -12,13 +12,14 @@
 <jsp:include page="nav-menu.jsp"/>
 <div class="container" style="margin-top: 5%">
     <div class="row">
-        <jsp:include page="intro-menu.jsp"/>
+        <jsp:include page="search-menu.jsp"/>
         <div class="col-md-9">
-            <h5 style="padding-bottom: 17px;margin-top: 2px">Trang giới thiệu thư viện trường DNTU</h5>
+            <h5 id="homePageTitle" style="padding-bottom: 17px;margin-top: 2px">Trang cho sinh viên tra cứu download sách của môn mình học</h5>
         </div>
     </div>
 </div>
 </body>
 <jsp:include page="footer.jsp"/>
+<script type="text/javascript" src="<c:url value="../../resources/js/forms/homepage.js"/>"></script>
 </html>
 

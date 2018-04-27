@@ -6,7 +6,7 @@ import org.apache.ibatis.type.Alias;
 public class ContactVO {
 
     private int idLienHe;
-    private String idVanDe;
+    private int idVanDe;
     private int sdt;
     private String noiDung;
 
@@ -18,11 +18,11 @@ public class ContactVO {
         this.idLienHe = idLienHe;
     }
 
-    public String getIdVanDe() {
+    public int getIdVanDe() {
         return idVanDe;
     }
 
-    public void setIdVanDe(String idVanDe) {
+    public void setIdVanDe(int idVanDe) {
         this.idVanDe = idVanDe;
     }
 

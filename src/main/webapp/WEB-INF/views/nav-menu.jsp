@@ -14,11 +14,11 @@
                     <div class="row">
                         <div class="col-md-5 col-xl-3 sub-menu mt-5 mb-5">
                             <ol class="list-unstyled ml-4 mr-md-0 mr-4">
-                                <li class="sub-title text-uppercase mt-sm"><a class="menu-item-2" href="">Giới thiệu</a></li>
-                                <li class="sub-title text-uppercase"><a class="menu-item-2" href="">Tra cứu sách</a></li>
-                                <li class="sub-title text-uppercase"><a class="menu-item-2" href="">Sự kiện</a></li>
-                                <li class="sub-title text-uppercase"><a class="menu-item-2" href="">Đăng ký phòng học</a></li>
-                                <li class="sub-title text-uppercase"><a class="menu-item-2" href="">Liên hệ</a></li>
+                                <li class="sub-title text-uppercase mt-sm"><a class="menu-item-2" href="<c:url value="/index.do"/>">Giới thiệu</a></li>
+                                <li class="sub-title text-uppercase"><a class="menu-item-2" href="<c:url value="/search.do"/>">Tra cứu sách</a></li>
+                                <li class="sub-title text-uppercase"><a class="menu-item-2" href="<c:url value="/event.do"/>">Sự kiện</a></li>
+                                <li class="sub-title text-uppercase"><a class="menu-item-2" href="<c:url value="/room.do"/>">Đăng ký phòng học</a></li>
+                                <li class="sub-title text-uppercase"><a class="menu-item-2" href="<c:url value="/admin.do"/>">Hệ thống</a></li>
                             </ol>
                         </div>
                         <div class="col-md-7 col-xl-9">
@@ -41,7 +41,7 @@
                                 </div>
                                 <div class="col-xl-4 mt-5 mb-4 clearfix d-none d-xl-block">
                                     <div class="view overlay hm-white-slight mb-3 z-depth-1">
-                                        <img style="height: 214px" src="<c:url value="../../resources/img/library_02.JPG"/>" class="img-fluid">
+                                        <img style="height: 203px" src="<c:url value="../../resources/img/library_02.JPG"/>" class="img-fluid">
                                         <div class="mask flex-center"><p></p></div>
                                     </div>
                                     <h4 class="mb-2"><a class="news-title-2" href="">Thời gian mở cửa</a></h4>
@@ -56,16 +56,26 @@
                 <a class="btn btn-red" id="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><b>TRANG CHỦ </b></a>
             </li>
         </ul>
-        <ul class="navbar-nav">
-            <li class="nav-item dropdown">
-                <a class="text-white" >Xin chào, Nhựt &nbsp;</a><a class="btn btn-red" data-toggle="dropdown"><i class="fa fa-cog" ></i>&nbsp;&nbsp;<i class="fa fa-caret-down"></i></a>
-                <ul class="dropdown-menu" style="background: #B73030">
-                    <li><a class="text-white" href="#"><i class="fa fa-history"></i>&nbsp;&nbsp;Lịch sử</a></li>
-                    <li><a class="text-white" href="#"><i class="fa fa-unlock-alt"></i>&nbsp;&nbsp;Đổi mật khẩu</a></li>
-                    <li><a class="text-white" href="#"><i class="fa fa-sign-out"></i>&nbsp;Đăng xuất</a></li>
-                </ul>
-            </li>
-        </ul>
+        <div id="navLogin">
+            <ul class="navbar-nav">
+                <a id="btnLogin" class="btn btn-red" href="<c:url value="/login.do"/>">Đăng nhập &nbsp;&nbsp;<i class="fa fa-sign-in"></i></a>
+            </ul>
+        </div>
+        <div id="navUser" hidden>
+            <ul class="navbar-nav">
+                <li class="nav-item dropdown">
+                    <a class="text-white" >Xin chào, Nhựt &nbsp;</a>
+                    <a class="btn btn-red" data-toggle="dropdown">
+                        <i class="fa fa-cog" ></i>&nbsp;&nbsp;<i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu" style="background: #B73030">
+                        <li><a class="text-white" href="#"><i class="fa fa-history"></i>&nbsp;&nbsp;Lịch sử</a></li>
+                        <li><a class="text-white" href="#"><i class="fa fa-unlock-alt"></i>&nbsp;&nbsp;Đổi mật khẩu</a></li>
+                        <li><a class="text-white" href="#"><i class="fa fa-sign-out"></i>&nbsp;Đăng xuất</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
     </div>
 </nav>
 </html>

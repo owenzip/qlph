@@ -8,15 +8,33 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class PageController {
 
     @RequestMapping(value = "/",method = RequestMethod.GET)
-    public String loginPage() {
+    public String index() {
         return "index";
     }
 
-    @RequestMapping(value = "/qltv",method = RequestMethod.GET)
-    public String loginPageRoot() {
+    @RequestMapping(value = "/index.do",method = RequestMethod.GET)
+    public String indexRoot() {
         return "index";
     }
 
-    @RequestMapping(value = "/qltv/homepage.do",method = RequestMethod.GET)
-    public String homePage() { return "homepage"; }
+    @RequestMapping(value = "/login.do",method = RequestMethod.GET)
+    public String login() {
+        return "login";
+    }
+
+    @RequestMapping(value = "/event.do",method = RequestMethod.GET)
+    public String event() {
+        return "event";
+    }
+
+    @RequestMapping(value = "/search.do",method = RequestMethod.GET)
+    public String search() {
+        return "searchbook";
+    }
+
+    @RequestMapping(value = "/room.do",method = RequestMethod.GET)
+    public String room() { return "room"; }
+
+    @RequestMapping(value = "/admin.do",method = RequestMethod.GET)
+    public String admin() { return "admin"; }
 }
