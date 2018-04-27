@@ -47,7 +47,7 @@ $(function () {
                     , type: "POST"
                     , success: function (data) {
                         if (data) {
-                            window.location.href = "/room.do";
+                            window.location.href = "/index.do";
                         } else {
                             $.confirm({
                                 title: 'Đăng nhập không thành công',

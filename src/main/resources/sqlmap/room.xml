@@ -1,0 +1,36 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="vn.dntu.qlph.service.RoomService">
+    <resultMap id="RoomVO" type="RoomVO">
+        <result property="idPhong" column="idphong"/>
+        <result property="idDmPhong" column="iddmphong"/>
+        <result property="gioBatDau" column="giobatdau"/>
+        <result property="gioKetThuc" column="gioketthuc"/>
+        <result property="trangThai" column="trangthai"/>
+        <result property="ngay" column="ngay"/>
+        <result property="soNguoi" column="songuoi"/>
+        <result property="mucDich" column="mucdich"/>
+        <result property="nguoiDaiDien" column="nguoidaidien"/>
+        <result property="idChiTietPhong" column="idchitietphong"/>
+        <result property="idNguoiDung" column="idnguoidung"/>
+    </resultMap>
+
+    <insert id="insertRoom" parameterType="RoomVO" useGeneratedKeys="true" keyProperty="idPhong">
+        INSERT INTO phong (
+          iddmphong,
+          giobatdau,
+          gioketthuc,
+          ngay,
+          songuoi,
+          mucdich,
+          nguoidaidien
+        ) VALUES (
+          #{idDmPhong},
+          #{gioBatDau},
+          #{gioKetThuc},
+          #{ngay},
+          #{soNguoi},
+          #{mucDich},
+          #{nguoiDaiDien}
+        )
+    </insert>
+</mapper>

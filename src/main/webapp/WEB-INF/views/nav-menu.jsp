@@ -19,6 +19,7 @@
                                 <li class="sub-title text-uppercase"><a class="menu-item-2" href="<c:url value="/event.do"/>">Sự kiện</a></li>
                                 <li class="sub-title text-uppercase"><a class="menu-item-2" href="<c:url value="/room.do"/>">Đăng ký phòng học</a></li>
                                 <li class="sub-title text-uppercase"><a class="menu-item-2" href="<c:url value="/admin.do"/>">Hệ thống</a></li>
+                                <li><a style="color: white" href="https://www.facebook.com/NhukAlleo"><i class="fa fa-copyright"></i>&nbsp;&nbsp;<b>DEV-K14</b> trường <b>DNTU</b> năm 2018</a></li>
                             </ol>
                         </div>
                         <div class="col-md-7 col-xl-9">
@@ -28,7 +29,7 @@
                                         <img src="<c:url value="../../resources/img/library_03.JPG"/>" class="img-fluid">
                                         <div class="mask flex-center"><p></p></div>
                                     </div>
-                                    <h4 class="mb-2"><a class="news-title-2" href="">Giới thiệu trung tâm thư viện</a></h4>
+                                    <h4 class="mb-2"><a class="news-title-2" href="<c:url value="/index.do"/>">Giới thiệu trung tâm thư viện</a></h4>
                                     <a class="text-white">Xem giới thiệu</a>
                                 </div>
                                 <div class="col-xl-4 mt-5 mb-4 clearfix d-none d-xl-block">
@@ -36,15 +37,15 @@
                                         <img src="<c:url value="../../resources/img/library_01.JPG"/>" class="img-fluid">
                                         <div class="mask flex-center"><p></p></div>
                                     </div>
-                                    <h4 class="mb-2"><a class="news-title-2" href="">Nội quy thư viện</a></h4>
+                                    <h4 class="mb-2"><a class="news-title-2" href="<c:url value="/index.do"/>">Nội quy thư viện</a></h4>
                                     <a class="white-text">Cập nhật ngày 26/04/2018</a>
                                 </div>
                                 <div class="col-xl-4 mt-5 mb-4 clearfix d-none d-xl-block">
                                     <div class="view overlay hm-white-slight mb-3 z-depth-1">
-                                        <img style="height: 203px" src="<c:url value="../../resources/img/library_02.JPG"/>" class="img-fluid">
+                                        <img  src="<c:url value="../../resources/img/library_01.JPG"/>" class="img-fluid">
                                         <div class="mask flex-center"><p></p></div>
                                     </div>
-                                    <h4 class="mb-2"><a class="news-title-2" href="">Thời gian mở cửa</a></h4>
+                                    <h4 class="mb-2"><a class="news-title-2" href="<c:url value="/index.do"/>">Thời gian mở cửa</a></h4>
                                     <a class="white-text">Từ 07:00 đến 20:00 hằng ngày</a>
                                 </div>
                             </div>
@@ -56,28 +57,30 @@
                 <a href="<c:url value="/index.do"/>" class="btn btn-red"><b>TRANG CHỦ &nbsp;&nbsp;<i class="fa fa-home"></i></b></a>
             </li>
         </ul>
+        <input id="sessionUsername" type="hidden" value="<%=session.getAttribute("TENNGUOIDUNG")%>">
         <div id="navLogin">
             <ul class="navbar-nav">
                 <a id="btnLogin" class="btn btn-red" href="<c:url value="/login.do"/>">Đăng nhập &nbsp;&nbsp;<i class="fa fa-sign-in"></i></a>
             </ul>
         </div>
-        <div id="navUser" hidden>
+        <div id="navUser">
             <ul class="navbar-nav">
                 <li class="nav-item dropdown">
-                    <a class="text-white" >Xin chào, Nhựt &nbsp;</a>
+                    <a class="text-white" >Xin chào,&nbsp;&nbsp;<b><%=session.getAttribute("TENNGUOIDUNG")%></b>&nbsp;</a>
                     <a class="btn btn-red" data-toggle="dropdown">
                         <i class="fa fa-cog" ></i>&nbsp;&nbsp;<i class="fa fa-caret-down"></i>
                     </a>
-                    <ul class="dropdown-menu" style="background: #B73030">
+                    <ul class="dropdown-menu" style="margin-left:110px;background: #B73030">
                         <li><a class="text-white" href="#"><i class="fa fa-history"></i>&nbsp;&nbsp;Lịch sử</a></li>
                         <li><a class="text-white" href="#"><i class="fa fa-unlock-alt"></i>&nbsp;&nbsp;Đổi mật khẩu</a></li>
-                        <li><a class="text-white" href="#"><i class="fa fa-sign-out"></i>&nbsp;Đăng xuất</a></li>
+                        <li><a href="<c:url value="/logout.do"/>" class="text-white" href="#"><i class="fa fa-sign-out"></i>&nbsp;Đăng xuất</a></li>
                     </ul>
                 </li>
             </ul>
         </div>
     </div>
 </nav>
+<script type="text/javascript" src="<c:url value="../../resources/js/forms/nav.js"/>"></script>
 </html>
 
 

@@ -6,19 +6,14 @@
 <html>
 <head>
     <jsp:include page="resource.jsp"/>
-    <title>GIỚI THIỆU</title>
+    <title>KHÔNG CÓ QUYỀN TRUY CẬP</title>
 </head>
 <body class="bg-gray">
 <jsp:include page="nav-menu.jsp"/>
 <div class="container" style="margin-top: 5%">
-    <div class="row">
-        <jsp:include page="search-menu.jsp"/>
-        <div class="col-md-9">
-            <h5 id="homePageTitle" style="padding-bottom: 17px;margin-top: 2px">Trang cho sinh viên tra cứu download sách của môn mình học</h5>
-        </div>
-    </div>
+    <h1 style="padding-bottom: 17px;margin-top: 2px">Bạn không có quyền truy cập trang này</h1>
+    <a href="<c:url value="/index.do"/>" class="btn btn-red">Quay lại trang chủ &nbsp;&nbsp;<i class="fa fa-home"></i></a>
 </div>
 </body>
-<script type="text/javascript" src="<c:url value="../../resources/js/forms/room.js"/>"></script>
 </html>
 

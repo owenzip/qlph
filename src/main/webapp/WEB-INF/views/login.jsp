@@ -57,6 +57,6 @@
     </div>
 </div>
 </body>
-<script type="text/javascript" src="<c:url value="../../resources/js/forms/login.js"/>"></script>
+<script type="text/javascript" src="<c:url value="../../resources/js/forms/user.js"/>"></script>
 </html>
 

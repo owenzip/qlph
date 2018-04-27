@@ -3,29 +3,30 @@ $(function () {
     let setup = function () {
         clickVerMenu();
         selectCategory();
+        insertRoom();
     }
 
     let clickVerMenu = function () {
         $("#phn1").on('click', function () {
-            $("#homePageTitle").text("Thông tin phòng học nhóm 1");
+            $("#homePageTitle").text("Lịch đăng ký phòng học nhóm 1");
         })
         $("#phn2").on('click', function () {
-            $("#homePageTitle").text("Thông tin phòng học nhóm 2");
+            $("#homePageTitle").text("Lịch đăng ký phòng học nhóm 2");
         })
         $("#phn3").on('click', function () {
-            $("#homePageTitle").text("Thông tin phòng học nhóm 3");
+            $("#homePageTitle").text("Lịch đăng ký phòng học nhóm 3");
         })
         $("#phn4").on('click', function () {
-            $("#homePageTitle").text("Thông tin phòng học nhóm 4");
+            $("#homePageTitle").text("Lịch đăng ký phòng học nhóm 4");
         })
         $("#phn5").on('click', function () {
-            $("#homePageTitle").text("Thông tin phòng học nhóm 5");
+            $("#homePageTitle").text("Lịch đăng ký phòng học nhóm 5");
         })
         $("#phn6").on('click', function () {
-            $("#homePageTitle").text("Thông tin phòng học nhóm 6");
+            $("#homePageTitle").text("Lịch đăng ký phòng học nhóm 6");
         })
         $("#phn7").on('click', function () {
-            $("#homePageTitle").text("Thông tin phòng học nhóm 7");
+            $("#homePageTitle").text("Lịch đăng ký phòng học nhóm 7");
         })
     }
 
@@ -42,7 +43,7 @@ $(function () {
                     }
                 }
             });
-            $.ajax({
+            /*$.ajax({
                 url: "/selectListMajor.do",
                 type: "POST",
                 success: function (data) {
@@ -52,10 +53,42 @@ $(function () {
                         })
                     }
                 }
+            });*/
+        })
+    };
+
+    let insertRoom = function () {
+        $('#btnAcceptRoom').on('click',function () {
+            let idDmPhong = $('#selRoom').val();
+            let gioBatDau = $('#gioBatDau').val();
+            let gioKetThuc = $('#gioKetThuc').val();
+            let ngay = $('#ngay').val();
+            let soNguoi = $('#soNguoi').val();
+            let mucDich = $('#mucDich').val();
+            let nguoiDaiDien = $('#idNguoiDung').val();
+            $.ajax({
+                url: "/insertRoom.do",
+                type: "POST",
+                data: {
+                    "idPhong":0,
+                    "idDmPhong": idDmPhong,
+                    "gioBatDau": gioBatDau,
+                    "gioKetThuc":  gioKetThuc,
+                    "ngay": ngay,
+                    "soNguoi":  soNguoi,
+                    "mucDich":  mucDich,
+                    "nguoiDaiDien":  nguoiDaiDien
+                },
+                success: function (data) {
+                    if (data) {
+                        $.each(data, function (i) {
+                            $('#selRoom').append('<option value="' + data[i]["idDmPhong"] + '">' + data[i]["tenPhong"] + '</option>');
+                        })
+                    }
+                }
             });
         })
-
-    };
+    }
 
     return setup();
 });

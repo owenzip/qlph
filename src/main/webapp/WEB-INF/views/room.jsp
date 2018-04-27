@@ -14,7 +14,7 @@
     <div class="row">
         <jsp:include page="room-menu.jsp"/>
         <div class="col-md-9">
-            <h5 id="homePageTitle" style="padding-bottom: 17px;margin-top: 2px">&nbsp;</h5>
+            <h5 id="homePageTitle" style="padding-bottom: 17px;margin-top: 2px">&nbsp;Lịch đăng ký phòng học nhóm 1</h5>
             <table class="table">
                 <thead>
                     <tr>
@@ -39,7 +39,6 @@
     </div>
 </div>
 </body>
-<jsp:include page="footer.jsp"/>
 <script type="text/javascript" src="<c:url value="../../resources/js/forms/room.js"/>"></script>
 </html>
 

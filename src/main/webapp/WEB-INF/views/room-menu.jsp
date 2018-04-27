@@ -44,33 +44,35 @@
                 <div class="row" style="margin-left: 5px">
                     <div class="col-md-5">
                         <label><b>Người đại diện</b></label>
-                        <input type="text" class="form-control" placeholder="Họ và tên" value="<%=session.getAttribute("TEN")%>">
-                        <input type="text" class="form-control mrg" placeholder="Mã số sinh viên">
-                        <input type="text" class="form-control mrg" placeholder="Lớp">
-                        <select id="selMajor" name="selMajor" type="text" class="form-control mrg">
+                        <input id="idNguoiDung" type="hidden" value="<%=session.getAttribute("IDNGUOIDUNG")%>">
+                        <input type="text" class="form-control" placeholder="Họ và tên" value="<%=session.getAttribute("TENNGUOIDUNG")%>" readonly>
+                        <input type="text" class="form-control mrg" placeholder="Mã số sinh viên" value="<%=session.getAttribute("MSSV")%>" readonly>
+                        <input type="text" class="form-control mrg" placeholder="Lớp" value="<%=session.getAttribute("LOP")%>" readonly>
+                        <input type="text" class="form-control mrg" value="<%=session.getAttribute("NGANH")%>" readonly>
+                     <%--<select id="selMajor" name="selMajor" type="text" class="form-control mrg">
                             <option value="-1">Chọn ngành</option>
-                        </select>
-                        <input type="text" class="form-control mrg" placeholder="Số người">
-                        <textarea type="text" class="form-control mrg" rows="3" placeholder="Mục đích sử dụng"></textarea>
+                        </select>--%>
+                        <input id="soNguoi" type="text" class="form-control mrg" placeholder="Số người">
+                        <textarea id="mucDich" type="text" class="form-control mrg" rows="3" placeholder="Mục đích sử dụng"></textarea>
                         <label class="mrg"><b>Chọn phòng</b></label>
                         <select id="selRoom" name="selRoom" type="text" class="form-control"></select>
                         <label class="mrg"><b>Thời gian</b></label>
-                        <input type="text" class="form-control" placeholder="Chọn ngày">
+                        <input id="ngay" type="text" class="form-control" placeholder="Chọn ngày">
                         <div class="row">
                             <div class="col-md-6">
-                                <input type="text" class="form-control mrg" placeholder="Giờ bắt đầu">
+                                <input id="gioBatDau" type="text" class="form-control mrg" placeholder="Giờ bắt đầu">
                             </div>
                             <div class="col-md-6">
-                                <input type="text" class="form-control mrg" placeholder="Giờ kết thúc">
+                                <input id="gioKetThuc" type="text" class="form-control mrg" placeholder="Giờ kết thúc">
                             </div>
                         </div>
                         <label class="mrg"><b>Quy định và điều khoản thư viện</b></label>
                         <div class="row form-inline">
                             <div class="col-md-6">
-                                <input type="checkbox"><a>&nbsp;Không đồng ý</a>
+                                <input id="no" type="checkbox"><a>&nbsp;Không đồng ý</a>
                             </div>
                             <div class="col-md-6">
-                                <input type="checkbox"><a>&nbsp;Đồng ý</a>
+                                <input id="yes" type="checkbox" checked><a>&nbsp;Đồng ý</a>
                             </div>
                         </div>
                     </div>
@@ -142,13 +144,15 @@
                                 </tr>
                             </tbody>
                         </table>
+                        <a class="btn btn-red btn-sm">Thêm &nbsp;&nbsp;<i class="fa fa-plus"></i></a>
+                        <a class="btn btn-red btn-sm">Xóa &nbsp;&nbsp;<i class="fa fa-trash"></i></a>
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-red" data-dismiss="modal">Hủy &nbsp;&nbsp;<i
                         class="fa fa-close"></i></button>
-                <button type="button" class="btn btn-red">Đăng ký &nbsp;&nbsp;<i class="fa fa-check"></i></button>
+                <button id="btnAcceptRoom" type="button" class="btn btn-red">Đăng ký &nbsp;&nbsp;<i class="fa fa-check"></i></button>
             </div>
         </div>
     </div>

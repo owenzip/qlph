@@ -19,7 +19,6 @@
     </div>
 </div>
 </body>
-<jsp:include page="footer.jsp"/>
 <script type="text/javascript" src="<c:url value="../../resources/js/forms/room.js"/>"></script>
 </html>
 

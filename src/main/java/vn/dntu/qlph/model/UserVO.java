@@ -11,6 +11,15 @@ public class UserVO {
     private String lop;
     private String nganh;
     private String matKhau;
+    private int quyen;
+
+    public int getQuyen() {
+        return quyen;
+    }
+
+    public void setQuyen(int quyen) {
+        this.quyen = quyen;
+    }
 
     public int getIdNguoiDung() {
         return idNguoiDung;

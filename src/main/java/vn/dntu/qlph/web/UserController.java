@@ -3,39 +3,41 @@ package vn.dntu.qlph.web;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import vn.dntu.qlph.model.UserVO;
-import vn.dntu.qlph.service.impl.LoginImpl;
+import vn.dntu.qlph.service.impl.UserImpl;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 @Controller
-public class LoginController {
+public class UserController {
 
     @Autowired
-    LoginImpl loginImpl;
+    UserImpl userImpl;
 
     @RequestMapping(value = "/checkLogin.do")
     @ResponseBody
     public boolean checkLogins(@RequestParam("mssv") String mssv, @RequestParam("matKhau") String matKhau,HttpServletRequest request) {
         try {
-            UserVO loginVO = loginImpl.checkLogin(mssv, matKhau);
-            if (loginVO != null) {
+            UserVO userVO = userImpl.checkLogin(mssv, matKhau);
+            if (userVO != null) {
                 HttpSession session = request.getSession();
-                session.setAttribute("IDNGUOIDUNG",loginVO.getIdNguoiDung());
-                session.setAttribute("MSSV",loginVO.getMssv());
-                session.setAttribute("MATKHAU",loginVO.getMatKhau());
-                session.setAttribute("TEN",loginVO.getTenNguoiDung());
-                session.setAttribute("NGANH",loginVO.getNganh());
-                session.setAttribute("LOP",loginVO.getLop());
+                session.setAttribute("IDNGUOIDUNG",userVO.getIdNguoiDung());
+                session.setAttribute("MSSV",userVO.getMssv());
+                session.setAttribute("MATKHAU",userVO.getMatKhau());
+                session.setAttribute("TENNGUOIDUNG",userVO.getTenNguoiDung());
+                session.setAttribute("NGANH",userVO.getNganh());
+                session.setAttribute("LOP",userVO.getLop());
+                session.setAttribute("QUYEN",userVO.getQuyen());
+                return true;
             }
-            return true;
+            return false;
         } catch (Exception e) {
             e.printStackTrace();
             return false;
         }
     }
-
 }
