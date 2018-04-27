@@ -5,10 +5,10 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
 <div class="col-md-3">
-    <a class="btn btn-red" style="margin-left: 6px;width: 200px" data-toggle="modal"
-       data-target="#modalRegisterRoom"><b>ĐĂNG KÝ <i class="fa fa-calendar-plus-o float-right"></i></b></a>
+    <a id="btnRegisterRoom" class="btn btn-red" style="margin-left: 6px;width: 200px" data-toggle="modal"
+       data-target="#modalRegisterRoom"><b>ĐĂNG KÝ <i class="fa fa-bookmark float-right"></i></b></a>
     <a class="btn btn-red btn-menu" data-toggle="collapse" data-target="#navbar1"><b>Học nhóm <i
-            class="fa fa-caret-down float-right"></i></b></a><br/>
+            class="fa fa-users float-right"></i></b></a><br/>
     <div class="collapse div-menu-dropdown" id="navbar1">
         <label href="" id="phn1" class="ver-menu-a">Phòng 1</label><br/>
         <label id="phn2" class="ver-menu-a">Phòng 2</label><br/>
@@ -19,29 +19,15 @@
         <label id="phn7" class="ver-menu-a">Phòng 7</label><br/>
         <br/>
     </div>
-
-    <a class="btn btn-red btn-menu" data-toggle="collapse" data-target="#navbar2"><b>Hội thảo<i
-            class="fa fa-caret-down float-right"></i></b></a><br/>
-    <div class="collapse div-menu-dropdown" id="navbar2">
-        <a href="" class="ver-menu-a">Phòng 1<br/></a>
-        <br/>
-    </div>
-
-    <a class="btn btn-red btn-menu" data-toggle="collapse" data-target="#navbar3"><b>Sau đại học<i
-            class="fa fa-caret-down float-right"></i></b></a><br/>
-    <div class="collapse div-menu-dropdown" id="navbar3">
-        <a href="" class="ver-menu-a">Phòng 1<br/></a>
-        <br/>
-    </div>
-
-    <a class="btn btn-red btn-menu " data-toggle="collapse" data-target="#navbar4"><b>Khu vực đọc sách<i
-            class="fa fa-caret-down float-right"></i></b></a><br/>
+    <a class="btn btn-red btn-menu " data-toggle="collapse" data-target="#navbar4"><b>Đọc sách<i class="fa fa-book float-right"></i></b></a><br/>
     <div class="collapse div-menu-dropdown" id="navbar4">
         <a href="" class="ver-menu-a">Khu vực 1<br/></a>
         <a href="" class="ver-menu-a">Khu vực 2<br/></a>
         <a href="" class="ver-menu-a">Khu vực 3</b><br/></a>
-        <a href="" class="ver-menu-a">Khu vực 4</b><br/></a>
+        <a href="" class="ver-menu-a">Khu vực 4</b><br/></a><br/>
     </div>
+    <a class="btn btn-red btn-menu" data-toggle="collapse" data-target="#navbar2"><b>Hội thảo<i class="fa fa-newspaper-o float-right"></i></b></a><br/>
+    <a class="btn btn-red btn-menu" data-toggle="collapse" data-target="#navbar3"><b>Sau đại học<i class="fa fa-university float-right"></i></b></a><br/>
 </div>
 
 <div class="modal fade" id="modalRegisterRoom" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -58,19 +44,18 @@
                 <div class="row" style="margin-left: 5px">
                     <div class="col-md-5">
                         <label><b>Người đại diện</b></label>
-                        <input type="text" class="form-control mrg" placeholder="Họ và tên">
+                        <input type="text" class="form-control" placeholder="Họ và tên" value="<%=session.getAttribute("TEN")%>">
                         <input type="text" class="form-control mrg" placeholder="Mã số sinh viên">
                         <input type="text" class="form-control mrg" placeholder="Lớp">
-                        <select type="text" class="form-control mrg">
+                        <select id="selMajor" name="selMajor" type="text" class="form-control mrg">
                             <option value="-1">Chọn ngành</option>
                         </select>
-                        <select type="text" class="form-control mrg">
-                            <option value="-1">Số người</option>
-                        </select>
-                        <textarea type="text" class="form-control mrg" rows="3"
-                                  placeholder="Mục đích sử dụng"></textarea>
+                        <input type="text" class="form-control mrg" placeholder="Số người">
+                        <textarea type="text" class="form-control mrg" rows="3" placeholder="Mục đích sử dụng"></textarea>
+                        <label class="mrg"><b>Chọn phòng</b></label>
+                        <select id="selRoom" name="selRoom" type="text" class="form-control"></select>
                         <label class="mrg"><b>Thời gian</b></label>
-                        <input type="text" class="form-control mrg" placeholder="Chọn ngày">
+                        <input type="text" class="form-control" placeholder="Chọn ngày">
                         <div class="row">
                             <div class="col-md-6">
                                 <input type="text" class="form-control mrg" placeholder="Giờ bắt đầu">
@@ -81,10 +66,10 @@
                         </div>
                         <label class="mrg"><b>Quy định và điều khoản thư viện</b></label>
                         <div class="row form-inline">
-                            <div class="col-md-6 mrg">
+                            <div class="col-md-6">
                                 <input type="checkbox"><a>&nbsp;Không đồng ý</a>
                             </div>
-                            <div class="col-md-6 mrg">
+                            <div class="col-md-6">
                                 <input type="checkbox"><a>&nbsp;Đồng ý</a>
                             </div>
                         </div>
@@ -168,7 +153,6 @@
         </div>
     </div>
 </div>
-<script type="text/javascript" src="<c:url value="../../resources/js/forms/homepage.js"/>"></script>
 </html>
 
 

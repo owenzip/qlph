@@ -29,11 +29,11 @@
                     <input id="mssv" name="mssv" type="text" class="form-control" placeholder="MSSV" value="1407168">
                     <input style="margin-top: 10px" id="matKhau" name="matKhau" type="password" class="form-control" placeholder="Mật khẩu" value="123">
                 </div>
-                    <a id="btnContact" class="btn btn-link" data-toggle="modal" data-target="#contactModal"><b style="color: #B73030">LIÊN HỆ</b></a>
-                    <a id="btnConfirm" class="btn btn-red">ĐĂNG NHẬP</a>
+                    <a id="btnConfirm" class="btn btn-red" style="width: 226px">ĐĂNG NHẬP &nbsp;&nbsp;<i class="fa fa-sign-in"></i></a>
+                    <a id="btnContact" class="btn btn-link" data-toggle="modal" data-target="#contactModal"><b style="color: #B73030">LIÊN HỆ &nbsp; &nbsp;<i class="fa fa-phone"></i></b></a>
             </div>
         </div>
-        <p style="text-align: center;margin-top: 50px;color: #B73030" href="https://www.facebook.com/NhukAlleo">Bản quyền thuộc về nhóm &nbsp&nbsp<a class="badge badge-light">#DEV-14 DNTU</a>&nbsp&nbsp năm 2018</p>
+        <jsp:include page="footer.jsp"/>
     </div>
 </div>
 <div id="contactModal" class="modal fade" role="dialog">
@@ -48,8 +48,8 @@
                     <input style="margin-top: 5px" id="sdt" name="sdt" type="text" class="form-control" placeholder="Nhập số điện thoại">
                     <textarea style="margin-top: 5px" id="noiDung" name="noiDung" class="form-control" rows="3" placeholder="Tin nhắn văn bản"></textarea>
                     <div style="margin-top: 10px">
-                        <a data-dismiss="modal" class="btn btn-red" style="float: right">Hủy</a>
-                        <a id="btnSentContact" class="btn btn-red" style="float: right">Gửi liên hệ</a>
+                        <a id="btnSentContact" class="btn btn-red" style="float: right">Gửi liên hệ&nbsp;&nbsp;<i class="fa fa-check"></i></a>
+                        <a data-dismiss="modal" class="btn btn-red" style="float: right">Hủy &nbsp;&nbsp;<i class="fa fa-close"></i></a>
                     </div>
                 </div>
             </div>

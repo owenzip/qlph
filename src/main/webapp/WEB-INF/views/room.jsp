@@ -12,7 +12,7 @@
 <jsp:include page="nav-menu.jsp"/>
 <div class="container" style="margin-top: 5%">
     <div class="row">
-        <jsp:include page="ver-menu.jsp"/>
+        <jsp:include page="room-menu.jsp"/>
         <div class="col-md-9">
             <h5 id="homePageTitle" style="padding-bottom: 17px;margin-top: 2px">&nbsp;</h5>
             <table class="table">
@@ -40,6 +40,6 @@
 </div>
 </body>
 <jsp:include page="footer.jsp"/>
-<script type="text/javascript" src="<c:url value="../../resources/js/forms/homepage.js"/>"></script>
+<script type="text/javascript" src="<c:url value="../../resources/js/forms/room.js"/>"></script>
 </html>
 

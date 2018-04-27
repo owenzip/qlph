@@ -2,6 +2,7 @@ $(function () {
 
     let setup = function () {
         clickVerMenu();
+        selectCategory();
     }
 
     let clickVerMenu = function () {
@@ -27,6 +28,34 @@ $(function () {
             $("#homePageTitle").text("Thông tin phòng học nhóm 7");
         })
     }
+
+    let selectCategory = function () {
+        $("#btnRegisterRoom").on('click', function () {
+            $.ajax({
+                url: "/selectListRoom.do",
+                type: "POST",
+                success: function (data) {
+                    if (data) {
+                        $.each(data, function (i) {
+                            $('#selRoom').append('<option value="' + data[i]["idDmPhong"] + '">' + data[i]["tenPhong"] + '</option>');
+                        })
+                    }
+                }
+            });
+            $.ajax({
+                url: "/selectListMajor.do",
+                type: "POST",
+                success: function (data) {
+                    if (data) {
+                        $.each(data, function (i) {
+                            $('#selMajor').append('<option value="' + data[i]["idNganh"] + '">' + data[i]["nganh"] + '</option>');
+                        })
+                    }
+                }
+            });
+        })
+
+    };
 
     return setup();
 });

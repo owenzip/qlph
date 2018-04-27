@@ -12,7 +12,7 @@
     <label class="ver-menu-a">Đội ngũ phát triển</label><br/>
     <br/>
 </div>
-<script type="text/javascript" src="<c:url value="../../resources/js/forms/homepage.js"/>"></script>
+<script type="text/javascript" src="<c:url value="../../resources/js/forms/room.js"/>"></script>
 </html>
 
 

@@ -53,7 +53,7 @@
                 </div>
             </li>
             <li>
-                <a class="btn btn-red" id="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><b>TRANG CHỦ </b></a>
+                <a href="<c:url value="/index.do"/>" class="btn btn-red"><b>TRANG CHỦ &nbsp;&nbsp;<i class="fa fa-home"></i></b></a>
             </li>
         </ul>
         <div id="navLogin">

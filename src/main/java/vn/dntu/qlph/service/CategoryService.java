@@ -6,4 +6,7 @@ import java.util.ArrayList;
 
 public interface CategoryService {
     ArrayList<CategoryVO> selectListProblem();
+    ArrayList<CategoryVO> selectListRoom();
+    ArrayList<CategoryVO> selectListMajor();
+    ArrayList<CategoryVO> selectListStatus();
 }

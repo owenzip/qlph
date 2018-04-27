@@ -4,9 +4,27 @@
     <resultMap id="CategoryVO" type="CategoryVO">
         <result property="idVanDe" column="idvande"/>
         <result property="vanDe" column="vande"/>
+        <result property="idDmPhong" column="iddmphong"/>
+        <result property="tenPhong" column="tenphong"/>
+        <result property="idNganh" column="idnganh"/>
+        <result property="nganh" column="nganh"/>
+        <result property="idTrangThai" column="idtrangthai"/>
+        <result property="trangThai" column="trangthai"/>
     </resultMap>
 
     <select id="selectListProblem" resultMap="CategoryVO">
         SELECT * FROM dmvande
+    </select>
+
+    <select id="selectListRoom" resultMap="CategoryVO">
+        SELECT * FROM dmphong
+    </select>
+
+    <select id="selectListMajor" resultMap="CategoryVO">
+        SELECT * FROM nganh
+    </select>
+
+    <select id="selectListStatus" resultMap="CategoryVO">
+        SELECT * FROM dmtrangthai
     </select>
 </mapper>

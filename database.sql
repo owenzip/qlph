@@ -18,6 +18,31 @@ USE `qlph`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `chitietphong`
+--
+
+DROP TABLE IF EXISTS `chitietphong`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `chitietphong` (
+  `idchitietphong` int(11) NOT NULL AUTO_INCREMENT,
+  `idphong` int(11) DEFAULT NULL,
+  `idnguoidung` int(11) DEFAULT NULL,
+  PRIMARY KEY (`idchitietphong`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `chitietphong`
+--
+
+LOCK TABLES `chitietphong` WRITE;
+/*!40000 ALTER TABLE `chitietphong` DISABLE KEYS */;
+INSERT INTO `chitietphong` VALUES (1,NULL,1);
+/*!40000 ALTER TABLE `chitietphong` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `dmphong`
 --
 
@@ -39,6 +64,30 @@ LOCK TABLES `dmphong` WRITE;
 /*!40000 ALTER TABLE `dmphong` DISABLE KEYS */;
 INSERT INTO `dmphong` VALUES (1,'Phòng học nhóm 1'),(2,'Phòng học nhóm 2'),(3,'Phòng học nhóm 3'),(4,'Phòng học nhóm 4'),(5,'Phòng học nhóm 5'),(6,'Phòng học nhóm 6'),(7,'Phòng học nhóm 7'),(8,'Phòng hội thảo'),(9,'Phòng học sau Đại Học'),(10,'Khu vực phòng đọc sách 1'),(11,'Khu vực phòng đọc sách 2'),(12,'Khu vực phòng đọc sách 3'),(13,'Khu vực phòng đọc sách 4'),(14,'Khu vực phòng đọc sách 5');
 /*!40000 ALTER TABLE `dmphong` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `dmtrangthai`
+--
+
+DROP TABLE IF EXISTS `dmtrangthai`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `dmtrangthai` (
+  `idtrangthai` int(11) NOT NULL AUTO_INCREMENT,
+  `trangthai` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`idtrangthai`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `dmtrangthai`
+--
+
+LOCK TABLES `dmtrangthai` WRITE;
+/*!40000 ALTER TABLE `dmtrangthai` DISABLE KEYS */;
+INSERT INTO `dmtrangthai` VALUES (1,'Đang đặt'),(2,'Đang hoạt động'),(3,'Đã xong'),(4,'Đã hủy');
+/*!40000 ALTER TABLE `dmtrangthai` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -78,7 +127,7 @@ CREATE TABLE `lienhe` (
   `sdt` int(11) DEFAULT NULL,
   `noidung` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`idlienhe`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -87,7 +136,7 @@ CREATE TABLE `lienhe` (
 
 LOCK TABLES `lienhe` WRITE;
 /*!40000 ALTER TABLE `lienhe` DISABLE KEYS */;
-INSERT INTO `lienhe` VALUES (1,1,12345676,'Đây là nội dung'),(2,1,123456789,'đưaădă');
+INSERT INTO `lienhe` VALUES (1,1,12345676,'Đây là nội dung'),(2,1,123456789,'đưaădă'),(3,1,123123123,'dwawadwd'),(4,1,123123123,'rereerererere');
 /*!40000 ALTER TABLE `lienhe` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -130,7 +179,7 @@ CREATE TABLE `nguoidung` (
   `idnganh` int(11) DEFAULT NULL,
   `matkhau` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`idnguoidung`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -141,30 +190,6 @@ LOCK TABLES `nguoidung` WRITE;
 /*!40000 ALTER TABLE `nguoidung` DISABLE KEYS */;
 INSERT INTO `nguoidung` VALUES (1,'Nguyễn Minh Nhựt',1407168,'14DTH1',1,'123'),(2,'Nguyễn Quốc Thái',1406652,'16DTH1',2,'123'),(3,'Phạm Ái Bảo',1403539,'14DTH2',3,'123'),(4,'Nguyễn Hải Đăng',1408787,'13DXD1',4,'123');
 /*!40000 ALTER TABLE `nguoidung` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `nhom`
---
-
-DROP TABLE IF EXISTS `nhom`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `nhom` (
-  `idnhom` int(11) NOT NULL,
-  `idthongtinphong` int(11) DEFAULT NULL,
-  `idnguoidung` int(11) DEFAULT NULL,
-  PRIMARY KEY (`idnhom`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `nhom`
---
-
-LOCK TABLES `nhom` WRITE;
-/*!40000 ALTER TABLE `nhom` DISABLE KEYS */;
-/*!40000 ALTER TABLE `nhom` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -182,9 +207,10 @@ CREATE TABLE `phong` (
   `ngay` date DEFAULT NULL,
   `trangthai` varchar(255) DEFAULT NULL,
   `songuoi` int(11) DEFAULT NULL,
-  `idthongtinphong` int(11) DEFAULT NULL,
+  `mucdich` varchar(255) DEFAULT NULL,
+  `nguoidaidien` int(11) DEFAULT NULL,
   PRIMARY KEY (`idphong`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -193,6 +219,7 @@ CREATE TABLE `phong` (
 
 LOCK TABLES `phong` WRITE;
 /*!40000 ALTER TABLE `phong` DISABLE KEYS */;
+INSERT INTO `phong` VALUES (1,1,'13:30','15:00','2018-02-02','',4,'Mục đích là gì',1),(2,1,'13:30','15:00','2018-02-02','',4,'Mục đích là gì',1),(3,1,'13:30','15:00','2018-02-02','',4,'Mục đích là gì',1);
 /*!40000 ALTER TABLE `phong` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -219,30 +246,6 @@ LOCK TABLES `quyen` WRITE;
 INSERT INTO `quyen` VALUES (1,'ADMIN'),(2,'USER');
 /*!40000 ALTER TABLE `quyen` ENABLE KEYS */;
 UNLOCK TABLES;
-
---
--- Table structure for table `thongtinphong`
---
-
-DROP TABLE IF EXISTS `thongtinphong`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `thongtinphong` (
-  `idthongtinphong` int(11) NOT NULL AUTO_INCREMENT,
-  `nguoidaidien` int(11) DEFAULT NULL,
-  `mucdich` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`idthongtinphong`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `thongtinphong`
---
-
-LOCK TABLES `thongtinphong` WRITE;
-/*!40000 ALTER TABLE `thongtinphong` DISABLE KEYS */;
-/*!40000 ALTER TABLE `thongtinphong` ENABLE KEYS */;
-UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -253,4 +256,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-04-26 18:17:25
+-- Dump completed on 2018-04-27 20:17:15

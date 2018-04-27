@@ -20,4 +20,13 @@ public class CategoryImpl implements CategoryService {
     public ArrayList<CategoryVO> selectListProblem() {
         return categoryService.selectListProblem();
     }
+
+    @Override
+    public ArrayList<CategoryVO> selectListRoom() { return categoryService.selectListRoom(); }
+
+    @Override
+    public ArrayList<CategoryVO> selectListMajor() { return categoryService.selectListMajor(); }
+
+    @Override
+    public ArrayList<CategoryVO> selectListStatus() { return categoryService.selectListStatus(); }
 }

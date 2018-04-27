@@ -27,4 +27,40 @@ public class CategoryController {
         }
     }
 
+    @RequestMapping(value = "/selectListStatus.do")
+    @ResponseBody
+    public ArrayList<CategoryVO> selectListStatus() {
+        try {
+            ArrayList<CategoryVO> categoryVO = categoryImpl.selectListStatus();
+            return categoryVO;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    @RequestMapping(value = "/selectListRoom.do")
+    @ResponseBody
+    public ArrayList<CategoryVO> selectListRoom() {
+        try {
+            ArrayList<CategoryVO> categoryVO = categoryImpl.selectListRoom();
+            return categoryVO;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    @RequestMapping(value = "/selectListMajor.do")
+    @ResponseBody
+    public ArrayList<CategoryVO> selectListMajor() {
+        try {
+            ArrayList<CategoryVO> categoryVO = categoryImpl.selectListMajor();
+            return categoryVO;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
 }
