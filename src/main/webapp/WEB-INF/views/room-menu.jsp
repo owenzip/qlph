@@ -76,7 +76,7 @@
                         </div>
                         <div class="col-md-7">
                             <label><b>Thành viên</b></label>
-                            <table id="tblMembers" class="table table-hover" style="width: 96%">
+                            <table id="tblMembers" class="table" style="width: 96%">
                                 <thead>
                                 <tr>
                                     <th>#</th>
@@ -85,6 +85,26 @@
                                     <th>MSSV</th>
                                 </tr>
                                 </thead>
+                                <tbody>
+                                <tr>
+                                    <th>1</th>
+                                    <th>Nguyễn Quốc Thái</th>
+                                    <th>14DTH1</th>
+                                    <th>1406653</th>
+                                </tr>
+                                <tr>
+                                    <th>2</th>
+                                    <th>Phạm Ái Bảo</th>
+                                    <th>14DTH2</th>
+                                    <th>1405359</th>
+                                </tr>
+                                <tr>
+                                    <th>3</th>
+                                    <th>Nguyễn Hải Đăng</th>
+                                    <th>15DTH1</th>
+                                    <th>1505555</th>
+                                </tr>
+                                </tbody>
                             </table>
                             <a id="btnAddMembers" class="btn btn-red btn-sm">Thêm &nbsp;&nbsp;<i class="fa fa-plus"></i></a>
                             <a id="btnDelMembers" class="btn btn-red btn-sm">Xóa &nbsp;&nbsp;<i class="fa fa-trash"></i></a>
