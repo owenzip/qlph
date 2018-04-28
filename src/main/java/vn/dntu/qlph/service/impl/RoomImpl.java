@@ -3,6 +3,7 @@ package vn.dntu.qlph.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import vn.dntu.qlph.model.DetailRoomVO;
 import vn.dntu.qlph.model.RoomVO;
 import vn.dntu.qlph.model.UserVO;
 import vn.dntu.qlph.service.RoomService;
@@ -15,7 +16,12 @@ public class RoomImpl implements RoomService {
     RoomService roomService;
 
     @Override
-    public void insertRoom(int idPhong,int idDmPhong, String gioBatDau, String gioKetThuc, String ngay, int soNguoi, String mucDich, int nguoiDaiDien) {
-        roomService.insertRoom(idPhong,idDmPhong, gioBatDau, gioKetThuc, ngay, soNguoi, mucDich, nguoiDaiDien);
+    public void insertRoom(RoomVO roomVO) {
+        roomService.insertRoom(roomVO);
+    }
+
+    @Override
+    public void insertMember(DetailRoomVO detailRoomVO) {
+        roomService.insertMember(detailRoomVO);
     }
 }

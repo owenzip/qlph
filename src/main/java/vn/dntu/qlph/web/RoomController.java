@@ -2,6 +2,7 @@ package vn.dntu.qlph.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -21,14 +22,18 @@ public class RoomController {
 
     @RequestMapping(value = "/insertRoom.do")
     @ResponseBody
-    public int insertRoom(@RequestParam("idPhong") int idPhong,@RequestParam("idDmPhong") int idDmPhong, @RequestParam("gioBatDau") String gioBatDau, @RequestParam("gioKetThuc") String gioKetThuc, @RequestParam("ngay") String ngay, @RequestParam("soNguoi") int soNguoi, @RequestParam("mucDich") String mucDich, @RequestParam("nguoiDaiDien") int nguoiDaiDien) {
+    public RoomVO insertRoom(@ModelAttribute final RoomVO roomVO) {
         try {
-            roomImpl.insertRoom(idPhong,idDmPhong, gioBatDau, gioKetThuc, ngay, soNguoi, mucDich, nguoiDaiDien);
-            RoomVO roomVO = new RoomVO();
-            return roomVO.getIdPhong();
+            roomImpl.insertRoom(roomVO);
+            if (roomVO.getDetailRoomVO() != null) {
+                roomVO.getDetailRoomVO().forEach(item -> {
+                    roomImpl.insertMember(item);
+                });
+            }
+            return roomVO;
         } catch (Exception e) {
             e.printStackTrace();
-            return 0;
+            return null;
         }
     }
 }

@@ -2,6 +2,8 @@ package vn.dntu.qlph.model;
 
 import org.apache.ibatis.type.Alias;
 
+import java.util.List;
+
 @Alias("RoomVO")
 public class RoomVO {
 
@@ -14,15 +16,15 @@ public class RoomVO {
     private int soNguoi;
     private String mucDich;
     private int nguoiDaiDien;
-    private int idChiTietPhong;
     private int idNguoiDung;
+    List<DetailRoomVO> detailRoomVO;
 
-    public int getIdChiTietPhong() {
-        return idChiTietPhong;
+    public List<DetailRoomVO> getDetailRoomVO() {
+        return detailRoomVO;
     }
 
-    public void setIdChiTietPhong(int idChiTietPhong) {
-        this.idChiTietPhong = idChiTietPhong;
+    public void setDetailRoomVO(List<DetailRoomVO> detailRoomVO) {
+        this.detailRoomVO = detailRoomVO;
     }
 
     public int getIdNguoiDung() {
@@ -72,7 +74,6 @@ public class RoomVO {
     public void setNgay(String ngay) {
         this.ngay = ngay;
     }
-
 
     public String getMucDich() {
         return mucDich;

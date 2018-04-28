@@ -10,7 +10,12 @@
         <result property="soNguoi" column="songuoi"/>
         <result property="mucDich" column="mucdich"/>
         <result property="nguoiDaiDien" column="nguoidaidien"/>
+        <result property="idNguoiDung" column="idnguoidung"/>
+    </resultMap>
+
+    <resultMap id="DetailRoomVO" type="DetailRoomVO">
         <result property="idChiTietPhong" column="idchitietphong"/>
+        <result property="idPhong" column="idphong"/>
         <result property="idNguoiDung" column="idnguoidung"/>
     </resultMap>
 
@@ -31,6 +36,17 @@
           #{soNguoi},
           #{mucDich},
           #{nguoiDaiDien}
+        )
+    </insert>
+
+    <insert id="insertMember" parameterType="DetailRoomVO">
+        INSERT INTO chitietphong (
+        idphong,
+        idnguoidung
+        )
+        VALUES (
+        #{idPhong},
+        #{idNguoiDung}
         )
     </insert>
 </mapper>
