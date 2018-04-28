@@ -10,29 +10,29 @@ import javax.servlet.http.HttpSession;
 @Controller
 public class PageController {
 
-    @RequestMapping(value = "/",method = RequestMethod.GET)
+    @RequestMapping(value = "/", method = RequestMethod.GET)
     public String index() {
         return "index";
     }
 
-    @RequestMapping(value = "/index.do",method = RequestMethod.GET)
+    @RequestMapping(value = "/index.do", method = RequestMethod.GET)
     public String indexRoot() {
         return "index";
     }
 
-    @RequestMapping(value = "/login.do",method = RequestMethod.GET)
+    @RequestMapping(value = "/login.do", method = RequestMethod.GET)
     public String login(HttpServletRequest request) {
         HttpSession session = request.getSession();
         session.invalidate();
         return "login";
     }
 
-    @RequestMapping(value = "/event.do",method = RequestMethod.GET)
+    @RequestMapping(value = "/event.do", method = RequestMethod.GET)
     public String event() {
         return "event";
     }
 
-    @RequestMapping(value = "/search.do",method = RequestMethod.GET)
+    @RequestMapping(value = "/search.do", method = RequestMethod.GET)
     public String search(HttpServletRequest request) {
         try {
             HttpSession session = request.getSession();
@@ -40,14 +40,13 @@ public class PageController {
             if (username != null) {
                 return "searchbook";
             }
-            return "login";
+            return "401";
         } catch (Exception e) {
-            e.printStackTrace();
-            return "login";
+            return "401";
         }
     }
 
-    @RequestMapping(value = "/room.do",method = RequestMethod.GET)
+    @RequestMapping(value = "/room.do", method = RequestMethod.GET)
     public String room(HttpServletRequest request) {
         try {
             HttpSession session = request.getSession();
@@ -55,14 +54,13 @@ public class PageController {
             if (username != null) {
                 return "room";
             }
-            return "login";
+            return "401";
         } catch (Exception e) {
-            e.printStackTrace();
-            return "login";
+            return "401";
         }
     }
 
-    @RequestMapping(value = "/admin.do",method = RequestMethod.GET)
+    @RequestMapping(value = "/admin.do", method = RequestMethod.GET)
     public String admin(HttpServletRequest request) {
         try {
             HttpSession session = request.getSession();
@@ -75,7 +73,6 @@ public class PageController {
             }
             return "401";
         } catch (Exception e) {
-            e.printStackTrace();
             return "401";
         }
     }
