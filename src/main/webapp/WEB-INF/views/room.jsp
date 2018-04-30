@@ -8,14 +8,15 @@
     <jsp:include page="resource.jsp"/>
     <title>PHẦN MỀM QUẢN LÝ THƯ VIỆN</title>
 </head>
-<body class="bg-gray">
+<body>
 <jsp:include page="nav-menu.jsp"/>
 <div class="container" style="margin-top: 5%">
     <div class="row">
         <jsp:include page="room-menu.jsp"/>
         <div class="col-md-9">
+            <input type="hidden" id="getIdDmPhong" value="1">
             <h5 id="homePageTitle" style="padding-bottom: 17px;margin-top: 2px">&nbsp;Lịch đăng ký phòng học nhóm 1</h5>
-            <table class="table">
+            <table id="tblRoom" class="table">
                 <thead>
                     <tr>
                         <th>#</th>

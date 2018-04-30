@@ -9,6 +9,8 @@ import vn.dntu.qlph.model.UserVO;
 import vn.dntu.qlph.service.RoomService;
 import vn.dntu.qlph.service.UserService;
 
+import java.util.List;
+
 @Service("RoomImpl")
 public class RoomImpl implements RoomService {
 
@@ -23,5 +25,10 @@ public class RoomImpl implements RoomService {
     @Override
     public void insertMember(DetailRoomVO detailRoomVO) {
         roomService.insertMember(detailRoomVO);
+    }
+
+    @Override
+    public List<RoomVO> selectRoomToDay(int idDmPhong) {
+        return roomService.selectRoomToDay(idDmPhong);
     }
 }

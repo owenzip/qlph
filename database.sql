@@ -110,7 +110,7 @@ CREATE TABLE `dmvande` (
 
 LOCK TABLES `dmvande` WRITE;
 /*!40000 ALTER TABLE `dmvande` DISABLE KEYS */;
-INSERT INTO `dmvande` VALUES (1,'Quên mật khẩu'),(2,'Lỗi mạng'),(3,'Lỗi hệ thống'),(4,'vấn đề khác');
+INSERT INTO `dmvande` VALUES (1,'Quên mật khẩu'),(2,'Lỗi mạng'),(3,'Lỗi hệ thống'),(4,'Vấn đề khác');
 /*!40000 ALTER TABLE `dmvande` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -126,8 +126,11 @@ CREATE TABLE `lienhe` (
   `idvande` int(11) DEFAULT NULL,
   `sdt` int(11) DEFAULT NULL,
   `noidung` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `ngay` date DEFAULT NULL,
+  `gio` time DEFAULT NULL,
   PRIMARY KEY (`idlienhe`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -136,7 +139,7 @@ CREATE TABLE `lienhe` (
 
 LOCK TABLES `lienhe` WRITE;
 /*!40000 ALTER TABLE `lienhe` DISABLE KEYS */;
-INSERT INTO `lienhe` VALUES (1,1,12345676,'Đây là nội dung'),(2,1,123456789,'đưaădă'),(3,1,123123123,'dwawadwd'),(4,1,123123123,'rereerererere'),(5,1,90909090,'dădăđuawadưa');
+INSERT INTO `lienhe` VALUES (1,1,12345676,'Đây là nội dung',NULL,NULL,NULL),(2,1,123456789,'đưaădă',NULL,NULL,NULL),(3,1,123123123,'dwawadwd',NULL,NULL,NULL),(4,1,123123123,'rereerererere',NULL,NULL,NULL),(5,1,90909090,'dădăđuawadưa',NULL,NULL,NULL),(6,4,32323232,'đưaaw','đuawad',NULL,NULL),(7,2,313131311,'Noi dung','dwadwad','2018-04-30',NULL),(8,2,313131311,'Noi dung','dwadwad','2018-04-30','22:43:45'),(9,1,90909099,'TEST','DWADAWDAD','2018-04-30','22:45:53');
 /*!40000 ALTER TABLE `lienhe` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -244,7 +247,7 @@ CREATE TABLE `phong` (
 
 LOCK TABLES `phong` WRITE;
 /*!40000 ALTER TABLE `phong` DISABLE KEYS */;
-INSERT INTO `phong` VALUES (4,1,'13:00','15:00','2018-02-02',1,4,'không có mục đích gì',1),(5,1,'13:00','15:00','2018-02-02',1,4,'không có mục đích gì',1);
+INSERT INTO `phong` VALUES (4,1,'13:00:00','15:00:00','2018-02-02',1,4,'không có mục đích gì',1),(5,2,'13:00:00','15:00:00','2018-02-02',1,4,'không có mục đích gì',1),(6,3,'12:00:00','15:00:00','2018-08-08',2,5,'dwadaw',2),(7,4,'12:00:00','15:00:00','2018-08-08',1,4,'dwadaw',1),(8,5,'12:00:00','15:00:00','2018-08-08',1,5,'dwadaw',1),(9,6,'12:00:00','15:00:00','2018-08-08',1,6,'dwadaw',1),(10,7,'12:00:00','15:00:00','2018-08-08',1,7,'dwadaw',1),(11,8,'12:00:00','15:00:00','2018-08-08',1,8,'dwadaw',1),(12,9,'12:00:00','15:00:00','2018-08-08',1,9,'dwadaw',1),(13,10,'12:00:00','15:00:00','2018-08-08',1,10,'dwadaw',1),(14,11,'12:00:00','15:00:00','2018-08-08',1,11,'dwadaw',1),(15,12,'12:00:00','15:00:00','2018-08-08',1,12,'dwadaw',1),(16,13,'12:00:00','15:00:00','2018-08-08',1,13,'dwadaw',1),(17,14,'12:00:00','15:00:00','2018-08-08',1,14,'dwadaw',1),(18,13,'12:00:00','15:00:00','2018-08-08',1,13,'dwadaw',1),(19,13,'12:00:00','15:00:00','2018-08-08',1,13,'dwadaw',1);
 /*!40000 ALTER TABLE `phong` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -257,4 +260,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-04-28  2:15:34
+-- Dump completed on 2018-05-01  0:21:28

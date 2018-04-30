@@ -49,4 +49,19 @@
         #{idNguoiDung}
         )
     </insert>
+
+    <select id="selectRoomToDay" resultType="RoomVO">
+        SELECT
+        idphong,
+        giobatdau,
+        gioketthuc,
+        ngay,
+        trangthai,
+        songuoi,
+        mucdich,
+        nguoidaidien
+        FROM phong ph
+        WHERE ph.iddmphong = #{idDmPhong}
+        AND ph.ngay >= now()
+    </select>
 </mapper>

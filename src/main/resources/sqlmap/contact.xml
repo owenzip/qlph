@@ -6,10 +6,11 @@
         <result property="idVanDe" column="idvande"/>
         <result property="sdt" column="sdt"/>
         <result property="noiDung" column="noidung"/>
+        <result property="email" column="email"/>
     </resultMap>
 
     <insert id="insertContact" parameterType="ContactVO">
-      INSERT INTO lienhe (idvande,sdt,noidung)
-      VALUES (#{idVanDe},#{sdt},#{noiDung})
+      INSERT INTO lienhe (idvande,sdt,noidung,email,ngay,gio)
+      VALUES (#{idVanDe},#{sdt},#{noiDung},#{email},NOW(),NOW())
     </insert>
 </mapper>

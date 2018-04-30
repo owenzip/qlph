@@ -46,6 +46,7 @@
                         <option value="-1">Chọn vấn đề</option>
                     </select>
                     <input style="margin-top: 5px" id="sdt" name="sdt" type="text" class="form-control" placeholder="Nhập số điện thoại">
+                    <input style="margin-top: 5px" id="email" name="email" type="text" class="form-control" placeholder="Nhập email">
                     <textarea style="margin-top: 5px" id="noiDung" name="noiDung" class="form-control" rows="3" placeholder="Tin nhắn văn bản"></textarea>
                     <div style="margin-top: 10px">
                         <a id="btnSentContact" class="btn btn-red" style="float: right">Gửi liên hệ&nbsp;&nbsp;<i class="fa fa-check"></i></a>

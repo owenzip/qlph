@@ -3,8 +3,10 @@ $(function () {
     const colUsername = '<input name="detailRoomVO[{1}].tenNguoiDung" class="form-control" ></input>';
     const colClass = '<input name="detailRoomVO[{1}].lop" class="form-control" ></input>';
     const colCode = '<input name="detailRoomVO[{1}].mssv" class="form-control" ></input>';
-    let tableMembers = $('#tblMembers');
+    let tableMember = $('#tblMembers');
+    let tableRoom = $('#tblRoom');
     let tableMembersFunction = undefined;
+    let tableRoomFunction = undefined;
 
     let setup = function () {
         clickShowTable();
@@ -12,6 +14,7 @@ $(function () {
         selectCategory();
         insertRoom();
         addMembers();
+        tableRoomFunction = configTableRoom;
     }
 
     let clickShowTable = function () {
@@ -38,7 +41,7 @@ $(function () {
         "select": true,
     });
 
-    let configTableMembers = tableMembers.DataTable({
+    let configTableMembers = tableMember.DataTable({
         "columnDefs": [
             {
                 "targets": "_all",
@@ -76,28 +79,79 @@ $(function () {
         ],
     });
 
+    let clickVerMenu = function () {
+        $('.phn').on('click', function () {
+            let phn = $(this).attr("name");
+            $("#homePageTitle").text("Lịch đăng ký phòng học nhóm " + phn);
+            $('#getIdDmPhong').val($(this).attr('id'));
+            tableRoomFunction.ajax.reload();
+        })
+        $('.kvd').on('click', function () {
+            let kvd = $(this).attr("name");
+            $("#homePageTitle").text("Lịch đăng ký khu vực đọc sách " + kvd);
+            $('#getIdDmPhong').val($(this).attr('id'));
+            tableRoomFunction.ajax.reload();
+        })
+        $('.pht').on('click', function () {
+            $("#homePageTitle").text("Lịch đăng ký phòng hội thảo");
+            $('#getIdDmPhong').val($(this).attr('id'));
+            tableRoomFunction.ajax.reload();
+        })
+        $('.sdh').on('click', function () {
+            $("#homePageTitle").text("Lịch đăng ký phòng sau Đại Học");
+            $('#getIdDmPhong').val($(this).attr('id'));
+            tableRoomFunction.ajax.reload();
+        })
+    }
+
+    let configTableRoom = tableRoom.DataTable({
+        "serverSide": true,
+        "processing": true,
+        "ajax": {
+            "url": "/selectRoomToDay.do",
+            "data": function (param) {
+                param.idDmPhong = $('#getIdDmPhong').val()
+            },
+            "dataSrc": "",
+        },
+        "columnDefs": [
+            {
+                "targets": "_all",
+                class: "text-center",
+            }, {
+                "targets": 0,
+                "sWidth": "5%",
+                render: function (data, type, row, meta) {
+                    let rowIndex = parseInt(meta.row);
+                    let startAt = parseInt(meta.settings._iDisplayStart);
+                    return rowIndex + startAt + 1;
+                }
+            }, {
+                "targets": 1,
+                "sWidth": "50%",
+                "data": "ngay",
+            }, {
+                "targets": 2,
+                "sWidth": "20%",
+                "data":"gioBatDau"
+            }, {
+                "targets": 3,
+                "sWidth": "25%",
+                "data": "trangThai"
+            },{
+                "targets": 4,
+                "sWidth": "25%",
+                "data": "soNguoi"
+            },
+        ],
+    });
+
     let addMembers = function () {
         $('#btnAddMembers').on('click', function () {
             tableMembersFunction.row.add(" ", " ", " ", " ").draw();
         });
     };
 
-    let clickVerMenu = function () {
-        $('.phn').on('click', function () {
-            let phn = $(this).attr("name");
-            $("#homePageTitle").text("Lịch đăng ký phòng học nhóm " + phn);
-        })
-        $('.kvd').on('click', function () {
-            let kvd = $(this).attr("name");
-            $("#homePageTitle").text("Lịch đăng ký khu vực đọc sách " + kvd);
-        })
-        $('#pht').on('click', function () {
-            $("#homePageTitle").text("Lịch đăng ký phòng hội thảo");
-        })
-        $('#sdh').on('click', function () {
-            $("#homePageTitle").text("Lịch đăng ký phòng sau Đại Học");
-        })
-    }
 
     let selectCategory = function () {
         $("#btnRegisterRoom").on('click', function () {

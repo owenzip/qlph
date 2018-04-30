@@ -7,5 +7,5 @@ import vn.dntu.qlph.model.ContactVO;
 import java.util.ArrayList;
 
 public interface ContactService {
-    void insertContact(@Param("idVanDe") int idVanDe,@Param("sdt") int sdt,@Param("noiDung") String noiDung);
+    void insertContact(@Param("idVanDe") int idVanDe,@Param("sdt") int sdt,@Param("noiDung") String noiDung,@Param("email") String email);
 }

@@ -13,6 +13,7 @@ import vn.dntu.qlph.service.impl.UserImpl;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @Controller
 public class RoomController {
@@ -22,15 +23,26 @@ public class RoomController {
 
     @RequestMapping(value = "/insertRoom.do")
     @ResponseBody
-    public RoomVO insertRoom(@ModelAttribute final RoomVO roomVO) {
+    public boolean insertRoom(@ModelAttribute final RoomVO roomVO) {
         try {
             roomImpl.insertRoom(roomVO);
-            if (roomVO.getDetailRoomVO() != null) {
+            /*if (roomVO.getDetailRoomVO() != null) {
                 roomVO.getDetailRoomVO().forEach(item -> {
                     roomImpl.insertMember(item);
                 });
-            }
-            return roomVO;
+            }*/
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    @RequestMapping(value = "/selectRoomToDay.do")
+    @ResponseBody
+    public List<RoomVO> selectRoomToDay(@RequestParam("idDmPhong") int idDmPhong) {
+        try {
+            return roomImpl.selectRoomToDay(idDmPhong);
         } catch (Exception e) {
             e.printStackTrace();
             return null;

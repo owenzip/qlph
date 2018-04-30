@@ -89,6 +89,7 @@ $(function () {
             let idVanDe = $('#selProblem').val();
             let sdt = $('#sdt').val();
             let noiDung = $('#noiDung').val();
+            let email = $('#email').val();
 
             if (sdt.length < 9 || sdt.length > 11) {
                 $.confirm({
@@ -135,7 +136,8 @@ $(function () {
                     data: {
                         'idVanDe': idVanDe,
                         'sdt': sdt,
-                        'noiDung': noiDung
+                        'noiDung': noiDung,
+                        'email':email
                     },
                     type: "POST",
                     success: function (data) {

@@ -9,6 +9,15 @@ public class ContactVO {
     private int idVanDe;
     private int sdt;
     private String noiDung;
+    private String email;
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
     public int getIdLienHe() {
         return idLienHe;
