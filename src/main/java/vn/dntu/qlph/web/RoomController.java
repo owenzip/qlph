@@ -23,7 +23,7 @@ public class RoomController {
 
     @RequestMapping(value = "/insertRoom.do")
     @ResponseBody
-    public boolean insertRoom(@ModelAttribute final RoomVO roomVO) {
+    public RoomVO insertRoom(@ModelAttribute final RoomVO roomVO) {
         try {
             roomImpl.insertRoom(roomVO);
             /*if (roomVO.getDetailRoomVO() != null) {
@@ -31,10 +31,10 @@ public class RoomController {
                     roomImpl.insertMember(item);
                 });
             }*/
-            return true;
+            return roomVO;
         } catch (Exception e) {
             e.printStackTrace();
-            return false;
+            return null;
         }
     }
 

@@ -8143,8 +8143,7 @@ table th {
 }
 
 table td {
-    font-size: .9rem;
-    font-weight: 300
+    font-weight: normal;
 }
 
 table.table thead th {

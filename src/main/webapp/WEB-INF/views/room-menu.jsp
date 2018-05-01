@@ -29,7 +29,6 @@
     <a id="8" class="pht btn btn-red btn-menu" data-toggle="collapse" data-target="#navbar2"><b>Hội thảo<i class="fa fa-newspaper-o float-right"></i></b></a><br/>
     <a id="9" class="sdh btn btn-red btn-menu" data-toggle="collapse" data-target="#navbar3"><b>Sau đại học<i class="fa fa-university float-right"></i></b></a><br/>
 </div>
-<form id="formRoom">
     <div class="modal fade" id="modalRegisterRoom" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
          aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg">
@@ -44,7 +43,8 @@
                     <div class="row" style="margin-left: 5px">
                         <div class="col-md-4">
                             <label><b>Người đại diện</b></label>
-                            <input id="idNguoiDung" type="hidden" value="<%=session.getAttribute("IDNGUOIDUNG")%>">
+                            <input id="nguoiDaiDien" type="hidden" value="<%=session.getAttribute("IDNGUOIDUNG")%>">
+                            <%--<input id="nguoiDaiDien" type="hidden" value="<%=session.getAttribute("TENNGUOIDUNG")%>">--%>
                             <input type="text" class="form-control" placeholder="Họ và tên" value="<%=session.getAttribute("TENNGUOIDUNG")%>" readonly>
                             <input type="text" class="form-control mrg" placeholder="Mã số sinh viên" value="<%=session.getAttribute("MSSV")%>" readonly>
                             <input type="text" class="form-control mrg" placeholder="Lớp" value="<%=session.getAttribute("LOP")%>" readonly>
@@ -102,7 +102,6 @@
             </div>
         </div>
     </div>
-</form>
 </html>
 
 

@@ -126,21 +126,29 @@ $(function () {
                     let startAt = parseInt(meta.settings._iDisplayStart);
                     return rowIndex + startAt + 1;
                 }
-            }, {
+            },{
                 "targets": 1,
-                "sWidth": "50%",
-                "data": "ngay",
+                "sWidth": "25%",
+                "data": "tenNguoiDaiDien",
             }, {
                 "targets": 2,
-                "sWidth": "20%",
-                "data":"gioBatDau"
+                "sWidth": "15%",
+                "data": "ngay",
             }, {
                 "targets": 3,
-                "sWidth": "25%",
+                "sWidth": "10%",
+                "data":"gioBatDau"
+            }, {
+                "targets": 4,
+                "sWidth": "10%",
+                "data":"gioKetThuc"
+            },{
+                "targets": 5,
+                "sWidth": "15%",
                 "data": "trangThai"
             },{
-                "targets": 4,
-                "sWidth": "25%",
+                "targets": 6,
+                "sWidth": "5%",
                 "data": "soNguoi"
             },
         ],
@@ -151,7 +159,6 @@ $(function () {
             tableMembersFunction.row.add(" ", " ", " ", " ").draw();
         });
     };
-
 
     let selectCategory = function () {
         $("#btnRegisterRoom").on('click', function () {
@@ -171,17 +178,22 @@ $(function () {
 
     let insertRoom = function () {
         $('#btnAcceptRoom').on('click', function () {
-            let formRoom = new FormData($("#formRoom")[0]);
+            //let formRoom = new FormData($("#formRoom")[0]);
             $.ajax({
                 url: "/insertRoom.do",
                 type: "POST",
-                data: formRoom,
-                processData: false,
-                contentType: false,
+                data: {
+                    'idDmPhong': $('#selRoom').val(),
+                    'gioBatDau': $('#gioBatDau').val(),
+                    'gioKetThuc': $('#gioKetThuc').val(),
+                    'ngay': $('#ngay').val(),
+                    'soNguoi': $('#soNguoi').val(),
+                    'mucDich': $('#mucDich').val(),
+                    'nguoiDaiDien': $('#nguoiDaiDien').val(),
+                },
                 success: function (data) {
                     if (data) {
-                        alert(data);
-                        console.log(data);
+                        tableRoomFunction.ajax.reload();
                     }
                 }
             });

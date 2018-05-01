@@ -20,21 +20,14 @@
                 <thead>
                     <tr>
                         <th>#</th>
+                        <th><i class="fa fa-address-card"></i>&nbsp;&nbsp;Người đăng ký</th>
                         <th><i class="fa fa-calendar"></i>&nbsp;&nbsp;Ngày</th>
-                        <th><i class="fa fa-clock-o"></i>&nbsp;&nbsp;Thời gian</th>
+                        <th><i class="fa fa-clock-o"></i>&nbsp;&nbsp;Giờ bắt đầu</th>
+                        <th><i class="fa fa-clock-o"></i>&nbsp;&nbsp;Giờ kết thúc</th>
                         <th><i class="fa fa-link"></i>&nbsp;&nbsp;Trạng thái</th>
                         <th><i class="fa fa-user"></i>&nbsp;&nbsp;Số người</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>20/20/2020</td>
-                        <td>13:30 - 15:00</td>
-                        <td>Đang hoạt động</td>
-                        <td>8/10</td>
-                    </tr>
-                </tbody>
             </table>
         </div>
     </div>

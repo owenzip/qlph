@@ -11,13 +11,22 @@ public class RoomVO {
     private int idDmPhong;
     private String gioBatDau;
     private String gioKetThuc;
-    private int trangThai;
+    private String trangThai;
     private String ngay;
     private int soNguoi;
     private String mucDich;
+    private String tenNguoiDaiDien;
     private int nguoiDaiDien;
     private int idNguoiDung;
     List<DetailRoomVO> detailRoomVO;
+
+    public int getNguoiDaiDien() {
+        return nguoiDaiDien;
+    }
+
+    public void setNguoiDaiDien(int nguoiDaiDien) {
+        this.nguoiDaiDien = nguoiDaiDien;
+    }
 
     public List<DetailRoomVO> getDetailRoomVO() {
         return detailRoomVO;
@@ -47,11 +56,11 @@ public class RoomVO {
         return idDmPhong;
     }
 
-    public int getTrangThai() {
+    public String getTrangThai() {
         return trangThai;
     }
 
-    public void setTrangThai(int trangThai) {
+    public void setTrangThai(String trangThai) {
         this.trangThai = trangThai;
     }
 
@@ -83,12 +92,12 @@ public class RoomVO {
         this.mucDich = mucDich;
     }
 
-    public int getNguoiDaiDien() {
-        return nguoiDaiDien;
+    public String getTenNguoiDaiDien() {
+        return tenNguoiDaiDien;
     }
 
-    public void setNguoiDaiDien(int nguoiDaiDien) {
-        this.nguoiDaiDien = nguoiDaiDien;
+    public void setTenNguoiDaiDien(String tenNguoiDaiDien) {
+        this.tenNguoiDaiDien = tenNguoiDaiDien;
     }
 
     public String getGioBatDau() {

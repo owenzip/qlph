@@ -9,8 +9,9 @@
         <result property="ngay" column="ngay"/>
         <result property="soNguoi" column="songuoi"/>
         <result property="mucDich" column="mucdich"/>
-        <result property="nguoiDaiDien" column="nguoidaidien"/>
         <result property="idNguoiDung" column="idnguoidung"/>
+        <result property="tenNguoiDaiDien" column="tennguoidaidien"/>
+        <result property="nguoiDaiDien" column="nguoidaidien"/>
     </resultMap>
 
     <resultMap id="DetailRoomVO" type="DetailRoomVO">
@@ -30,9 +31,9 @@
           nguoidaidien
         ) VALUES (
           #{idDmPhong},
-          #{gioBatDau},
-          #{gioKetThuc},
-          #{ngay},
+          TIME_FORMAT(#{gioBatDau},'%H:%i:00'),
+          TIME_FORMAT(#{gioKetThuc},'%H:%i:00'),
+          STR_TO_DATE(#{ngay}, '%d/%m/%Y'),
           #{soNguoi},
           #{mucDich},
           #{nguoiDaiDien}
@@ -52,15 +53,17 @@
 
     <select id="selectRoomToDay" resultType="RoomVO">
         SELECT
-        idphong,
-        giobatdau,
-        gioketthuc,
-        ngay,
-        trangthai,
-        songuoi,
-        mucdich,
-        nguoidaidien
+        ph.idphong,
+        TIME_FORMAT(ph.giobatdau,'%H:%i') AS giobatdau,
+        TIME_FORMAT(ph.gioketthuc,'%H:%i') AS gioketthuc,
+        IFNULL(DATE_FORMAT(ph.ngay,'%d/%m/%Y'),'') AS ngay,
+        tt.trangthai,
+        ph.songuoi,
+        ph.mucdich,
+        nd.ten AS tennguoidaidien
         FROM phong ph
+        LEFT JOIN dmtrangthai tt ON ph.trangthai = tt.idtrangthai
+        LEFT JOIN nguoidung nd ON ph.nguoidaidien = nd.idnguoidung
         WHERE ph.iddmphong = #{idDmPhong}
         AND ph.ngay >= now()
     </select>
