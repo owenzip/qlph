@@ -179,19 +179,19 @@ $(function () {
     let insertRoom = function () {
         $('#btnAcceptRoom').on('click', function () {
             //let formRoom = new FormData($("#formRoom")[0]);
-            let formRoom = new FormData($("#formRoom")[0]);
             $.ajax({
                 url: "/insertRoom.do",
                 type: "POST",
-                data: $("#formRoom").serialize()/*{
-                   /!* 'idDmPhong': $('#selRoom').val(),
+                data: $("#formRoom").serialize(),
+                /*{
+                    'idDmPhong': $('#selRoom').val(),
                     'gioBatDau': $('#gioBatDau').val(),
                     'gioKetThuc': $('#gioKetThuc').val(),
                     'ngay': $('#ngay').val(),
                     'soNguoi': $('#soNguoi').val(),
                     'mucDich': $('#mucDich').val(),
-                    'nguoiDaiDien': $('#nguoiDaiDien').val(),*!/
-                }*/,
+                    'nguoiDaiDien': $('#nguoiDaiDien').val(),
+                }*/
                 success: function (data) {
                     if (data) {
                         tableRoomFunction.ajax.reload();

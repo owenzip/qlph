@@ -4,7 +4,7 @@ USE `qlph`;
 --
 -- Host: localhost    Database: qlph
 -- ------------------------------------------------------
--- Server version	5.7.20-log
+-- Server version	5.7.21-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -27,9 +27,11 @@ DROP TABLE IF EXISTS `chitietphong`;
 CREATE TABLE `chitietphong` (
   `idchitietphong` int(11) NOT NULL AUTO_INCREMENT,
   `idphong` int(11) DEFAULT NULL,
-  `idnguoidung` int(11) DEFAULT NULL,
+  `tennguoidung` varchar(255) DEFAULT NULL,
+  `mssv` int(11) DEFAULT NULL,
+  `lop` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`idchitietphong`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -38,7 +40,7 @@ CREATE TABLE `chitietphong` (
 
 LOCK TABLES `chitietphong` WRITE;
 /*!40000 ALTER TABLE `chitietphong` DISABLE KEYS */;
-INSERT INTO `chitietphong` VALUES (1,NULL,1),(2,5,2);
+INSERT INTO `chitietphong` VALUES (6,47,'Nguyễn Hải Đăng',1405521,'14DTH2'),(7,47,'Phan Trung Phan',1406548,'14DTH2'),(8,47,'Trần Đại Quang',1466321,'14DTH1');
 /*!40000 ALTER TABLE `chitietphong` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -238,7 +240,7 @@ CREATE TABLE `phong` (
   `mucdich` varchar(255) DEFAULT NULL,
   `nguoidaidien` int(11) DEFAULT NULL,
   PRIMARY KEY (`idphong`)
-) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=48 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -247,8 +249,32 @@ CREATE TABLE `phong` (
 
 LOCK TABLES `phong` WRITE;
 /*!40000 ALTER TABLE `phong` DISABLE KEYS */;
-INSERT INTO `phong` VALUES (4,1,'13:00:00','15:00:00','2018-08-08',1,4,'không có mục đích gì',1),(5,2,'13:00:00','15:00:00','2018-08-08',1,4,'không có mục đích gì',1),(6,3,'12:00:00','15:00:00','2018-08-08',2,5,'dwadaw',2),(7,4,'12:00:00','15:00:00','2018-08-08',1,4,'dwadaw',1),(8,5,'12:00:00','15:00:00','2018-08-08',1,5,'dwadaw',1),(9,6,'12:00:00','15:00:00','2018-08-08',1,6,'dwadaw',1),(10,7,'12:00:00','15:00:00','2018-08-08',1,7,'dwadaw',1),(11,8,'12:00:00','15:00:00','2018-08-08',1,8,'dwadaw',1),(12,9,'12:00:00','15:00:00','2018-08-08',1,9,'dwadaw',1),(13,10,'12:00:00','15:00:00','2018-08-08',1,10,'dwadaw',1),(14,11,'12:00:00','15:00:00','2018-08-08',1,11,'dwadaw',1),(15,12,'12:00:00','15:00:00','2018-08-08',1,12,'dwadaw',1),(16,13,'12:00:00','15:00:00','2018-08-08',1,13,'dwadaw',1),(17,14,'12:00:00','15:00:00','2018-08-08',1,14,'dwadaw',1),(18,13,'12:00:00','15:00:00','2018-08-08',1,13,'dwadaw',1),(19,13,'12:00:00','15:00:00','2018-08-08',1,13,'dwadaw',1),(20,1,'15:00:00','18:00:00','2018-03-23',1,3,'mục đích',1),(21,1,'15:00:00','18:00:00','2018-03-23',1,3,'mục đích',1),(32,1,'11:11:00','11:11:00','2018-08-23',1,1,'1',1),(33,1,'12:00:00','07:00:00','2018-07-23',1,12,'a',2),(34,2,'12:00:00','07:00:00','2018-07-23',1,1,'test insert',2),(35,2,'12:00:00','13:00:00','2018-12-21',1,1,'test',1);
+INSERT INTO `phong` VALUES (4,1,'13:00:00','15:00:00','2018-08-08',1,4,'không có mục đích gì',1),(5,2,'13:00:00','15:00:00','2018-08-08',1,4,'không có mục đích gì',1),(6,3,'12:00:00','15:00:00','2018-08-08',2,5,'dwadaw',2),(7,4,'12:00:00','15:00:00','2018-08-08',1,4,'dwadaw',1),(8,5,'12:00:00','15:00:00','2018-08-08',1,5,'dwadaw',1),(9,6,'12:00:00','15:00:00','2018-08-08',1,6,'dwadaw',1),(10,7,'12:00:00','15:00:00','2018-08-08',1,7,'dwadaw',1),(11,8,'12:00:00','15:00:00','2018-08-08',1,8,'dwadaw',1),(12,9,'12:00:00','15:00:00','2018-08-08',1,9,'dwadaw',1),(13,10,'12:00:00','15:00:00','2018-08-08',1,10,'dwadaw',1),(14,11,'12:00:00','15:00:00','2018-08-08',1,11,'dwadaw',1),(15,12,'12:00:00','15:00:00','2018-08-08',1,12,'dwadaw',1),(16,13,'12:00:00','15:00:00','2018-08-08',1,13,'dwadaw',1),(17,14,'12:00:00','15:00:00','2018-08-08',1,14,'dwadaw',1),(18,13,'12:00:00','15:00:00','2018-08-08',1,13,'dwadaw',1),(19,13,'12:00:00','15:00:00','2018-08-08',1,13,'dwadaw',1),(20,1,'15:00:00','18:00:00','2018-03-23',1,3,'mục đích',1),(21,1,'15:00:00','18:00:00','2018-03-23',1,3,'mục đích',1),(32,1,'11:11:00','11:11:00','2018-08-23',1,1,'1',1),(33,1,'12:00:00','07:00:00','2018-07-23',1,12,'a',2),(43,1,'11:11:00','11:11:00','2018-08-23',1,1,'1',1),(44,1,'11:11:00','11:11:00','2018-08-23',1,1,'1',1),(45,1,'11:11:00','11:11:00','2018-08-23',1,1,'1',1),(46,1,'11:11:00','11:11:00','2018-08-23',1,1,'1',1),(47,1,'12:00:00','13:00:00','2018-09-23',1,3,'Họp nhóm',1);
 /*!40000 ALTER TABLE `phong` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `quyen`
+--
+
+DROP TABLE IF EXISTS `quyen`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `quyen` (
+  `idquyen` int(11) NOT NULL AUTO_INCREMENT,
+  `quyen` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`idquyen`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `quyen`
+--
+
+LOCK TABLES `quyen` WRITE;
+/*!40000 ALTER TABLE `quyen` DISABLE KEYS */;
+INSERT INTO `quyen` VALUES (1,'ADMIN'),(2,'USER');
+/*!40000 ALTER TABLE `quyen` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -260,4 +286,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-05-01 12:37:25
+-- Dump completed on 2018-05-02 14:19:49

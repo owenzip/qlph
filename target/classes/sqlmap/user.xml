@@ -1,0 +1,28 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="vn.dntu.qlph.service.UserService">
+
+    <resultMap id="UserVO" type="UserVO">
+        <result property="idNguoiDung" column="idnguoidung"/>
+        <result property="tenNguoiDung" column="ten"/>
+        <result property="mssv" column="mssv"/>
+        <result property="matKhau" column="matkhau"/>
+        <result property="lop" column="lop"/>
+        <result property="nganh" column="nganh"/>
+        <result property="quyen" column="quyen"/>
+    </resultMap>
+
+    <select id="checkLogin" resultMap="UserVO">
+        SELECT
+        nd.idnguoidung,
+        nd.ten,
+        nd.mssv,
+        nd.lop,
+        ng.nganh,
+        nd.matkhau,
+        nd.quyen
+        FROM qlph.nguoidung nd
+        LEFT JOIN nganh ng ON nd.idnganh = ng.idnganh
+        WHERE mssv = #{mssv}
+        AND matkhau = #{matKhau}
+    </select>
+</mapper>

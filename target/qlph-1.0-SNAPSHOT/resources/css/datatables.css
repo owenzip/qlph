@@ -54,21 +54,7 @@ table.dataTable thead .sorting_desc_disabled {
   background-repeat: no-repeat;
   background-position: center right;
 }
-table.dataTable thead .sorting {
-  background-image: url("DataTables-1.10.16/images/sort_both.png");
-}
-table.dataTable thead .sorting_asc {
-  background-image: url("DataTables-1.10.16/images/sort_asc.png");
-}
-table.dataTable thead .sorting_desc {
-  background-image: url("DataTables-1.10.16/images/sort_desc.png");
-}
-table.dataTable thead .sorting_asc_disabled {
-  background-image: url("DataTables-1.10.16/images/sort_asc_disabled.png");
-}
-table.dataTable thead .sorting_desc_disabled {
-  background-image: url("DataTables-1.10.16/images/sort_desc_disabled.png");
-}
+
 table.dataTable tbody tr {
   background-color: #ffffff;
 }
@@ -77,7 +63,7 @@ table.dataTable tbody tr.selected {
 }
 table.dataTable tbody th,
 table.dataTable tbody td {
-  padding: 8px 10px;
+  padding: 10px 2px;
 }
 table.dataTable.row-border tbody th, table.dataTable.row-border tbody td, table.dataTable.display tbody th, table.dataTable.display tbody td {
   border-top: 1px solid #ddd;
@@ -180,7 +166,7 @@ table.dataTable.display tbody tr:hover.selected > .sorting_3, table.dataTable.or
   background-color: #a5b2cb;
 }
 table.dataTable.no-footer {
-  border-bottom: 1px solid #111;
+
 }
 table.dataTable.nowrap th, table.dataTable.nowrap td {
   white-space: nowrap;

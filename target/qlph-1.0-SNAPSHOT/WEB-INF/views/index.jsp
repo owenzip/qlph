@@ -6,32 +6,18 @@
 <html>
 <head>
     <jsp:include page="resource.jsp"/>
-    <title>PHẦN MỀM QUẢN LÝ THƯ VIỆN</title>
+    <title>GIỚI THIỆU</title>
 </head>
-<body>
-<div class='container'>
-    <div class='container_inner'>
-        <h1>Quản Lý Thư Viện</h1>
-        <h2>Manager your<a href='http://google.com'>Library</a></h2>
-        <br>
-        <fieldset>
-            <div class='kickass_field'>
-                <input maxlength='30' required='required'>
-                <lable>Tên đăng nhập<span>hoặc mã số sinh viên của bạn</span></lable>
-            </div>
-            <div class='kickass_field'>
-                <input maxlength='30' pattern='.{6,}' required='required' type='password'>
-                <lable>Mật khẩu<span>mật khẩu của bạn</span></lable>
-            </div>
-            <a href="<c:url value="/qltv/homepage.do"/>"><button>Sign In</button></a>
-        </fieldset>
-        </br>
-        <div class='love'>
-            <span>Design by <a href='https://twitter.com/rasheedbhutto' target='_blank'> Sinh viên Khoa CNTT-DNTU </a></span>
+<body class="bg-gray">
+<jsp:include page="nav-menu.jsp"/>
+<div class="container" style="margin-top: 5%">
+    <div class="row">
+        <jsp:include page="intro-menu.jsp"/>
+        <div class="col-md-9">
+            <h5 style="padding-bottom: 17px;margin-top: 2px">Trang giới thiệu thư viện trường DNTU</h5>
         </div>
     </div>
 </div>
 </body>
-<script type="text/javascript" src="<c:url value="../../resources/js/forms/login.js"/>"></script>
 </html>
 
