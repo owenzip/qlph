@@ -1,8 +1,8 @@
 $(function () {
 
-    const colUsername = '<input name="detailRoomVO[{0}].tenNguoiDungDetails" class="form-control" ></input>';
-    const colClass = '<input name="detailRoomVO[{0}].lopDetails" class="form-control" ></input>';
-    const colCode = '<input name="detailRoomVO[{0}].mssvDetails" class="form-control" ></input>';
+    const colUsername = '<input type="text" name="detailRoomVO[{0}].tenNguoiDungDetails" class="form-control-tbl form-control"></input>';
+    const colClass = '<input type="text" name="detailRoomVO[{0}].lopDetails" class="form-control-tbl form-control"></input>';
+    const colCode = '<input type="text" name="detailRoomVO[{0}].mssvDetails" class="form-control-tbl form-control"></input>';
     let tableMember = $('#tblMembers');
     let tableRoom = $('#tblRoom');
     let tableMembersFunction = undefined;
@@ -13,8 +13,19 @@ $(function () {
         clickVerMenu();
         selectCategory();
         insertRoom();
-        addMembers();
         tableRoomFunction = configTableRoom;
+        textChangeInpSoNguoi();
+    }
+
+    let textChangeInpSoNguoi = function () {
+        $('#soNguoi').on('keyup',function () {
+            tableMembersFunction.clear().draw();
+            let soNguoi = $('#soNguoi').val();
+            for(let i=0;i<soNguoi;i++) {
+                tableMembersFunction.row.add(" ", " ", " ", " ").draw();
+
+            };
+        })
     }
 
     let clickShowTable = function () {
@@ -36,19 +47,17 @@ $(function () {
         "paging": false, // Phân trang
         "info": false, // Thông tin bảng
         "ordering": false,
-        /*"serverSide": true,
-        "processing": true,*/
         "select": true,
     });
 
     let configTableMembers = tableMember.DataTable({
+        "bAutoWidth": false,
+        select:true,
         "columnDefs": [
             {
-                "targets": "_all",
-                class: "text-center",
-            }, {
                 "targets": 0,
-                "sWidth": "5%",
+                "sWidth": "3%",
+                class: "align-middle text-center",
                 render: function (data, type, row, meta) {
                     let rowIndex = parseInt(meta.row);
                     let startAt = parseInt(meta.settings._iDisplayStart);
@@ -56,23 +65,20 @@ $(function () {
                 }
             }, {
                 "targets": 1,
-                "sWidth": "50%",
+                "sWidth": "55%",
                 "data": function (data,type, row, meta) {
-                    /*data = colUsername;*/
                     return colUsername.f(meta.row)
                 }
             }, {
                 "targets": 2,
                 "sWidth": "20%",
                 "data": function (data,type, row, meta) {
-                   // data = colClass;
                     return colClass.f(meta.row)
                 }
             }, {
                 "targets": 3,
-                "sWidth": "25%",
+                "sWidth": "22%",
                 "data": function (data,type, row, meta) {
-                   /* data = colCode;*/
                     return colCode.f(meta.row)
                 }
             },
@@ -154,12 +160,6 @@ $(function () {
         ],
     });
 
-    let addMembers = function () {
-        $('#btnAddMembers').on('click', function () {
-            tableMembersFunction.row.add(" ", " ", " ", " ").draw();
-        });
-    };
-
     let selectCategory = function () {
         $("#btnRegisterRoom").on('click', function () {
             $.ajax({
@@ -178,20 +178,10 @@ $(function () {
 
     let insertRoom = function () {
         $('#btnAcceptRoom').on('click', function () {
-            //let formRoom = new FormData($("#formRoom")[0]);
             $.ajax({
                 url: "/insertRoom.do",
                 type: "POST",
                 data: $("#formRoom").serialize(),
-                /*{
-                    'idDmPhong': $('#selRoom').val(),
-                    'gioBatDau': $('#gioBatDau').val(),
-                    'gioKetThuc': $('#gioKetThuc').val(),
-                    'ngay': $('#ngay').val(),
-                    'soNguoi': $('#soNguoi').val(),
-                    'mucDich': $('#mucDich').val(),
-                    'nguoiDaiDien': $('#nguoiDaiDien').val(),
-                }*/
                 success: function (data) {
                     if (data) {
                         tableRoomFunction.ajax.reload();

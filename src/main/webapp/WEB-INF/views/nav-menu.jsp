@@ -42,7 +42,7 @@
                                 </div>
                                 <div class="col-xl-4 mt-5 mb-4 clearfix d-none d-xl-block">
                                     <div class="view overlay hm-white-slight mb-3 z-depth-1">
-                                        <img  src="<c:url value="../../resources/img/library_01.JPG"/>" class="img-fluid">
+                                        <img src="<c:url value="../../resources/img/library_01.JPG"/>" class="img-fluid">
                                         <div class="mask flex-center"><p></p></div>
                                     </div>
                                     <h4 class="mb-2"><a class="news-title-2" href="<c:url value="/index.do"/>">Thời gian mở cửa</a></h4>
@@ -53,9 +53,7 @@
                     </div>
                 </div>
             </li>
-            <li>
-                <a href="<c:url value="/index.do"/>" class="btn btn-red"><b>TRANG CHỦ &nbsp;&nbsp;<i class="fa fa-home"></i></b></a>
-            </li>
+            <li><a href="<c:url value="/index.do"/>" class="btn btn-red"><b>TRANG CHỦ &nbsp;&nbsp;<i class="fa fa-home"></i></b></a></li>
         </ul>
         <input id="sessionUsername" type="hidden" value="<%=session.getAttribute("TENNGUOIDUNG")%>">
         <div id="navLogin">
@@ -66,20 +64,50 @@
         <div id="navUser">
             <ul class="navbar-nav">
                 <li class="nav-item dropdown">
-                    <a class="text-white" >Xin chào,&nbsp;&nbsp;<b><%=session.getAttribute("TENNGUOIDUNG")%></b>&nbsp;</a>
+                    <a class="text-white">Xin chào,&nbsp;&nbsp;<b><%=session.getAttribute("TENNGUOIDUNG")%>
+                    </b>&nbsp;</a>
                     <a class="btn btn-red" data-toggle="dropdown">
-                        <i class="fa fa-cog" ></i>&nbsp;&nbsp;<i class="fa fa-caret-down"></i>
+                        <i class="fa fa-cog"></i>&nbsp;&nbsp;<i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu" style="margin-left:110px;background: #B73030">
-                        <li><a class="text-white" href="#"><i class="fa fa-history"></i>&nbsp;&nbsp;Lịch sử</a></li>
-                        <li><a class="text-white" href="#"><i class="fa fa-unlock-alt"></i>&nbsp;&nbsp;Đổi mật khẩu</a></li>
-                        <li><a href="<c:url value="/logout.do"/>" class="text-white" href="#"><i class="fa fa-sign-out"></i>&nbsp;Đăng xuất</a></li>
+                        <li><a class="text-white"><i class="fa fa-history"></i>&nbsp;&nbsp;Lịch sử</a></li>
+                        <li><a class="text-white" data-toggle="modal" data-target="#modalChangePassword"><i class="fa fa-unlock-alt"></i>&nbsp;&nbsp;Đổi mật khẩu</a></li>
+                        <li><a id="btnLogOut" class="text-white" href="#"><i class="fa fa-sign-out"></i>&nbsp;Đăng xuất</a></li>
                     </ul>
                 </li>
             </ul>
         </div>
     </div>
 </nav>
+<div class="modal fade" id="modalChangePassword" tabindex="-1" role="dialog" aria-labelledby="modalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-side modal-top-right modal-notify">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-title" id="modalLabel">Đổi mật khẩu</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row form-group">
+                    <div class="col-md-12">
+                        <label><i class="fa fa-lock"></i>&nbsp;&nbsp;<b>Mật khẩu cũ</b></label>
+                        <input type="text" class="form-control" placeholder="Mật khẩu cũ">
+                        <label class="mrg-x2"><i class="fa fa-get-pocket"></i>&nbsp;&nbsp;<b>Mật khẩu mới</b></label>
+                        <input type="text" class="form-control" placeholder="Mật khẩu mới">
+                        <label class="mrg-x2"><i class="fa fa-get-pocket"></i>&nbsp;&nbsp;<b>Nhập lại mật khẩu</b></label>
+                        <input type="text" class="form-control" placeholder="Nhập lại mật khẩu">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-red" data-dismiss="modal">Hủy &nbsp;&nbsp;<i class="fa fa-close"></i></button>
+                <button id="btnChangePassword" type="button" class="btn btn-red">Đổi mật khẩu &nbsp;&nbsp;<i class="fa fa-recycle"></i></button>
+            </div>
+        </div>
+    </div>
+</div>
 <script type="text/javascript" src="<c:url value="../../resources/js/forms/nav.js"/>"></script>
 </html>
 

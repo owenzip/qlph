@@ -13,10 +13,10 @@
 <div class="container" style="margin-top: 5%">
     <div class="row">
         <jsp:include page="room-menu.jsp"/>
-        <div class="col-md-9">
+        <div id="divTblRoom" class="col-md-9">
             <input type="hidden" id="getIdDmPhong" value="1">
             <h5 id="homePageTitle" style="padding-bottom: 17px;margin-top: 2px">&nbsp;Lịch đăng ký phòng học nhóm 1</h5>
-            <table id="tblRoom" class="table">
+            <table id="tblRoom" class="table table-responsive" style="width: 100%">
                 <thead>
                     <tr>
                         <th>#</th>

@@ -9,6 +9,7 @@
     <title>ĐĂNG NHẬP</title>
 </head>
 <body class="bg-white">
+<jsp:include page="nav-menu.jsp"/>
 <div class="center-contaniner">
     <div class="parent-container">
         <img style="width: 110px;height: 100px;margin-top: 40%" src="<c:url value="../../resources/img/dntu.jpg"/>" class="img-fluid">
@@ -24,13 +25,12 @@
     <div class="parent-container">
         <div style="width: 70%;margin-left: 15%">
             <div class="text-center">
-                <%--<label style="color: #B73030"><b>ĐĂNG NHẬP</b></label>--%>
                 <div class="form-group">
                     <input id="mssv" name="mssv" type="text" class="form-control" placeholder="MSSV" value="1407168">
                     <input style="margin-top: 10px" id="matKhau" name="matKhau" type="password" class="form-control" placeholder="Mật khẩu" value="123">
                 </div>
-                    <a id="btnConfirm" class="btn btn-red" style="width: 226px">ĐĂNG NHẬP &nbsp;&nbsp;<i class="fa fa-sign-in"></i></a>
-                    <a id="btnContact" class="btn btn-link" data-toggle="modal" data-target="#contactModal"><b style="color: #B73030">LIÊN HỆ &nbsp; &nbsp;<i class="fa fa-phone"></i></b></a>
+                <a id="btnConfirm" class="btn btn-red" style="width: 226px">ĐĂNG NHẬP &nbsp;&nbsp;<i class="fa fa-sign-in"></i></a>
+                <a id="btnContact" class="btn btn-link" data-toggle="modal" data-target="#contactModal"><b style="color: #B73030">LIÊN HỆ &nbsp; &nbsp;<i class="fa fa-phone"></i></b></a>
             </div>
         </div>
         <jsp:include page="footer.jsp"/>

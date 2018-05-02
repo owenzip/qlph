@@ -90,13 +90,13 @@ Html, body {
     font-size: 0.85rem;
 }
 .ver-menu-a {
-    color: #B73030;
+    color: #B73030 !important;
     font-weight: bold !important;
     margin-bottom: 0px;
 }
 
 .ver-menu-a:hover {
-    color: #B73030;
+    color: #B73030 !important;
     font-size: 17px;
     margin-bottom: 0px;
 }
@@ -148,5 +148,30 @@ label {
 }
 .mrg {
     margin-top: 10px;
+}
+.mrg-x2 {
+    margin-top: 20px;
+}
+.form-control-tbl {
+    display: block;
+    width: 99%;
+    padding: .2rem .2rem;
+    font-size: 1rem;
+    line-height: 0;
+    color: #495057;
+    background-color: #d8d8d800;
+    background-clip: padding-box;
+    border: 1px solid #e6e6e6;
+}
+.btn-mrg {
+    font-size: .81rem;
+    -webkit-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+    border: 0;
+    border-radius: .125rem;
+    cursor: pointer;
+    text-transform: uppercase;
+    white-space: normal;
+    word-wrap: break-word;
 }
 
