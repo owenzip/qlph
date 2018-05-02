@@ -18,7 +18,7 @@ public class UserController {
     @Autowired
     UserImpl userImpl;
 
-    @RequestMapping(value = "/checkLogin.do")
+    @RequestMapping(value = "/checkLogins.do")
     @ResponseBody
     public boolean checkLogins(@RequestParam("mssv") String mssv, @RequestParam("matKhau") String matKhau,HttpServletRequest request) {
         try {

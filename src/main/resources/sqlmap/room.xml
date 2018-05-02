@@ -17,7 +17,9 @@
     <resultMap id="DetailRoomVO" type="DetailRoomVO">
         <result property="idChiTietPhong" column="idchitietphong"/>
         <result property="idPhong" column="idphong"/>
-        <result property="idNguoiDung" column="idnguoidung"/>
+        <result property="tenNguoiDungDetails" column="tennguoidung"/>
+        <result property="lopDetails" column="lop"/>
+        <result property="mssvDetails" column="mssv"/>
     </resultMap>
 
     <insert id="insertRoom" parameterType="RoomVO" useGeneratedKeys="true" keyProperty="idPhong">
@@ -43,11 +45,15 @@
     <insert id="insertMember" parameterType="DetailRoomVO">
         INSERT INTO chitietphong (
         idphong,
-        idnguoidung
+        tennguoidung,
+        mssv,
+        lop
         )
         VALUES (
         #{idPhong},
-        #{idNguoiDung}
+        #{tenNguoiDungDetails},
+        #{mssvDetails},
+        #{lopDetails}
         )
     </insert>
 

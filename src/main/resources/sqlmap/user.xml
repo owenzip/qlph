@@ -20,7 +20,7 @@
         ng.nganh,
         nd.matkhau,
         nd.quyen
-        FROM nguoidung nd
+        FROM qlph.nguoidung nd
         LEFT JOIN nganh ng ON nd.idnganh = ng.idnganh
         WHERE mssv = #{mssv}
         AND matkhau = #{matKhau}

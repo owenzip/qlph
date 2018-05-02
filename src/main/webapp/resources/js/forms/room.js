@@ -1,8 +1,8 @@
 $(function () {
 
-    const colUsername = '<input name="detailRoomVO[{1}].tenNguoiDung" class="form-control" ></input>';
-    const colClass = '<input name="detailRoomVO[{1}].lop" class="form-control" ></input>';
-    const colCode = '<input name="detailRoomVO[{1}].mssv" class="form-control" ></input>';
+    const colUsername = '<input name="detailRoomVO[{0}].tenNguoiDungDetails" class="form-control" ></input>';
+    const colClass = '<input name="detailRoomVO[{0}].lopDetails" class="form-control" ></input>';
+    const colCode = '<input name="detailRoomVO[{0}].mssvDetails" class="form-control" ></input>';
     let tableMember = $('#tblMembers');
     let tableRoom = $('#tblRoom');
     let tableMembersFunction = undefined;
@@ -57,23 +57,23 @@ $(function () {
             }, {
                 "targets": 1,
                 "sWidth": "50%",
-                "data": function (data) {
-                    data = colUsername;
-                    return data
+                "data": function (data,type, row, meta) {
+                    /*data = colUsername;*/
+                    return colUsername.f(meta.row)
                 }
             }, {
                 "targets": 2,
                 "sWidth": "20%",
-                "data": function (data) {
-                    data = colClass;
-                    return data
+                "data": function (data,type, row, meta) {
+                   // data = colClass;
+                    return colClass.f(meta.row)
                 }
             }, {
                 "targets": 3,
                 "sWidth": "25%",
-                "data": function (data) {
-                    data = colCode;
-                    return data
+                "data": function (data,type, row, meta) {
+                   /* data = colCode;*/
+                    return colCode.f(meta.row)
                 }
             },
         ],
@@ -179,18 +179,19 @@ $(function () {
     let insertRoom = function () {
         $('#btnAcceptRoom').on('click', function () {
             //let formRoom = new FormData($("#formRoom")[0]);
+            let formRoom = new FormData($("#formRoom")[0]);
             $.ajax({
                 url: "/insertRoom.do",
                 type: "POST",
-                data: {
-                    'idDmPhong': $('#selRoom').val(),
+                data: $("#formRoom").serialize()/*{
+                   /!* 'idDmPhong': $('#selRoom').val(),
                     'gioBatDau': $('#gioBatDau').val(),
                     'gioKetThuc': $('#gioKetThuc').val(),
                     'ngay': $('#ngay').val(),
                     'soNguoi': $('#soNguoi').val(),
                     'mucDich': $('#mucDich').val(),
-                    'nguoiDaiDien': $('#nguoiDaiDien').val(),
-                },
+                    'nguoiDaiDien': $('#nguoiDaiDien').val(),*!/
+                }*/,
                 success: function (data) {
                     if (data) {
                         tableRoomFunction.ajax.reload();

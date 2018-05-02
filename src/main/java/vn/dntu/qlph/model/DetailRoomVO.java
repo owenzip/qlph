@@ -7,33 +7,32 @@ public class DetailRoomVO {
 
     private int idPhong;
     private int idChiTietPhong;
-    private int idNguoiDung;
-    private String tenNguoiDung;
-    private String lop;
-    private int mssv;
+    private String tenNguoiDungDetails;
+    private String lopDetails;
+    private int mssvDetails;
 
-    public String getTenNguoiDung() {
-        return tenNguoiDung;
+    public String getTenNguoiDungDetails() {
+        return tenNguoiDungDetails;
     }
 
-    public void setTenNguoiDung(String tenNguoiDung) {
-        this.tenNguoiDung = tenNguoiDung;
+    public void setTenNguoiDungDetails(String tenNguoiDungDetails) {
+        this.tenNguoiDungDetails = tenNguoiDungDetails;
     }
 
-    public String getLop() {
-        return lop;
+    public String getLopDetails() {
+        return lopDetails;
     }
 
-    public void setLop(String lop) {
-        this.lop = lop;
+    public void setLopDetails(String lopDetails) {
+        this.lopDetails = lopDetails;
     }
 
-    public int getMssv() {
-        return mssv;
+    public int getMssvDetails() {
+        return mssvDetails;
     }
 
-    public void setMssv(int mssv) {
-        this.mssv = mssv;
+    public void setMssvDetails(int mssvDetails) {
+        this.mssvDetails = mssvDetails;
     }
 
     public int getIdPhong() {
@@ -50,13 +49,5 @@ public class DetailRoomVO {
 
     public void setIdChiTietPhong(int idChiTietPhong) {
         this.idChiTietPhong = idChiTietPhong;
-    }
-
-    public int getIdNguoiDung() {
-        return idNguoiDung;
-    }
-
-    public void setIdNguoiDung(int idNguoiDung) {
-        this.idNguoiDung = idNguoiDung;
     }
 }

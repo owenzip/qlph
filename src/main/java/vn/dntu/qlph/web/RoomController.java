@@ -26,11 +26,12 @@ public class RoomController {
     public RoomVO insertRoom(@ModelAttribute final RoomVO roomVO) {
         try {
             roomImpl.insertRoom(roomVO);
-            /*if (roomVO.getDetailRoomVO() != null) {
+            if (roomVO.getDetailRoomVO() != null) {
                 roomVO.getDetailRoomVO().forEach(item -> {
+                    item.setIdPhong(roomVO.getIdPhong());
                     roomImpl.insertMember(item);
                 });
-            }*/
+            }
             return roomVO;
         } catch (Exception e) {
             e.printStackTrace();

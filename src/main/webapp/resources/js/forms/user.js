@@ -39,7 +39,7 @@ $(function () {
                 });
             } else {
                 $.ajax({
-                    url: "/checkLogin.do"
+                    url: "/checkLogins.do"
                     , data: {
                         "mssv": mssv,
                         "matKhau": matKhau
