@@ -73,4 +73,18 @@
         WHERE ph.iddmphong = #{idDmPhong}
         AND ph.ngay >= now()
     </select>
+
+    <select id="selectRoomById" resultType="RoomVO">
+        SELECT
+        ph.idphong,
+        TIME_FORMAT(ph.giobatdau,'%H:%i') AS giobatdau,
+        TIME_FORMAT(ph.gioketthuc,'%H:%i') AS gioketthuc,
+        IFNULL(DATE_FORMAT(ph.ngay,'%d/%m/%Y'),'') AS ngay,
+        tt.trangthai,
+        ph.songuoi,
+        ph.mucdich
+        FROM phong ph
+        LEFT JOIN dmtrangthai tt ON ph.trangthai = tt.idtrangthai
+        WHERE nguoidaidien = #{nguoiDaiDien}
+    </select>
 </mapper>

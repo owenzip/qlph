@@ -52,7 +52,6 @@ $(function () {
 
     let configTableMembers = tableMember.DataTable({
         "bAutoWidth": false,
-        select:true,
         "columnDefs": [
             {
                 "targets": 0,

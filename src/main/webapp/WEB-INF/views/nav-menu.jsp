@@ -56,6 +56,7 @@
             <li><a href="<c:url value="/index.do"/>" class="btn btn-red"><b>TRANG CHỦ &nbsp;&nbsp;<i class="fa fa-home"></i></b></a></li>
         </ul>
         <input id="sessionUsername" type="hidden" value="<%=session.getAttribute("TENNGUOIDUNG")%>">
+        <input id="sessionUserId" type="hidden" value="<%=session.getAttribute("IDNGUOIDUNG")%>">
         <div id="navLogin">
             <ul class="navbar-nav">
                 <a id="btnLogin" class="btn btn-red" href="<c:url value="/login.do"/>">Đăng nhập &nbsp;&nbsp;<i class="fa fa-sign-in"></i></a>
@@ -64,13 +65,12 @@
         <div id="navUser">
             <ul class="navbar-nav">
                 <li class="nav-item dropdown">
-                    <a class="text-white">Xin chào,&nbsp;&nbsp;<b><%=session.getAttribute("TENNGUOIDUNG")%>
-                    </b>&nbsp;</a>
+                    <a class="text-white">Xin chào,&nbsp;&nbsp;&nbsp;<b><%=session.getAttribute("TENNGUOIDUNG")%></b></a>
                     <a class="btn btn-red" data-toggle="dropdown">
                         <i class="fa fa-cog"></i>&nbsp;&nbsp;<i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu" style="margin-left:110px;background: #B73030">
-                        <li><a class="text-white"><i class="fa fa-history"></i>&nbsp;&nbsp;Lịch sử</a></li>
+                        <li><a id="btnHistory" class="text-white" data-toggle="modal" data-target="#modalSelectMember"><i class="fa fa-history"></i>&nbsp;&nbsp;Lịch sử</a></li>
                         <li><a class="text-white" data-toggle="modal" data-target="#modalChangePassword"><i class="fa fa-unlock-alt"></i>&nbsp;&nbsp;Đổi mật khẩu</a></li>
                         <li><a id="btnLogOut" class="text-white" href="#"><i class="fa fa-sign-out"></i>&nbsp;Đăng xuất</a></li>
                     </ul>
@@ -104,6 +104,41 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-red" data-dismiss="modal">Hủy &nbsp;&nbsp;<i class="fa fa-close"></i></button>
                 <button id="btnChangePassword" type="button" class="btn btn-red">Đổi mật khẩu &nbsp;&nbsp;<i class="fa fa-recycle"></i></button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="modalSelectMember" tabindex="-1" role="dialog" aria-labelledby="modalMember"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-title" id="modalMember">Lịch sử đặt phòng của bạn</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row form-group">
+                    <div class="col-md-12">
+                        <table id="tblRoomById" class="table table-responsive" style="width: 100%">
+                            <thead>
+                            <tr>
+                                <th>#</th>
+                                <th><i class="fa fa-calendar"></i>&nbsp;&nbsp;Ngày</th>
+                                <th><i class="fa fa-clock-o"></i>&nbsp;&nbsp;Giờ bắt đầu</th>
+                                <th><i class="fa fa-clock-o"></i>&nbsp;&nbsp;Giờ kết thúc</th>
+                                <th><i class="fa fa-link"></i>&nbsp;&nbsp;Trạng thái</th>
+                                <th><i class="fa fa-user"></i>&nbsp;&nbsp;Số người</th>
+                                <th><i class="fa fa-user"></i>&nbsp;&nbsp;Mục đích</th>
+                            </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-red" data-dismiss="modal">Đóng &nbsp;&nbsp;<i class="fa fa-close"></i></button>
             </div>
         </div>
     </div>

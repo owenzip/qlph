@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import vn.dntu.qlph.model.DetailRoomVO;
 import vn.dntu.qlph.model.RoomVO;
 import vn.dntu.qlph.model.UserVO;
 import vn.dntu.qlph.service.impl.RoomImpl;
@@ -44,6 +45,17 @@ public class RoomController {
     public List<RoomVO> selectRoomToDay(@RequestParam("idDmPhong") int idDmPhong) {
         try {
             return roomImpl.selectRoomToDay(idDmPhong);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    @RequestMapping(value = "/selectRoomById.do")
+    @ResponseBody
+    public List<RoomVO> selectMember(@RequestParam("nguoiDaiDien") int nguoiDaiDien) {
+        try {
+            return roomImpl.selectRoomById(nguoiDaiDien);
         } catch (Exception e) {
             e.printStackTrace();
             return null;
