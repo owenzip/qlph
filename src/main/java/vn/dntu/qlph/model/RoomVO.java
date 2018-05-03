@@ -18,7 +18,16 @@ public class RoomVO {
     private String tenNguoiDaiDien;
     private int nguoiDaiDien;
     private int idNguoiDung;
+    private String tenPhong;
     List<DetailRoomVO> detailRoomVO;
+
+    public String getTenPhong() {
+        return tenPhong;
+    }
+
+    public void setTenPhong(String tenPhong) {
+        this.tenPhong = tenPhong;
+    }
 
     public int getNguoiDaiDien() {
         return nguoiDaiDien;

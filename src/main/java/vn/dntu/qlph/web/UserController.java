@@ -40,4 +40,16 @@ public class UserController {
             return false;
         }
     }
+
+    @RequestMapping(value = "/changePassword.do")
+    @ResponseBody
+    public boolean changePassword(@RequestParam("matKhau") String matKhau,@RequestParam("idNguoiDung") int idNguoiDung) {
+        try {
+            this.userImpl.changePassword(matKhau,idNguoiDung);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 }

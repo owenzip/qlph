@@ -6,6 +6,7 @@ $(function () {
         checkUsername();
         configTableRoomById();
         logOut();
+        changePassword();
     }
 
     let textDataTable = {
@@ -14,6 +15,15 @@ $(function () {
         "processing": "Đang tải dữ liệu...",
         "zeroRecords": "Không có dữ liệu",
     };
+
+    $.extend($.fn.dataTable.defaults, {
+        "language": textDataTable,
+        "searching": false, // Tìm kiếm
+        "paging": false, // Phân trang
+        "info": false, // Thông tin bảng
+        "ordering": false,
+        "select": true,
+    });
 
     let checkUsername = function () {
         let username = $('#sessionUsername').val();
@@ -50,19 +60,113 @@ $(function () {
         })
     };
 
-    $.extend($.fn.dataTable.defaults, {
-        "language": textDataTable,
-        "searching": false, // Tìm kiếm
-        "paging": false, // Phân trang
-        "info": false, // Thông tin bảng
-        "ordering": false,
-        "select": true,
-    });
+    let changePassword = function () {
+        $('#btnChangePassword').on('click',function () {
+            let oldPassword = $('#oldPassword').val();
+            let sessionPassword = $('#sessionPassword').val();
+            let userId = $('#sessionUserId').val();
+            let confirmPassword = $('#confirmPassword').val();
+            let newPassword = $('#newPassword').val();
+
+            if (oldPassword === sessionPassword) {
+                if (newPassword === confirmPassword) {
+                    $.confirm({
+                        title: 'Bạn có muốn đổi mật khẩu',
+                        content: '',
+                        type: 'red',
+                        typeAnimated: true,
+                        buttons: {
+                            cancel: {
+                                text: 'Hủy',
+                                btnClass: 'btn-red',
+                            },
+                            confirm: {
+                                text: 'Đồng ý',
+                                btnClass: 'btn-red',
+                                action: function () {
+                                    changePassword();
+                                }
+                            },
+                        }
+                    });
+                } else {
+                    $.confirm({
+                        title: 'Mật khẩu không trùng khớp',
+                        content: '',
+                        type: 'red',
+                        typeAnimated: true,
+                        buttons: {
+                            cancel: {
+                                text: 'Thử lại',
+                                btnClass: 'btn-red',
+                            },
+                        }
+                    });
+                }
+            } else {
+                $.confirm({
+                    title: 'Mật khẩu cũ không chính xác',
+                    content: '',
+                    type: 'red',
+                    typeAnimated: true,
+                    buttons: {
+                        cancel: {
+                            text: 'Thử lại',
+                            btnClass: 'btn-red',
+                        },
+                    }
+                });
+            }
+
+            let changePassword = function () {
+                $.ajax({
+                    url: "/changePassword.do",
+                    data: {
+                        'matKhau': confirmPassword,
+                        'idNguoiDung': userId,
+                    },
+                    type: "POST",
+                    success: function (data) {
+                        if (data) {
+                            $.confirm({
+                                title: 'Bạn đã đổi mật khẩu thành công',
+                                content: '',
+                                type: 'red',
+                                typeAnimated: true,
+                                buttons: {
+                                    cancel: {
+                                        text: 'Đóng',
+                                        btnClass: 'btn-red',
+                                        action: function () {
+                                            window.location.href = "/login.do";
+                                        }
+                                    },
+                                }
+                            });
+                        } else {
+                            $.confirm({
+                                title: 'Đổi mật khẩu thất bại',
+                                content: 'Đã xảy ra lỗi trong quá trình đổi mật khẩu, xin vui lòng thử lại',
+                                type: 'red',
+                                typeAnimated: true,
+                                buttons: {
+                                    cancel: {
+                                        text: 'Đóng',
+                                        btnClass: 'btn-red',
+                                    },
+                                }
+                            });
+                        }
+                    }
+                });
+            }
+        })
+    };
 
     let configTableRoomById = function () {
         let userId = $('#sessionUserId').val();
         if (userId != "null") {
-            tblRoomById.DataTable({
+            let tblRoomByIdFunction = tblRoomById.DataTable({
                 "bAutoWidth": false,
                 "serverSide": true,
                 "processing": true,
@@ -85,39 +189,42 @@ $(function () {
                             let startAt = parseInt(meta.settings._iDisplayStart);
                             return rowIndex + startAt + 1;
                         }
-                    }, {
+                    },{
                         "targets": 1,
+                        "sWidth": "25%",
+                        "data": "tenPhong",
+                    }, {
+                        "targets": 2,
                         "sWidth": "15%",
                         "data": "ngay",
                     }, {
-                        "targets": 2,
+                        "targets": 3,
                         "sWidth": "10%",
                         "data": "gioBatDau"
                     }, {
-                        "targets": 3,
+                        "targets": 4,
                         "sWidth": "10%",
                         "data": "gioKetThuc"
                     }, {
-                        "targets": 4,
+                        "targets": 5,
                         "sWidth": "10%",
                         "data": "trangThai"
                     }, {
-                        "targets": 5,
+                        "targets": 6,
                         "sWidth": "5%",
                         "data": "soNguoi"
                     }, {
-                        "targets": 6,
-                        "sWidth": "45%",
+                        "targets": 7,
+                        "sWidth": "20%",
                         "data": "mucDich"
                     },
                 ],
             });
-
             $('#btnHistory').on('click',function () {
-                tblRoomById.ajax.reload();
+                tblRoomByIdFunction.ajax.reload();
             })
         }
-    }
+    };
 
     return setup();
 });

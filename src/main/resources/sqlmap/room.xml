@@ -12,6 +12,7 @@
         <result property="idNguoiDung" column="idnguoidung"/>
         <result property="tenNguoiDaiDien" column="tennguoidaidien"/>
         <result property="nguoiDaiDien" column="nguoidaidien"/>
+        <result property="tenPhong" column="tenphong"/>
     </resultMap>
 
     <resultMap id="DetailRoomVO" type="DetailRoomVO">
@@ -72,11 +73,13 @@
         LEFT JOIN nguoidung nd ON ph.nguoidaidien = nd.idnguoidung
         WHERE ph.iddmphong = #{idDmPhong}
         AND ph.ngay >= now()
+        ORDER BY ph.ngay
     </select>
 
     <select id="selectRoomById" resultType="RoomVO">
         SELECT
         ph.idphong,
+        dm.tenphong,
         TIME_FORMAT(ph.giobatdau,'%H:%i') AS giobatdau,
         TIME_FORMAT(ph.gioketthuc,'%H:%i') AS gioketthuc,
         IFNULL(DATE_FORMAT(ph.ngay,'%d/%m/%Y'),'') AS ngay,
@@ -85,6 +88,8 @@
         ph.mucdich
         FROM phong ph
         LEFT JOIN dmtrangthai tt ON ph.trangthai = tt.idtrangthai
+        LEFT JOIN dmphong dm ON ph.iddmphong = dm.iddmphong
         WHERE nguoidaidien = #{nguoiDaiDien}
+        ORDER BY ph.ngay
     </select>
 </mapper>

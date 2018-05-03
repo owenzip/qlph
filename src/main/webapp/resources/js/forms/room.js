@@ -1,8 +1,8 @@
 $(function () {
 
-    const colUsername = '<input type="text" name="detailRoomVO[{0}].tenNguoiDungDetails" class="form-control-tbl form-control"></input>';
-    const colClass = '<input type="text" name="detailRoomVO[{0}].lopDetails" class="form-control-tbl form-control"></input>';
-    const colCode = '<input type="text" name="detailRoomVO[{0}].mssvDetails" class="form-control-tbl form-control"></input>';
+    const colUsername = '<input type="text" name="detailRoomVO[{0}].tenNguoiDungDetails" class="form-control-tbl form-control">';
+    const colClass = '<input type="text" name="detailRoomVO[{0}].lopDetails" class="form-control-tbl form-control">';
+    const colCode = '<input type="text" name="detailRoomVO[{0}].mssvDetails" class="form-control-tbl form-control">';
     let tableMember = $('#tblMembers');
     let tableRoom = $('#tblRoom');
     let tableMembersFunction = undefined;

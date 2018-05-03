@@ -26,8 +26,8 @@
         <div style="width: 70%;margin-left: 15%">
             <div class="text-center">
                 <div class="form-group">
-                    <input id="mssv" name="mssv" type="text" class="form-control" placeholder="MSSV" value="1407168">
-                    <input style="margin-top: 10px" id="matKhau" name="matKhau" type="password" class="form-control" placeholder="Mật khẩu" value="123">
+                    <input id="mssv" name="mssv" type="text" class="form-control" placeholder="Mã sinh viên">
+                    <input style="margin-top: 10px" id="matKhau" name="matKhau" type="password" class="form-control" placeholder="Mật khẩu">
                 </div>
                 <a id="btnConfirm" class="btn btn-red" style="width: 226px">ĐĂNG NHẬP &nbsp;&nbsp;<i class="fa fa-sign-in"></i></a>
                 <a id="btnContact" class="btn btn-link" data-toggle="modal" data-target="#contactModal"><b style="color: #B73030">LIÊN HỆ &nbsp; &nbsp;<i class="fa fa-phone"></i></b></a>

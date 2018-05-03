@@ -25,4 +25,10 @@
         WHERE mssv = #{mssv}
         AND matkhau = #{matKhau}
     </select>
+
+    <update id="changePassword">
+        UPDATE nguoidung nd
+        SET nd.matkhau = #{matKhau}
+        WHERE nd.idnguoidung = #{idNguoiDung}
+    </update>
 </mapper>

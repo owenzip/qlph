@@ -57,6 +57,7 @@
         </ul>
         <input id="sessionUsername" type="hidden" value="<%=session.getAttribute("TENNGUOIDUNG")%>">
         <input id="sessionUserId" type="hidden" value="<%=session.getAttribute("IDNGUOIDUNG")%>">
+        <input id="sessionPassword" type="hidden" value="<%=session.getAttribute("MATKHAU")%>">
         <div id="navLogin">
             <ul class="navbar-nav">
                 <a id="btnLogin" class="btn btn-red" href="<c:url value="/login.do"/>">Đăng nhập &nbsp;&nbsp;<i class="fa fa-sign-in"></i></a>
@@ -93,11 +94,11 @@
                 <div class="row form-group">
                     <div class="col-md-12">
                         <label><i class="fa fa-lock"></i>&nbsp;&nbsp;<b>Mật khẩu cũ</b></label>
-                        <input type="text" class="form-control" placeholder="Mật khẩu cũ">
+                        <input id="oldPassword" type="password" class="form-control" placeholder="Mật khẩu cũ">
                         <label class="mrg-x2"><i class="fa fa-get-pocket"></i>&nbsp;&nbsp;<b>Mật khẩu mới</b></label>
-                        <input type="text" class="form-control" placeholder="Mật khẩu mới">
+                        <input id="newPassword" type="password" class="form-control" placeholder="Mật khẩu mới">
                         <label class="mrg-x2"><i class="fa fa-get-pocket"></i>&nbsp;&nbsp;<b>Nhập lại mật khẩu</b></label>
-                        <input type="text" class="form-control" placeholder="Nhập lại mật khẩu">
+                        <input id="confirmPassword" type="password" class="form-control" placeholder="Nhập lại mật khẩu">
                     </div>
                 </div>
             </div>
@@ -125,6 +126,7 @@
                             <thead>
                             <tr>
                                 <th>#</th>
+                                <th><i class="fa fa-columns"></i>&nbsp;&nbsp;Tên phòng</th>
                                 <th><i class="fa fa-calendar"></i>&nbsp;&nbsp;Ngày</th>
                                 <th><i class="fa fa-clock-o"></i>&nbsp;&nbsp;Giờ bắt đầu</th>
                                 <th><i class="fa fa-clock-o"></i>&nbsp;&nbsp;Giờ kết thúc</th>
