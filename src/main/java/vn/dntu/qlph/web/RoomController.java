@@ -24,7 +24,7 @@ public class RoomController {
 
     @RequestMapping(value = "/insertRoom.do")
     @ResponseBody
-    public RoomVO insertRoom(@ModelAttribute final RoomVO roomVO) {
+    public boolean insertRoom(@ModelAttribute final RoomVO roomVO) {
         try {
             roomImpl.insertRoom(roomVO);
             if (roomVO.getDetailRoomVO() != null) {
@@ -33,10 +33,10 @@ public class RoomController {
                     roomImpl.insertMember(item);
                 });
             }
-            return roomVO;
+            return true;
         } catch (Exception e) {
             e.printStackTrace();
-            return null;
+            return false;
         }
     }
 
@@ -56,6 +56,17 @@ public class RoomController {
     public List<RoomVO> selectMember(@RequestParam("nguoiDaiDien") int nguoiDaiDien) {
         try {
             return roomImpl.selectRoomById(nguoiDaiDien);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    @RequestMapping(value = "/selectMembersByRoom.do")
+    @ResponseBody
+    public List<DetailRoomVO> selectMembersByRoom(@RequestParam("idPhong") int idPhong) {
+        try {
+            return roomImpl.selectMembersByRoom(idPhong);
         } catch (Exception e) {
             e.printStackTrace();
             return null;

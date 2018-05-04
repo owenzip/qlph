@@ -36,4 +36,9 @@ public class RoomImpl implements RoomService {
     public List<RoomVO> selectRoomById(int nguoiDaiDien) {
         return roomService.selectRoomById(nguoiDaiDien);
     }
+
+    @Override
+    public List<DetailRoomVO> selectMembersByRoom(int idPhong) {
+        return roomService.selectMembersByRoom(idPhong);
+    }
 }

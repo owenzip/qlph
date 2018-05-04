@@ -15,6 +15,7 @@ $(function () {
         insertRoom();
         tableRoomFunction = configTableRoom;
         textChangeInpSoNguoi();
+        onClickCancelRegisterRoom();
     }
 
     let textChangeInpSoNguoi = function () {
@@ -184,9 +185,59 @@ $(function () {
                 success: function (data) {
                     if (data) {
                         tableRoomFunction.ajax.reload();
+                        $.confirm({
+                            title: 'Bạn đã đặt phòng thành công',
+                            content: 'Kiểm tra lại thông tin ở Lịch Sử đặt phòng của bạn',
+                            type: 'red',
+                            typeAnimated: true,
+                            buttons: {
+                                confirm: {
+                                    text: 'Xác nhận',
+                                    btnClass: 'btn-red',
+                                    action: function () {
+                                        window.location.href = "/history.do";
+                                    }
+                                },
+                            }
+                        });
+                    } else {
+                        $.confirm({
+                            title: 'Có lỗi xảy ra từ hệ thống',
+                            content: 'Xin vui lòng thử lại sau',
+                            type: 'red',
+                            typeAnimated: true,
+                            buttons: {
+                                confirm: {
+                                    text: 'Đóng',
+                                    btnClass: 'btn-red',
+                                },
+                            }
+                        });
                     }
+                },
+                error: function () {
+                    $.confirm({
+                        title: 'Có lỗi xảy ra trong quá trình đặt phòng',
+                        content: 'Vui lòng kiểm tra lại các trường bạn đã nhập',
+                        type: 'red',
+                        typeAnimated: true,
+                        buttons: {
+                            confirm: {
+                                text: 'Thử lại',
+                                btnClass: 'btn-red',
+                            },
+                        }
+                    });
                 }
             });
+        })
+    };
+    
+    let onClickCancelRegisterRoom = function () {
+        $('#btnCancelRegisterRoom').on('click',function () {
+            $("#formRoom").find('.clr').val("");
+            $('#selRoom').val(0);
+            configTableMembers.rows().remove().draw();
         })
     }
 

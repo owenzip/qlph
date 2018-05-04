@@ -1,10 +1,14 @@
 $(function () {
 
     let tblRoomById = $('#tblRoomById');
+    let tblMemberHistory = $('#tblMemberHistory');
+    let tblRoomByIdFunction = undefined;
+    let tblMemberHistoryFunction = undefined;
 
     let setup = function () {
         checkUsername();
         configTableRoomById();
+        onClickTableRoomById();
         logOut();
         changePassword();
     }
@@ -18,9 +22,9 @@ $(function () {
 
     $.extend($.fn.dataTable.defaults, {
         "language": textDataTable,
-        "searching": false, // Tìm kiếm
-        "paging": false, // Phân trang
-        "info": false, // Thông tin bảng
+        "searching": false,
+        "paging": false,
+        "info": false,
         "ordering": false,
         "select": true,
     });
@@ -61,62 +65,71 @@ $(function () {
     };
 
     let changePassword = function () {
-        $('#btnChangePassword').on('click',function () {
+        $('#btnChangePassword').on('click', function () {
             let oldPassword = $('#oldPassword').val();
-            let sessionPassword = $('#sessionPassword').val();
             let userId = $('#sessionUserId').val();
             let confirmPassword = $('#confirmPassword').val();
             let newPassword = $('#newPassword').val();
 
-            if (oldPassword === sessionPassword) {
-                if (newPassword === confirmPassword) {
-                    $.confirm({
-                        title: 'Bạn có muốn đổi mật khẩu',
-                        content: '',
-                        type: 'red',
-                        typeAnimated: true,
-                        buttons: {
-                            cancel: {
-                                text: 'Hủy',
-                                btnClass: 'btn-red',
-                            },
-                            confirm: {
-                                text: 'Đồng ý',
-                                btnClass: 'btn-red',
-                                action: function () {
-                                    changePassword();
+            $.ajax({
+                url: "/checkPassword.do",
+                data: {
+                    'matKhau': oldPassword,
+                    'idNguoiDung': userId,
+                },
+                type: "POST",
+                success: function (data) {
+                    if (data) {
+                        if (newPassword === confirmPassword) {
+                            $.confirm({
+                                title: 'Bạn có muốn đổi mật khẩu',
+                                content: '',
+                                type: 'red',
+                                typeAnimated: true,
+                                buttons: {
+                                    cancel: {
+                                        text: 'Hủy',
+                                        btnClass: 'btn-red',
+                                    },
+                                    confirm: {
+                                        text: 'Đồng ý',
+                                        btnClass: 'btn-red',
+                                        action: function () {
+                                            changePassword();
+                                        }
+                                    },
                                 }
-                            },
+                            });
+                        } else {
+                            $.confirm({
+                                title: 'Mật khẩu không trùng khớp',
+                                content: '',
+                                type: 'red',
+                                typeAnimated: true,
+                                buttons: {
+                                    cancel: {
+                                        text: 'Thử lại',
+                                        btnClass: 'btn-red',
+                                    },
+                                }
+                            });
                         }
-                    });
-                } else {
-                    $.confirm({
-                        title: 'Mật khẩu không trùng khớp',
-                        content: '',
-                        type: 'red',
-                        typeAnimated: true,
-                        buttons: {
-                            cancel: {
-                                text: 'Thử lại',
-                                btnClass: 'btn-red',
-                            },
-                        }
-                    });
-                }
-            } else {
-                $.confirm({
-                    title: 'Mật khẩu cũ không chính xác',
-                    content: '',
-                    type: 'red',
-                    typeAnimated: true,
-                    buttons: {
-                        cancel: {
-                            text: 'Thử lại',
-                            btnClass: 'btn-red',
-                        },
+                    } else {
+                        $.confirm({
+                            title: 'Mật khẩu cũ không chính xác',
+                            content: '',
+                            type: 'red',
+                            typeAnimated: true,
+                            buttons: {
+                                cancel: {
+                                    text: 'Thử lại',
+                                    btnClass: 'btn-red',
+                                },
+                            }
+                        });
                     }
-                });
-            }
+                }
+            })
 
             let changePassword = function () {
                 $.ajax({
@@ -166,7 +179,7 @@ $(function () {
     let configTableRoomById = function () {
         let userId = $('#sessionUserId').val();
         if (userId != "null") {
-            let tblRoomByIdFunction = tblRoomById.DataTable({
+            tblRoomByIdFunction = tblRoomById.DataTable({
                 "bAutoWidth": false,
                 "serverSide": true,
                 "processing": true,
@@ -189,7 +202,7 @@ $(function () {
                             let startAt = parseInt(meta.settings._iDisplayStart);
                             return rowIndex + startAt + 1;
                         }
-                    },{
+                    }, {
                         "targets": 1,
                         "sWidth": "25%",
                         "data": "tenPhong",
@@ -220,8 +233,66 @@ $(function () {
                     },
                 ],
             });
-            $('#btnHistory').on('click',function () {
+            $('#btnHistory').on('click', function () {
                 tblRoomByIdFunction.ajax.reload();
+            })
+        }
+    };
+
+    let onClickTableRoomById = function () {
+        let idPhong = 0;
+        let userId = $('#sessionUserId').val();
+        if (userId != "null") {
+            tblMemberHistoryFunction = tblMemberHistory.DataTable({
+                "bAutoWidth": false,
+                "serverSide": true,
+                "processing": true,
+                "deferLoading": 0,
+                "ajax": {
+                    "url": "/selectMembersByRoom.do",
+                    "data": function (param) {
+                        param.idPhong = idPhong;
+                    },
+                    "dataSrc": "",
+                },
+                "columnDefs": [
+                    {
+                        "targets": "_all",
+                        class: "text-center",
+                    }, {
+                        "targets": 0,
+                        "sWidth": "5%",
+                        render: function (data, type, row, meta) {
+                            let rowIndex = parseInt(meta.row);
+                            let startAt = parseInt(meta.settings._iDisplayStart);
+                            return rowIndex + startAt + 1;
+                        }
+                    }, {
+                        "targets": 1,
+                        "sWidth": "50%",
+                        "data": "tenNguoiDungDetails",
+                    }, {
+                        "targets": 2,
+                        "sWidth": "25%",
+                        "data": "lopDetails",
+                    }, {
+                        "targets": 3,
+                        "sWidth": "25%",
+                        "data": "mssvDetails"
+                    },
+                ],
+            });
+            tblRoomById.find('tbody').on('click', 'tr', function () {
+                let dataTable = tblRoomByIdFunction.row(this).data();
+                idPhong = dataTable.idPhong;
+                if ($(this).hasClass('selected')) {
+                    $(this).removeClass('selected');
+                } else {
+                    tblRoomByIdFunction.$('tr.selected').removeClass('selected');
+                    $(this).addClass('selected');
+                    $('#modalSelectRoom').modal('show');
+                    tblMemberHistoryFunction.ajax.reload();
+                }
             })
         }
     };

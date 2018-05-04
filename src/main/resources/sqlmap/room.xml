@@ -58,7 +58,7 @@
         )
     </insert>
 
-    <select id="selectRoomToDay" resultType="RoomVO">
+    <select id="selectRoomToDay" resultMap="RoomVO">
         SELECT
         ph.idphong,
         TIME_FORMAT(ph.giobatdau,'%H:%i') AS giobatdau,
@@ -76,7 +76,7 @@
         ORDER BY ph.ngay
     </select>
 
-    <select id="selectRoomById" resultType="RoomVO">
+    <select id="selectRoomById" resultMap="RoomVO">
         SELECT
         ph.idphong,
         dm.tenphong,
@@ -91,5 +91,14 @@
         LEFT JOIN dmphong dm ON ph.iddmphong = dm.iddmphong
         WHERE nguoidaidien = #{nguoiDaiDien}
         ORDER BY ph.ngay
+    </select>
+
+    <select id="selectMembersByRoom" resultMap="DetailRoomVO">
+        SELECT
+        ctp.tennguoidung,
+        ctp.mssv,
+        ctp.lop
+        FROM chitietphong ctp
+        WHERE ctp.idphong = #{idPhong};
     </select>
 </mapper>

@@ -14,4 +14,6 @@ public interface RoomService {
     List<RoomVO> selectRoomToDay(@Param("idDmPhong") int idDmPhong);
 
     List<RoomVO> selectRoomById(@Param("nguoiDaiDien") int nguoiDaiDien);
+
+    List<DetailRoomVO> selectMembersByRoom(@Param("idPhong") int idPhong);
 }

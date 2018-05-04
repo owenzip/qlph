@@ -31,4 +31,13 @@
         SET nd.matkhau = #{matKhau}
         WHERE nd.idnguoidung = #{idNguoiDung}
     </update>
+
+    <select id="checkPassword" resultMap="UserVO">
+        SELECT
+        nd.idnguoidung,
+        nd.matkhau
+        FROM nguoidung nd
+        WHERE matkhau = #{matKhau}
+        AND idnguoidung = #{idNguoiDung}
+    </select>
 </mapper>

@@ -48,17 +48,17 @@
                             <input type="text" class="form-control mrg" placeholder="Mã số sinh viên" value="<%=session.getAttribute("MSSV")%>" readonly>
                             <input type="text" class="form-control mrg" placeholder="Lớp" value="<%=session.getAttribute("LOP")%>" readonly>
                             <input type="text" class="form-control mrg" value="<%=session.getAttribute("NGANH")%>" readonly>
-                            <input id="soNguoi" name="soNguoi" type="text" class="form-control mrg" placeholder="Số người">
-                            <textarea id="mucDich" name="mucDich" type="text" class="form-control mrg" rows="3" placeholder="Mục đích sử dụng"></textarea>
+                            <input id="soNguoi" name="soNguoi" type="text" class="clr form-control mrg" placeholder="Số người">
+                            <textarea id="mucDich" name="mucDich" type="text" class="clr form-control mrg" rows="3" placeholder="Mục đích sử dụng"></textarea>
                             <label class="mrg"><b>Chọn phòng</b></label>
                             <select id="selRoom" name="idDmPhong" type="text" class="form-control"></select>
                             <label class="mrg"><b>Thời gian</b></label>
-                            <input id="ngay" name="ngay" type="text" class="form-control" placeholder="Chọn ngày">
+                            <input id="ngay" name="ngay" type="text" class="clr form-control" placeholder="Chọn ngày">
                             <div class="row mrg">
                                 <div class="col-md-12">
                                     <div class="input-group" style="height: 35px;">
-                                        <input id="gioBatDau" name="gioBatDau" type="text" class="form-control mrg" placeholder="Giờ bắt đầu">
-                                        <input id="gioKetThuc" name="gioKetThuc" type="text" class="form-control mrg" placeholder="Kết thúc">
+                                        <input id="gioBatDau" name="gioBatDau" type="text" class="clr form-control mrg" placeholder="Giờ bắt đầu">
+                                        <input id="gioKetThuc" name="gioKetThuc" type="text" class="clr form-control mrg" placeholder="Kết thúc">
                                     </div>
                                 </div>
                             </div>
@@ -74,7 +74,7 @@
                         </div>
                         <div class="col-md-8">
                             <label><b>Thành viên</b></label>
-                            <table id="tblMembers" class="table table-responsive" style="width: 96%">
+                            <table id="tblMembers" class="table table-hover table-responsive" style="width: 96%">
                                 <thead>
                                 <tr>
                                     <th>#</th>
@@ -84,13 +84,11 @@
                                 </tr>
                                 </thead>
                             </table>
-                            <%--<a id="btnAddMembers" class="btn-red btn-sm" style="margin-top: 15px;font-weight: normal">&nbsp;&nbsp;Thêm &nbsp;&nbsp;<i class="fa fa-plus"></i></a>
-                            <a id="btnDelMembers" class="btn-red btn-sm" style="margin-top: 15px;font-weight: normal">&nbsp;&nbsp;Xóa &nbsp;&nbsp;<i class="fa fa-trash"></i></a>--%>
-                        </div>
+                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-red" data-dismiss="modal">Hủy &nbsp;&nbsp;<i class="fa fa-close"></i>
+                    <button id="btnCancelRegisterRoom" type="button" class="btn btn-red" data-dismiss="modal">Hủy &nbsp;&nbsp;<i class="fa fa-close"></i>
                     </button>
                     <button id="btnAcceptRoom" type="button" class="btn btn-red">Đăng ký &nbsp;&nbsp;<i class="fa fa-check"></i>
                     </button>

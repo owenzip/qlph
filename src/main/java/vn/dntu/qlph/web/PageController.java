@@ -77,6 +77,20 @@ public class PageController {
         }
     }
 
+    @RequestMapping(value = "/history.do", method = RequestMethod.GET)
+    public String history(HttpServletRequest request) {
+        try {
+            HttpSession session = request.getSession();
+            String username = session.getAttribute("TENNGUOIDUNG").toString();
+            if (username != null) {
+                return "history";
+            }
+            return "401";
+        } catch (Exception e) {
+            return "401";
+        }
+    }
+
     @RequestMapping(value = "/logout.do", method = RequestMethod.GET)
     public String logOut(HttpServletRequest request) {
         HttpSession session = request.getSession();

@@ -14,5 +14,17 @@
 	   <property name="acquireIncrement" value="5"/>
 	   <property name="statementsCacheSize" value="100"/>
 	</bean>
+
+	<!--<bean id="dataSource" class="com.jolbox.bonecp.BoneCPDataSource" destroy-method="close">
+		<property name="driverClass" value="com.mysql.jdbc.Driver" />
+		<property name="jdbcUrl"  value="jdbc:mysql://node188428-qlphtest.jelastic.servint.net/qlph" />
+		<property name="username" value="root"/>
+		<property name="password" value="MDPppa98334"/>
+		<property name="maxConnectionsPerPartition" value="30"/>
+		<property name="minConnectionsPerPartition" value="10"/>
+		<property name="partitionCount" value="3"/>
+		<property name="acquireIncrement" value="5"/>
+		<property name="statementsCacheSize" value="100"/>
+	</bean>-->
 </beans> 
 	

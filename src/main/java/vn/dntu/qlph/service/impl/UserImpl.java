@@ -21,4 +21,9 @@ public class UserImpl implements UserService {
     public void changePassword(String matKhau, int idNguoiDung) {
         this.userService.changePassword(matKhau,idNguoiDung);
     }
+
+    @Override
+    public UserVO checkPassword(String matKhau, int idNguoiDung) {
+        return this.userService.checkPassword(matKhau,idNguoiDung);
+    }
 }

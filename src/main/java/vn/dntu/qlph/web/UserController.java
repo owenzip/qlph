@@ -27,7 +27,6 @@ public class UserController {
                 HttpSession session = request.getSession();
                 session.setAttribute("IDNGUOIDUNG",userVO.getIdNguoiDung());
                 session.setAttribute("MSSV",userVO.getMssv());
-                session.setAttribute("MATKHAU",userVO.getMatKhau());
                 session.setAttribute("TENNGUOIDUNG",userVO.getTenNguoiDung());
                 session.setAttribute("NGANH",userVO.getNganh());
                 session.setAttribute("LOP",userVO.getLop());
@@ -50,6 +49,17 @@ public class UserController {
         } catch (Exception e) {
             e.printStackTrace();
             return false;
+        }
+    }
+
+    @RequestMapping(value = "/checkPassword.do")
+    @ResponseBody
+    public UserVO checkPassword(@RequestParam("matKhau") String matKhau,@RequestParam("idNguoiDung") int idNguoiDung) {
+        try {
+            return userImpl.checkPassword(matKhau,idNguoiDung);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
         }
     }
 }
