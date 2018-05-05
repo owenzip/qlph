@@ -10,8 +10,43 @@ $(function () {
         configTableRoomById();
         onClickTableRoomById();
         logOut();
+        validateFormChangePassword();
         changePassword();
+        onClickCloseChangePassword();
     }
+
+    let nofiticationChangePasswordSuccess = function () {
+        $.confirm({
+            title: 'Bạn đã đổi mật khẩu thành công',
+            content: '',
+            type: 'red',
+            typeAnimated: true,
+            buttons: {
+                cancel: {
+                    text: 'Đóng',
+                    btnClass: 'btn-red',
+                    action: function () {
+                        window.location.href = "/login.do";
+                    }
+                },
+            }
+        });
+    };
+
+    let nofiticationChangePasswordFalse = function () {
+        $.confirm({
+            title: 'Đổi mật khẩu thất bại',
+            content: 'Xin vui lòng kiểm tra lại',
+            type: 'red',
+            typeAnimated: true,
+            buttons: {
+                cancel: {
+                    text: 'Thử lại',
+                    btnClass: 'btn-red',
+                },
+            }
+        });
+    };
 
     let textDataTable = {
         "emptyTable": "Chưa có thành viên nào",
@@ -66,43 +101,45 @@ $(function () {
 
     let changePassword = function () {
         $('#btnChangePassword').on('click', function () {
-            let oldPassword = $('#oldPassword').val();
-            let userId = $('#sessionUserId').val();
-            let confirmPassword = $('#confirmPassword').val();
-            let newPassword = $('#newPassword').val();
+            if ($('#frmChangePassword').valid()) {
+                let oldPassword = $('#oldPassword').val();
+                let userId = $('#sessionUserId').val();
+                let confirmPassword = $('#confirmPassword').val();
+                let newPassword = $('#newPassword').val();
 
-            $.ajax({
-                url: "/checkPassword.do",
-                data: {
-                    'matKhau': oldPassword,
-                    'idNguoiDung': userId,
-                },
-                type: "POST",
-                success: function (data) {
-                    if (data) {
-                        if (newPassword === confirmPassword) {
-                            $.confirm({
-                                title: 'Bạn có muốn đổi mật khẩu',
-                                content: '',
-                                type: 'red',
-                                typeAnimated: true,
-                                buttons: {
-                                    cancel: {
-                                        text: 'Hủy',
-                                        btnClass: 'btn-red',
-                                    },
-                                    confirm: {
-                                        text: 'Đồng ý',
-                                        btnClass: 'btn-red',
-                                        action: function () {
-                                            changePassword();
-                                        }
-                                    },
-                                }
-                            });
+                $.ajax({
+                    url: "/checkPassword.do",
+                    data: {
+                        'matKhau': oldPassword,
+                        'idNguoiDung': userId,
+                    },
+                    type: "POST",
+                    success: function (data) {
+                        if (data) {
+                            if (newPassword === confirmPassword) {
+                                $.confirm({
+                                    title: 'Bạn có muốn đổi mật khẩu',
+                                    content: '',
+                                    type: 'red',
+                                    typeAnimated: true,
+                                    buttons: {
+                                        cancel: {
+                                            text: 'Hủy',
+                                            btnClass: 'btn-red',
+                                        },
+                                        confirm: {
+                                            text: 'Đồng ý',
+                                            btnClass: 'btn-red',
+                                            action: function () {
+                                                changePassword();
+                                            }
+                                        },
+                                    }
+                                });
+                            }
                         } else {
                             $.confirm({
-                                title: 'Mật khẩu không trùng khớp',
+                                title: 'Mật khẩu cũ không chính xác',
                                 content: '',
                                 type: 'red',
                                 typeAnimated: true,
@@ -114,22 +151,11 @@ $(function () {
                                 }
                             });
                         }
-                    } else {
-                        $.confirm({
-                            title: 'Mật khẩu cũ không chính xác',
-                            content: '',
-                            type: 'red',
-                            typeAnimated: true,
-                            buttons: {
-                                cancel: {
-                                    text: 'Thử lại',
-                                    btnClass: 'btn-red',
-                                },
-                            }
-                        });
                     }
-                }
-            })
+                })
+            } else {
+                nofiticationChangePasswordFalse();
+            };
 
             let changePassword = function () {
                 $.ajax({
@@ -141,34 +167,9 @@ $(function () {
                     type: "POST",
                     success: function (data) {
                         if (data) {
-                            $.confirm({
-                                title: 'Bạn đã đổi mật khẩu thành công',
-                                content: '',
-                                type: 'red',
-                                typeAnimated: true,
-                                buttons: {
-                                    cancel: {
-                                        text: 'Đóng',
-                                        btnClass: 'btn-red',
-                                        action: function () {
-                                            window.location.href = "/login.do";
-                                        }
-                                    },
-                                }
-                            });
+                            nofiticationChangePasswordSuccess();
                         } else {
-                            $.confirm({
-                                title: 'Đổi mật khẩu thất bại',
-                                content: 'Đã xảy ra lỗi trong quá trình đổi mật khẩu, xin vui lòng thử lại',
-                                type: 'red',
-                                typeAnimated: true,
-                                buttons: {
-                                    cancel: {
-                                        text: 'Đóng',
-                                        btnClass: 'btn-red',
-                                    },
-                                }
-                            });
+                            nofiticationChangePasswordFalse();
                         }
                     }
                 });
@@ -295,6 +296,51 @@ $(function () {
                 }
             })
         }
+    };
+    
+    let onClickCloseChangePassword = function () {
+        $('#btnCloseChangePassword').on('click',function () {
+            let removeValidate = $('#frmChangePassword').validate();
+            removeValidate.resetForm();
+        })
+    };
+
+    let validateFormChangePassword = function () {
+        $('#frmChangePassword').validate({
+            rules: {
+                oldPassword: {
+                    required: true,
+                    alphanumeric: true,
+                    minlength: 3,
+                },
+                newPassword: {
+                    required: true,
+                    alphanumeric: true,
+                    minlength: 3,
+                },
+                confirmPassword: {
+                    required: true,
+                    alphanumeric: true,
+                    minlength: 3,
+                    equalTo: "#newPassword",
+                }
+            },
+            messages: {
+                oldPassword: {
+                    required: "* Vui lòng nhập mật khẩu cũ",
+                    minlength: "* Mật khẩu phải lớn hơn 3 ký tự",
+                },
+                newPassword: {
+                    required: "* Vui lòng nhập mật khẩu mới",
+                    minlength: "* Mật khẩu phải lớn hơn 3 ký tự",
+                },
+                confirmPassword: {
+                    required: "* Vui lòng xác nhận lại mật khẩu",
+                    minlength: "* Mật khẩu phải lớn hơn 3 ký tự",
+                    equalTo: "* Mật khẩu không trùng khớp",
+                }
+            }
+        })
     };
 
     return setup();

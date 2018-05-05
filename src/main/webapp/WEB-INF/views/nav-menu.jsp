@@ -79,35 +79,43 @@
         </div>
     </div>
 </nav>
-<div class="modal fade" id="modalChangePassword" tabindex="-1" role="dialog" aria-labelledby="modalLabel"
-     aria-hidden="true">
-    <div class="modal-dialog modal-side modal-top-right modal-notify">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title text-title" id="modalLabel">Đổi mật khẩu</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="row form-group">
-                    <div class="col-md-12">
-                        <label><i class="fa fa-lock"></i>&nbsp;&nbsp;<b>Mật khẩu cũ</b></label>
-                        <input id="oldPassword" type="password" class="form-control" placeholder="Mật khẩu cũ">
-                        <label class="mrg-x2"><i class="fa fa-get-pocket"></i>&nbsp;&nbsp;<b>Mật khẩu mới</b></label>
-                        <input id="newPassword" type="password" class="form-control" placeholder="Mật khẩu mới">
-                        <label class="mrg-x2"><i class="fa fa-get-pocket"></i>&nbsp;&nbsp;<b>Nhập lại mật khẩu</b></label>
-                        <input id="confirmPassword" type="password" class="form-control" placeholder="Nhập lại mật khẩu">
+<form id="frmChangePassword">
+    <div class="modal fade" id="modalChangePassword" tabindex="-1" role="dialog" aria-labelledby="modalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-side modal-top-right modal-notify">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-title" id="modalLabel">Đổi mật khẩu</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row form-group">
+                        <div class="col-md-12">
+                            <div>
+                                <label><i class="fa fa-lock"></i>&nbsp;&nbsp;<b>Mật khẩu cũ</b></label>
+                                <input id="oldPassword" name="oldPassword" type="password" class="form-control" placeholder="Mật khẩu cũ">
+                            </div>
+                            <div>
+                                <label class="mrg-x2"><i class="fa fa-get-pocket"></i>&nbsp;&nbsp;<b>Mật khẩu mới</b></label>
+                                <input id="newPassword" name="newPassword" type="password" class="form-control" placeholder="Mật khẩu mới">
+                            </div>
+                            <div>
+                                <label class="mrg-x2"><i class="fa fa-get-pocket"></i>&nbsp;&nbsp;<b>Nhập lại mật khẩu</b></label>
+                                <input id="confirmPassword" name="confirmPassword" type="password" class="form-control" placeholder="Nhập lại mật khẩu">
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-red" data-dismiss="modal">Hủy &nbsp;&nbsp;<i class="fa fa-close"></i></button>
-                <button id="btnChangePassword" type="button" class="btn btn-red">Đổi mật khẩu &nbsp;&nbsp;<i class="fa fa-recycle"></i></button>
+                <div class="modal-footer">
+                    <button id="btnCloseChangePassword" type="button" class="btn btn-red" data-dismiss="modal">Hủy &nbsp;&nbsp;<i class="fa fa-close"></i></button>
+                    <button id="btnChangePassword" type="button" class="btn btn-red">Đổi mật khẩu &nbsp;&nbsp;<i class="fa fa-recycle"></i></button>
+                </div>
             </div>
         </div>
     </div>
-</div>
+</form>
 <script type="text/javascript" src="<c:url value="../../resources/js/forms/nav.js"/>"></script>
 </html>
 
