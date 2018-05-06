@@ -29,7 +29,7 @@
     <a id="8" class="pht btn btn-red btn-menu" data-toggle="collapse" data-target="#navbar2"><b>Hội thảo<i class="fa fa-newspaper-o float-right"></i></b></a><br/>
     <a id="9" class="sdh btn btn-red btn-menu" data-toggle="collapse" data-target="#navbar3"><b>Sau đại học<i class="fa fa-university float-right"></i></b></a><br/>
 </div>
-<form id="formRoom">
+<form id="frmRegisterRoom">
     <div class="modal fade" id="modalRegisterRoom" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
@@ -48,20 +48,20 @@
                             <input type="text" class="form-control mrg" placeholder="Mã số sinh viên" value="<%=session.getAttribute("MSSV")%>" readonly>
                             <input type="text" class="form-control mrg" placeholder="Lớp" value="<%=session.getAttribute("LOP")%>" readonly>
                             <input type="text" class="form-control mrg" value="<%=session.getAttribute("NGANH")%>" readonly>
-                            <input id="soNguoi" name="soNguoi" type="text" class="clr form-control mrg" placeholder="Số người">
                             <textarea id="mucDich" name="mucDich" type="text" class="clr form-control mrg" rows="3" placeholder="Mục đích sử dụng"></textarea>
-                            <label class="mrg"><b>Chọn phòng</b></label>
-                            <select id="selRoom" name="idDmPhong" type="text" class="form-control"></select>
+                            <div>
+                                <label class="mrg"><b>Chọn phòng</b></label>
+                                <select id="selRoom" name="idDmPhong" type="text" class="form-control">
+                                    <option value="-1">Chọn phòng cần đặt</option>
+                                </select>
+                                <select id="soNguoi" name="soNguoi" type="text" class="clr form-control mrg" >
+                                    <option value="-1">Chọn số người</option>
+                                </select>
+                            </div>
                             <label class="mrg"><b>Thời gian</b></label>
                             <input id="ngay" name="ngay" type="text" class="clr form-control" placeholder="Chọn ngày">
-                            <div class="row mrg">
-                                <div class="col-md-12">
-                                    <div class="input-group" style="height: 35px;">
-                                        <input id="gioBatDau" name="gioBatDau" type="text" class="clr form-control mrg" placeholder="Giờ bắt đầu">
-                                        <input id="gioKetThuc" name="gioKetThuc" type="text" class="clr form-control mrg" placeholder="Kết thúc">
-                                    </div>
-                                </div>
-                            </div>
+                            <input id="gioBatDau" name="gioBatDau" type="text" class="clr form-control mrg" placeholder="Giờ bắt đầu">
+                            <input id="gioKetThuc" name="gioKetThuc" type="text" class="clr form-control mrg" placeholder="Giờ kết thúc">
                             <label class="mrg"><b>Quy định và điều khoản thư viện</b></label>
                             <div class="row form-inline">
                                 <div class="col-md-6">

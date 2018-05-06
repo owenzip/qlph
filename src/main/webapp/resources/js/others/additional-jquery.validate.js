@@ -335,3 +335,7 @@ jQuery.validator.addMethod("pattern", function(value, element, param) {
     }
     return param.test(value);
 }, "Invalid format.");
+
+$.validator.addMethod("dateFormat", function(value, element) {
+    return value.match(/^dd?-dd?-dd$/);
+}, "* Vui lòng nhập đúng định dạng dd/mm/yyyy");

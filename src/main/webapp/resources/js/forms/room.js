@@ -9,6 +9,7 @@ $(function () {
     let tableRoomFunction = undefined;
 
     let setup = function () {
+        selSoNguoi();
         clickShowTable();
         clickVerMenu();
         selectCategory();
@@ -16,15 +17,58 @@ $(function () {
         tableRoomFunction = configTableRoom;
         textChangeInpSoNguoi();
         onClickCancelRegisterRoom();
+        validateFormRegisterRoom();
+        //validateMembers();
+        //onChangeSelRoom();
+    }
+
+    let nofiticationRegisterRoomSuccess = function () {
+        $.confirm({
+            title: 'Bạn đã đặt phòng thành công',
+            content: 'Kiểm tra lại thông tin tại LỊCH SỬ ĐẶT PHÒNG của bạn',
+            type: 'red',
+            typeAnimated: true,
+            buttons: {
+                confirm: {
+                    text: 'Lịch sử',
+                    btnClass: 'btn-red',
+                    action: function () {
+                        window.location.href = "/history.do";
+                    }
+                },
+            }
+        });
+    };
+
+    let nofiticationRegisterRoomFalse = function () {
+        $.confirm({
+            title: 'Đặt phòng thất bại',
+            content: 'Xin vui lòng thử lại',
+            type: 'red',
+            typeAnimated: true,
+            buttons: {
+                confirm: {
+                    text: 'Đóng',
+                    btnClass: 'btn-red',
+                },
+            }
+        });
+    };
+
+    let selSoNguoi = function () {
+        let maxMember = 30;
+        let minMember = 4;
+        for (minMember; minMember <= maxMember; minMember++) {
+            $('#soNguoi').append('<option value="' + minMember + '">' + minMember + '</option>');
+        }
     }
 
     let textChangeInpSoNguoi = function () {
-        $('#soNguoi').on('keyup',function () {
+        $('#soNguoi').on('change',function () {
             tableMembersFunction.clear().draw();
             let soNguoi = $('#soNguoi').val();
             for(let i=0;i<soNguoi;i++) {
                 tableMembersFunction.row.add(" ", " ", " ", " ").draw();
-
             };
         })
     }
@@ -178,66 +222,36 @@ $(function () {
 
     let insertRoom = function () {
         $('#btnAcceptRoom').on('click', function () {
-            $.ajax({
-                url: "/insertRoom.do",
-                type: "POST",
-                data: $("#formRoom").serialize(),
-                success: function (data) {
-                    if (data) {
-                        tableRoomFunction.ajax.reload();
-                        $.confirm({
-                            title: 'Bạn đã đặt phòng thành công',
-                            content: 'Kiểm tra lại thông tin ở Lịch Sử đặt phòng của bạn',
-                            type: 'red',
-                            typeAnimated: true,
-                            buttons: {
-                                confirm: {
-                                    text: 'Xác nhận',
-                                    btnClass: 'btn-red',
-                                    action: function () {
-                                        window.location.href = "/history.do";
-                                    }
-                                },
-                            }
-                        });
-                    } else {
-                        $.confirm({
-                            title: 'Có lỗi xảy ra từ hệ thống',
-                            content: 'Xin vui lòng thử lại sau',
-                            type: 'red',
-                            typeAnimated: true,
-                            buttons: {
-                                confirm: {
-                                    text: 'Đóng',
-                                    btnClass: 'btn-red',
-                                },
-                            }
-                        });
-                    }
-                },
-                error: function () {
-                    $.confirm({
-                        title: 'Có lỗi xảy ra trong quá trình đặt phòng',
-                        content: 'Vui lòng kiểm tra lại các trường bạn đã nhập',
-                        type: 'red',
-                        typeAnimated: true,
-                        buttons: {
-                            confirm: {
-                                text: 'Thử lại',
-                                btnClass: 'btn-red',
-                            },
+            if ($('#frmRegisterRoom').valid()) {
+                $.ajax({
+                    url: "/insertRoom.do",
+                    type: "POST",
+                    data: $("#frmRegisterRoom").serialize(),
+                    success: function (data) {
+                        if (data) {
+                            tableRoomFunction.ajax.reload();
+                            nofiticationRegisterRoomSuccess();
+                        } else {
+                            nofiticationRegisterRoomFalse();
                         }
-                    });
-                }
-            });
+                    },
+                    error: function () {
+                        nofiticationRegisterRoomFalse();
+                    }
+                });
+            } else {
+                nofiticationRegisterRoomFalse();
+            }
         })
     };
     
     let onClickCancelRegisterRoom = function () {
         $('#btnCancelRegisterRoom').on('click',function () {
-            $("#formRoom").find('.clr').val("");
+            $("#frmRegisterRoom").find('.clr').val("");
             $('#selRoom').val(0);
             configTableMembers.rows().remove().draw();
+            let removeValidate = $('#frmRegisterRoom').validate();
+            removeValidate.resetForm();
         })
     }
 
@@ -248,6 +262,167 @@ $(function () {
             s = s.replace(new RegExp('\\{' + i + '\\}', 'gm'), arguments[i]);
         }
         return s;
+    };
+
+    /*let onChangeSelRoom = function () {
+        $('#soNguoi').attr("readonly", true);
+        $('#selRoom').on('change',function () {
+            if ($('#selRoom').val() == -1) {
+                $('#soNguoi').attr("readonly", true);
+            } else {
+                $('#soNguoi').attr("readonly",false);
+                //validateMembers();
+            }
+        })
+    };*/
+
+    /*let validateMembers = function () {
+        if ($('#selRoom').val() >= 1 && $('#selRoom').val() <= 7) {
+            $('#frmRegisterRoom').validate({
+                rules: {
+                    soNguoi: {
+                        required: true,
+                        number: true,
+                        min: 4,
+                        max: 20,
+                    }
+                },
+                messages: {
+                    soNguoi: {
+                        required: "* Vui lòng nhập số người",
+                        number: "* Số người phải là chữ số",
+                        min: "* Phòng học nhóm phải từ 4 đến 20 người",
+                        max: "* Phòng học nhóm phải từ 4 đến 20 người",
+                    }
+                }
+            })
+        } else if ($('#selRoom').val() == 8) {
+            $('#frmRegisterRoom').validate({
+                rules: {
+                    soNguoi: {
+                        required: true,
+                        number: true,
+                        min: 10,
+                        max: 20,
+                    }
+                },
+                messages: {
+                    soNguoi: {
+                        required: "* Vui lòng nhập số người",
+                        number: "* Số người phải là chữ số",
+                        min: "* Phòng hội thảo phải từ 10 đến 20 người",
+                        max: "* Phòng hội thảo phải từ 10 đến 20 người",
+                    }
+                }
+            })
+        } else if ($('#selRoom').val() == 9) {
+            $('#frmRegisterRoom').validate({
+                rules: {
+                    soNguoi: {
+                        required: true,
+                        number: true,
+                        min: 20,
+                        max: 30,
+                    }
+                },
+                messages: {
+                    soNguoi: {
+                        required: "* Vui lòng nhập số người",
+                        number: "* Số người phải là chữ số",
+                        min: "* Phòng sau đại học phải từ 20 đến 30 người",
+                        max: "* Phòng sau đại học phải từ 20 đến 30 người",
+                    }
+                }
+            })
+        } else {
+            $('#frmRegisterRoom').validate({
+                rules: {
+                    soNguoi: {
+                        required: true,
+                        number: true,
+                        min: 5,
+                        max: 30,
+                    }
+                },
+                messages: {
+                    soNguoi: {
+                        required: "* Vui lòng nhập số người",
+                        number: "* Số người phải là chữ số",
+                        min: "* Khu vực đọc sách phải từ 5 đến 30 người",
+                        max: "* Khu vực đọc sách phải từ 5 đến 30 người",
+                    }
+                }
+            })
+        }
+    };*/
+
+    let validateFormRegisterRoom = function () {
+        $('#frmRegisterRoom').validate({
+            rules: {
+                soNguoi: {
+                    required: true,
+                    number: true,
+                    min: 4,
+                    max: 30,
+                },
+                mucDich: {
+                    required: true,
+                    minlength: 5,
+                    maxlength: 20,
+                },
+                idDmPhong: {
+                    min: 1,
+                },
+                ngay: {
+                    required: true,
+                    dateITA: true,
+                },
+                gioBatDau: {
+                    required: true,
+                    time: true,
+                    minlength: 5,
+                    maxlength: 5,
+                },
+                gioKetThuc: {
+                    required: true,
+                    time: true,
+                    minlength: 5,
+                    maxlength: 5,
+                }
+            },
+            messages: {
+                soNguoi: {
+                    required: "* Vui lòng nhập số người",
+                    number: "* Số người phải là chữ số",
+                    min: "* Thành viên phải từ 4 đến 30 người",
+                    max: "* Thành viên phải từ 4 đến 30 người",
+                },
+                mucDich: {
+                    required: "* Vui lòng nhập mục đích",
+                    minlength: "* Mục đích phải chứa 5 đến 20 ký tự",
+                    maxlength: "* Mục đích phải chứa 5 đến 20 ký tự",
+                },
+                idDmPhong: {
+                    min: "* Vui lòng chọn phòng cần đặt"
+                },
+                ngay: {
+                    required: "* Vui lòng nhập ngày",
+                    dateITA: "* Định dạng ngày là dd/mm/yyyy",
+                },
+                gioBatDau: {
+                    required: "* Vui lòng nhập giờ",
+                    time: "* Định dạng giờ là hh:mm",
+                    minlength: "* Định dạng giờ là hh:mm",
+                    maxlength: "* Định dạng giờ là hh:mm",
+                },
+                gioKetThuc: {
+                    required: "* Vui lòng nhập giờ",
+                    time: "* Định dạng giờ là hh:mm",
+                    minlength: "* Định dạng giờ là hh:mm",
+                    maxlength: "* Định dạng giờ là hh:mm",
+                }
+            },
+        })
     };
 
     return setup();
