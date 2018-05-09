@@ -1,3 +1,8 @@
+/**
+ * @DNTU-LIBRARY application
+ * @author Nhựt Nguyễn
+ * @since 15/04/2018
+ */
 package vn.dntu.qlph.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,12 +13,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import vn.dntu.qlph.model.DetailRoomVO;
 import vn.dntu.qlph.model.RoomVO;
-import vn.dntu.qlph.model.UserVO;
 import vn.dntu.qlph.service.impl.RoomImpl;
-import vn.dntu.qlph.service.impl.UserImpl;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -70,6 +71,18 @@ public class RoomController {
         } catch (Exception e) {
             e.printStackTrace();
             return null;
+        }
+    }
+
+    @RequestMapping(value = "/deleteRoom.do")
+    @ResponseBody
+    public boolean deleteRoom(@RequestParam("idPhong") int idPhong) {
+        try {
+            roomImpl.deleteRoom(idPhong);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
         }
     }
 }

@@ -1,3 +1,8 @@
+<%--
+- @DNTU-LIBRARY application
+- @author Nhựt Nguyễn
+- @since 15/04/2018
+--%>
 <!DOCTYPE html>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
@@ -58,7 +63,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-red" data-dismiss="modal">Hủy phòng &nbsp;&nbsp;<i class="fa fa-trash-o"></i></button>
+                <button id="btnDeleteRoom" type="button" class="btn btn-red" data-dismiss="modal">Hủy phòng &nbsp;&nbsp;<i class="fa fa-trash-o"></i></button>
                 <button type="button" class="btn btn-red" data-dismiss="modal">Đóng &nbsp;&nbsp;<i class="fa fa-close"></i></button>
             </div>
         </div>

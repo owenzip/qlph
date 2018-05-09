@@ -1,20 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+ - @DNTU-LIBRARY application
+ - @author Nhựt Nguyễn
+ - @since 15/04/2018
+ -/-->
 <beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:context="http://www.springframework.org/schema/context"
        xmlns="http://www.springframework.org/schema/beans"
        xmlns:task="http://www.springframework.org/schema/task"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-						http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
-                        http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd">
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/task
+       http://www.springframework.org/schema/task/spring-task.xsd">
+
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
         <property name="maxUploadSize" value="9000000"/>
     </bean>
-<!--    <context:component-scan base-package="vn.dntu.qlph.**.impl">
-        <context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/>
-        <context:include-filter type="annotation" expression="org.springframework.stereotype.Repository"/>
-        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
-    </context:component-scan>-->
     <bean id="objectMapper" class="com.fasterxml.jackson.databind.ObjectMapper"></bean>
-    <task:executor id="acsyncExecutor" pool-size="16"  />
+    <task:executor id="acsyncExecutor" pool-size="16"/>
     <task:annotation-driven executor="acsyncExecutor"/>
 </beans>

@@ -1,5 +1,9 @@
+/**
+ * @DNTU-LIBRARY application
+ * @author Nhựt Nguyễn
+ * @since 15/04/2018
+ */
 package vn.dntu.qlph.service.impl;
-
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,11 +23,11 @@ public class UserImpl implements UserService {
 
     @Override
     public void changePassword(String matKhau, int idNguoiDung) {
-        this.userService.changePassword(matKhau,idNguoiDung);
+        this.userService.changePassword(matKhau, idNguoiDung);
     }
 
     @Override
     public UserVO checkPassword(String matKhau, int idNguoiDung) {
-        return this.userService.checkPassword(matKhau,idNguoiDung);
+        return this.userService.checkPassword(matKhau, idNguoiDung);
     }
 }

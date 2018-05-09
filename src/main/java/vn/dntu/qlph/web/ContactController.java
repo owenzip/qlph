@@ -1,3 +1,8 @@
+/**
+ * @DNTU-LIBRARY application
+ * @author Nhựt Nguyễn
+ * @since 15/04/2018
+ */
 package vn.dntu.qlph.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,14 +20,13 @@ public class ContactController {
 
     @RequestMapping(value = "/insertContact.do")
     @ResponseBody
-    public boolean insertContact(@RequestParam("idVanDe") int idVanDe, @RequestParam("sdt") int sdt,@RequestParam("noiDung") String noiDung,@RequestParam("email") String email) {
+    public boolean insertContact(@RequestParam("idVanDe") int idVanDe, @RequestParam("sdt") int sdt, @RequestParam("noiDung") String noiDung, @RequestParam("email") String email) {
         try {
-            contactImpl.insertContact(idVanDe,sdt,noiDung,email);
+            contactImpl.insertContact(idVanDe, sdt, noiDung, email);
             return true;
         } catch (Exception e) {
             e.printStackTrace();
             return false;
         }
     }
-
 }

@@ -1,9 +1,15 @@
+/**
+ * @DNTU-LIBRARY application
+ * @author Nhựt Nguyễn
+ * @since 15/04/2018
+ */
 package vn.dntu.qlph.service;
 
 import org.apache.ibatis.annotations.Param;
 import vn.dntu.qlph.model.UserVO;
 
 public interface UserService {
+
     UserVO checkLogin(@Param("mssv") String mssv, @Param("matKhau") String matKhau);
 
     UserVO checkPassword(@Param("matKhau") String matKhau, @Param("idNguoiDung") int idNguoiDung);

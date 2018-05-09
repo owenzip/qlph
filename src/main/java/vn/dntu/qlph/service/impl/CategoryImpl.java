@@ -1,5 +1,9 @@
+/**
+ * @DNTU-LIBRARY application
+ * @author Nhựt Nguyễn
+ * @since 15/04/2018
+ */
 package vn.dntu.qlph.service.impl;
-
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,11 +24,17 @@ public class CategoryImpl implements CategoryService {
     }
 
     @Override
-    public ArrayList<CategoryVO> selectListRoom() { return categoryService.selectListRoom(); }
+    public ArrayList<CategoryVO> selectListRoom() {
+        return categoryService.selectListRoom();
+    }
 
     @Override
-    public ArrayList<CategoryVO> selectListMajor() { return categoryService.selectListMajor(); }
+    public ArrayList<CategoryVO> selectListMajor() {
+        return categoryService.selectListMajor();
+    }
 
     @Override
-    public ArrayList<CategoryVO> selectListStatus() { return categoryService.selectListStatus(); }
+    public ArrayList<CategoryVO> selectListStatus() {
+        return categoryService.selectListStatus();
+    }
 }

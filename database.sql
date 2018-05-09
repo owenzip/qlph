@@ -31,7 +31,7 @@ CREATE TABLE `chitietphong` (
   `mssv` int(11) DEFAULT NULL,
   `lop` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`idchitietphong`)
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=84 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,7 +40,6 @@ CREATE TABLE `chitietphong` (
 
 LOCK TABLES `chitietphong` WRITE;
 /*!40000 ALTER TABLE `chitietphong` DISABLE KEYS */;
-INSERT INTO `chitietphong` VALUES (28,105,'da',1233,'213'),(29,105,'eqư',123,'ađ'),(30,105,'zcx',123,'ưa'),(31,105,'ưqecxz',123,'213');
 /*!40000 ALTER TABLE `chitietphong` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -216,7 +215,7 @@ CREATE TABLE `phong` (
   `mucdich` varchar(255) DEFAULT NULL,
   `nguoidaidien` int(11) DEFAULT NULL,
   PRIMARY KEY (`idphong`)
-) ENGINE=InnoDB AUTO_INCREMENT=106 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=119 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -225,7 +224,6 @@ CREATE TABLE `phong` (
 
 LOCK TABLES `phong` WRITE;
 /*!40000 ALTER TABLE `phong` DISABLE KEYS */;
-INSERT INTO `phong` VALUES (105,1,'12:11:00','13:11:00','2018-12-20',1,4,'dăđawadư',1);
 /*!40000 ALTER TABLE `phong` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -262,4 +260,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-05-07  0:17:27
+-- Dump completed on 2018-05-10  1:08:02

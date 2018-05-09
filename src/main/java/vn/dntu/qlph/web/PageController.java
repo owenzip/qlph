@@ -1,3 +1,8 @@
+/**
+ * @DNTU-LIBRARY application
+ * @author Nhựt Nguyễn
+ * @since 15/04/2018
+ */
 package vn.dntu.qlph.web;
 
 import org.springframework.stereotype.Controller;

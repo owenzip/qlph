@@ -1,6 +1,10 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+ - @DNTU-LIBRARY application
+ - @author Nhựt Nguyễn
+ - @since 15/04/2018
+ -/-->
 <mapper namespace="vn.dntu.qlph.service.ContactService">
-
     <resultMap id="ContactVO" type="ContactVO">
         <result property="idLienHe" column="idlienhe"/>
         <result property="idVanDe" column="idvande"/>

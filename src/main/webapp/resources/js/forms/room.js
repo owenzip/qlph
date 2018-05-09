@@ -1,3 +1,8 @@
+/**
+ * @DNTU-LIBRARY application
+ * @author Nhựt Nguyễn
+ * @since 15/04/2018
+ */
 $(function () {
 
     const colUsername = '<input type="text" name="detailRoomVO[{0}].tenNguoiDungDetails" class="form-control-tbl form-control">';
@@ -253,7 +258,8 @@ $(function () {
             let removeValidate = $('#frmRegisterRoom').validate();
             removeValidate.resetForm();
         })
-    }
+    };
+
 
     String.prototype.format = String.prototype.f = function () {
         let s = this,
