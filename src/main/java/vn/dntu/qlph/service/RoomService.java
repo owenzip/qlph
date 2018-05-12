@@ -19,9 +19,14 @@ public interface RoomService {
 
     void deleteRoom(@Param("idPhong") int idPhong);
 
+    void updateStatus(@Param("idPhong") int idPhong,@Param("trangThai") int trangThai);
+
     List<RoomVO> selectRoomToDay(@Param("idDmPhong") int idDmPhong);
 
     List<RoomVO> selectRoomById(@Param("nguoiDaiDien") int nguoiDaiDien);
 
     List<DetailRoomVO> selectMembersByRoom(@Param("idPhong") int idPhong);
+
+    List<RoomVO> selectAllRoom(@Param("trangThai") String trangThai);
+
 }

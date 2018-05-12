@@ -3,6 +3,11 @@
  * @author Nhựt Nguyễn
  * @since 15/04/2018
  */
+
+table {
+    font-size: 14px;
+    line-height: 1.428;
+}
 Html, body {
     height: 100%;
 }
@@ -107,10 +112,6 @@ Html, body {
 }
 
 .btn-menu {
-    width: 200px;
-}
-.div-menu-dropdown {
-    margin-left: 71px;
     width: 200px;
 }
 

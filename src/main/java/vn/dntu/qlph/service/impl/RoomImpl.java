@@ -48,4 +48,15 @@ public class RoomImpl implements RoomService {
     public void deleteRoom(int idPhong) {
         roomService.deleteRoom(idPhong);
     }
+
+    @Override
+    public void updateStatus(int idPhong, int trangThai) {
+        roomService.updateStatus(idPhong,trangThai);
+    }
+
+    @Override
+    public List<RoomVO> selectAllRoom(String trangThai) {
+        return roomService.selectAllRoom(trangThai);
+    }
+
 }

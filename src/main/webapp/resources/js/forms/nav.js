@@ -349,13 +349,13 @@ $(function () {
             /**Chức năng xóa phòng
              * @Event : Bấm vào <Table: "THÀNH VIÊN THUỘC PHÒNG">
              * @Solution :
-             * 1. Lấy idPhong tại dòng đã chọn
-             * 2. Truyền idPhong vào @RequestMapping "/deleteRoom.do"
+             * 1. Lấy idPhong tại dòng đã chọn và trangThai = 4 (Hủy phòng)
+             * 2. Truyền idPhong và trangThai vào @RequestMapping "/updateStatus.do"
              * 3. Tải tại bảng
              * */
             $('#btnDeleteRoom').on('click', function () {
                 $.confirm({
-                    title: 'Bạn có chắc chắn muốn xóa', content: '', type: 'red', typeAnimated: true,
+                    title: 'Bạn có chắc chắn muốn hủy phòng', content: '', type: 'red', typeAnimated: true,
                     buttons: {
                         cancel: {
                             text: 'Không',
@@ -365,11 +365,12 @@ $(function () {
                             text: 'Có',
                             btnClass: 'btn-red',
                             action: function () {
-                                let hoursNow = new Date().getHours();
-                                let minNow = new Date().getMinutes();
                                 $.ajax({
-                                    url: "/deleteRoom.do",
-                                    data: {'idPhong': idPhong,},
+                                    url: "/updateStatus.do",
+                                    data: {
+                                        'idPhong': idPhong,
+                                        'trangThai': 4
+                                    },
                                     type: "POST",
                                     success: function (data) {
                                         if (data) {
@@ -391,7 +392,7 @@ $(function () {
                                         } else {
                                             $.confirm({
                                                 title: 'Hủy phòng thất bại',
-                                                content: 'Xin vui lòng thử lại',
+                                                content: 'Xin vui lòng thử lại hoặc liên hệ ban quản trị',
                                                 type: 'red',
                                                 typeAnimated: true,
                                                 buttons: {

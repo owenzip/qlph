@@ -9,7 +9,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
-<div class="col-md-3 text-left">
+<div class="col-md-3 text-center">
     <label class="ver-menu-a">Giới thiệu chung</label><br/>
     <label class="ver-menu-a">Cơ cấu tổ chức</label><br/>
     <label class="ver-menu-a">Nội quy thư viện</label><br/>

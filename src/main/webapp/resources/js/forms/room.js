@@ -45,15 +45,15 @@ $(function () {
         });
     };
 
-    let nofiticationRegisterRoomFalse = function () {
+    let nofiticationRegisterRoomFalse = function (message, note) {
         $.confirm({
-            title: 'Đặt phòng thất bại',
-            content: 'Xin vui lòng thử lại',
+            title: message,
+            content: note,
             type: 'red',
             typeAnimated: true,
             buttons: {
                 confirm: {
-                    text: 'Đóng',
+                    text: 'Thử lại',
                     btnClass: 'btn-red',
                 },
             }
@@ -69,17 +69,18 @@ $(function () {
     }
 
     let textChangeInpSoNguoi = function () {
-        $('#soNguoi').on('change',function () {
+        $('#soNguoi').on('change', function () {
             tableMembersFunction.clear().draw();
             let soNguoi = $('#soNguoi').val();
-            for(let i=0;i<soNguoi;i++) {
+            for (let i = 0; i < soNguoi; i++) {
                 tableMembersFunction.row.add(" ", " ", " ", " ").draw();
-            };
+            }
+            ;
         })
     }
 
     let clickShowTable = function () {
-        $('#btnRegisterRoom').on('click',function () {
+        $('#btnRegisterRoom').on('click', function () {
             tableMembersFunction = configTableMembers;
         })
     }
@@ -101,6 +102,7 @@ $(function () {
     });
 
     let configTableMembers = tableMember.DataTable({
+
         "bAutoWidth": false,
         "columnDefs": [
             {
@@ -115,19 +117,19 @@ $(function () {
             }, {
                 "targets": 1,
                 "sWidth": "55%",
-                "data": function (data,type, row, meta) {
+                "data": function (data, type, row, meta) {
                     return colUsername.f(meta.row)
                 }
             }, {
                 "targets": 2,
                 "sWidth": "20%",
-                "data": function (data,type, row, meta) {
+                "data": function (data, type, row, meta) {
                     return colClass.f(meta.row)
                 }
             }, {
                 "targets": 3,
                 "sWidth": "22%",
-                "data": function (data,type, row, meta) {
+                "data": function (data, type, row, meta) {
                     return colCode.f(meta.row)
                 }
             },
@@ -181,7 +183,7 @@ $(function () {
                     let startAt = parseInt(meta.settings._iDisplayStart);
                     return rowIndex + startAt + 1;
                 }
-            },{
+            }, {
                 "targets": 1,
                 "sWidth": "25%",
                 "data": "tenNguoiDaiDien",
@@ -192,16 +194,16 @@ $(function () {
             }, {
                 "targets": 3,
                 "sWidth": "10%",
-                "data":"gioBatDau"
+                "data": "gioBatDau"
             }, {
                 "targets": 4,
                 "sWidth": "10%",
-                "data":"gioKetThuc"
-            },{
+                "data": "gioKetThuc"
+            }, {
                 "targets": 5,
                 "sWidth": "15%",
                 "data": "trangThai"
-            },{
+            }, {
                 "targets": 6,
                 "sWidth": "5%",
                 "data": "soNguoi"
@@ -228,30 +230,46 @@ $(function () {
     let insertRoom = function () {
         $('#btnAcceptRoom').on('click', function () {
             if ($('#frmRegisterRoom').valid()) {
-                $.ajax({
-                    url: "/insertRoom.do",
-                    type: "POST",
-                    data: $("#frmRegisterRoom").serialize(),
-                    success: function (data) {
-                        if (data) {
-                            tableRoomFunction.ajax.reload();
-                            nofiticationRegisterRoomSuccess();
-                        } else {
-                            nofiticationRegisterRoomFalse();
+                /**Rèn buộc trường hợp ngày đặt*/
+                let dateNow = new Date();
+                let dayNow = parseInt(dateNow.getDate());
+                let monthNow = parseInt(dateNow.getMonth() + 1); /**Tháng 1 bắt đầu từ 0*/
+                let yearNow = parseInt(dateNow.getFullYear());
+                let dateRoom = $('#ngay').val();
+                let dayRoom = parseInt(dateRoom.slice(0, 2), 10);
+                let monthRoom = parseInt(dateRoom.slice(3, 5), 10);
+                let yearRoom = parseInt(dateRoom.slice(6, 10), 10);
+
+                if (dayNow <= dayRoom && monthNow === monthRoom && yearNow === yearRoom) {
+                    $.ajax({
+                        url: "/insertRoom.do",
+                        type: "POST",
+                        data: $("#frmRegisterRoom").serialize(),
+                        success: function (data) {
+                            if (data) {
+                                tableRoomFunction.ajax.reload();
+                                nofiticationRegisterRoomSuccess();
+                            } else {
+                                nofiticationRegisterRoomFalse("Đặt phòng không thành công","Xin vui lòng kiểm tra lại");
+                            }
+                        },
+                        error: function () {
+                            nofiticationRegisterRoomFalse("Đặt phòng không thành công","Xin vui lòng kiểm tra lại");
                         }
-                    },
-                    error: function () {
-                        nofiticationRegisterRoomFalse();
-                    }
-                });
+                    });
+                } else if (dayNow > dayRoom && monthNow === monthRoom && yearNow === yearRoom) {
+                    nofiticationRegisterRoomFalse("Ngày đặt không hợp lệ", "Xin vui lòng thử lại");
+                } else {
+                    nofiticationRegisterRoomFalse("Ngày đặt không hợp lệ", "Xin vui lòng thử lại");
+                }
             } else {
-                nofiticationRegisterRoomFalse();
+                nofiticationRegisterRoomFalse("Đặt phòng không thành công","Xin vui lòng kiểm tra lại");
             }
         })
     };
-    
+
     let onClickCancelRegisterRoom = function () {
-        $('#btnCancelRegisterRoom').on('click',function () {
+        $('#btnCancelRegisterRoom').on('click', function () {
             $("#frmRegisterRoom").find('.clr').val("");
             $('#selRoom').val(0);
             configTableMembers.rows().remove().draw();
@@ -259,7 +277,6 @@ $(function () {
             removeValidate.resetForm();
         })
     };
-
 
     String.prototype.format = String.prototype.f = function () {
         let s = this,

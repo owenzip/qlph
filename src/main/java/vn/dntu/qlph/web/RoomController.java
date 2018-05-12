@@ -85,4 +85,28 @@ public class RoomController {
             return false;
         }
     }
+
+    @RequestMapping(value = "/updateStatus.do")
+    @ResponseBody
+    public boolean updateStatus(@RequestParam("idPhong") int idPhong, @RequestParam("trangThai") int trangThai) {
+        try {
+            roomImpl.updateStatus(idPhong, trangThai);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    @RequestMapping(value = "/selectAllRoom.do")
+    @ResponseBody
+    public List<RoomVO> selectAllRoom(@RequestParam("trangThai") String trangThai) {
+        try {
+            List<RoomVO> roomVO = roomImpl.selectAllRoom(trangThai);
+            return roomVO;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 }

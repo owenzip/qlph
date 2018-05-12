@@ -113,4 +113,29 @@
         JOIN chitietphong ctp ON ctp.idphong = ph.idphong
         WHERE ph.idphong = #{idPhong}
     </delete>
+    
+    <update id="updateStatus">
+        UPDATE phong ph
+        SET ph.trangthai = #{trangThai}
+        WHERE ph.idphong = #{idPhong}
+    </update>
+
+    <select id="selectAllRoom" resultMap="RoomVO">
+        SELECT
+        ph.idphong,
+        TIME_FORMAT(ph.giobatdau,'%H:%i') AS giobatdau,
+        TIME_FORMAT(ph.gioketthuc,'%H:%i') AS gioketthuc,
+        IFNULL(DATE_FORMAT(ph.ngay,'%d/%m/%Y'),'') AS ngay,
+        tt.trangthai,
+        ph.songuoi,
+        ph.mucdich,
+        dmp.tenphong,
+        nd.ten AS tennguoidaidien
+        FROM phong ph
+        LEFT JOIN dmtrangthai tt ON ph.trangthai = tt.idtrangthai
+        LEFT JOIN nguoidung nd ON ph.nguoidaidien = nd.idnguoidung
+        LEFT JOIN dmphong dmp ON ph.iddmphong = dmp.iddmphong
+        WHERE ph.trangthai LIKE CONCAT('%',#{trangThai},'%')
+        ORDER BY ph.ngay
+    </select>
 </mapper>

@@ -13,16 +13,20 @@
     <jsp:include page="resource.jsp"/>
     <title>HỆ THỐNG</title>
 </head>
-<body class="bg-gray">
+<body class="bg-white">
 <jsp:include page="nav-menu.jsp"/>
 <div class="container" style="margin-top: 5%">
     <div class="row">
         <jsp:include page="admin-menu.jsp"/>
         <div class="col-md-9">
-            <h5 style="padding-bottom: 17px;margin-top: 2px">Trang admin : Quản lý các danh mục, quản lý và xem lịch sử đặt phòng, thống kê các kiểu</h5>
+            <from id="formTabMail"><jsp:include page="admin-tab-mail.jsp"/></from>
+            <from id="formTabCategory"><jsp:include page="admin-tab-category.jsp"/></from>
+            <from id="formTabRoom"><jsp:include page="admin-tab-room.jsp"/></from>
+            <from id="formTabStatis"><jsp:include page="admin-tab-statis.jsp"/></from>
         </div>
     </div>
 </div>
 </body>
+<script type="text/javascript" src="<c:url value="../../resources/js/forms/system.js"/>"></script>
 </html>
 
