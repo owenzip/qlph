@@ -17,9 +17,14 @@
 <jsp:include page="nav-menu.jsp"/>
 <div class="container" style="margin-top: 5%">
     <div class="row">
-        <jsp:include page="intro-menu.jsp"/>
+        <%--<jsp:include page="intro-menu.jsp"/>
         <div class="col-md-9">
-            <h5 style="padding-bottom: 17px;margin-top: 2px">Trang giới thiệu thư viện trường DNTU</h5>
+            <h5 style="padding-bottom: 17px;margin-top: 2px">GIỚI THIỆU THƯ VIỆN TRƯỜNG ĐẠI HỌC CÔNG NGHỆ ĐỒNG NAI</h5>
+            <button class="btn btn-red"><b>Coming soon... </b>&nbsp;<i class="fa fa-history"></i></button>
+        </div>--%>
+        <div class="col-md-12 text-center">
+            <h5 style="padding-bottom: 17px;margin-top: 2px">GIỚI THIỆU THƯ VIỆN TRƯỜNG ĐẠI HỌC CÔNG NGHỆ ĐỒNG NAI</h5>
+            <button class="btn btn-red"><b>Coming soon... </b>&nbsp;<i class="fa fa-history"></i></button>
         </div>
     </div>
 </div>

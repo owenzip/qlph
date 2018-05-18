@@ -30,7 +30,6 @@
     <a class="btn btn-red btn-menu" data-toggle="collapse" data-target="#navbar4"><b>Thống kê<i class="fa fa-line-chart float-right"></i></b></a><br/>
     <div class="collapse div-menu-dropdown" id="navbar4">
         <label class="btnTabStatis ver-menu-a">Theo khoa</label><br/>
-        <label class="btnTabStatis ver-menu-a">...</label><br/>
         <br/>
     </div>
 </div>

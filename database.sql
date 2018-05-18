@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `qlph` /*!40100 DEFAULT CHARACTER SET utf8 */;
-USE `qlph`;
 -- MySQL dump 10.13  Distrib 5.7.17, for Win64 (x86_64)
 --
 -- Host: localhost    Database: qlph
@@ -31,7 +29,7 @@ CREATE TABLE `chitietphong` (
   `mssv` int(11) DEFAULT NULL,
   `lop` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`idchitietphong`)
-) ENGINE=InnoDB AUTO_INCREMENT=84 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,6 +38,7 @@ CREATE TABLE `chitietphong` (
 
 LOCK TABLES `chitietphong` WRITE;
 /*!40000 ALTER TABLE `chitietphong` DISABLE KEYS */;
+INSERT INTO `chitietphong` VALUES (1,1,'dă',321,'213'),(2,1,'dưa',321,'123'),(3,1,'dưa',321,'123'),(4,1,'dă',312,'123'),(9,3,'qwe',890,'098'),(10,3,'qwe',890,'098'),(11,3,'qwe',890,'098'),(12,3,'qwe',890,'098');
 /*!40000 ALTER TABLE `chitietphong` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -215,7 +214,7 @@ CREATE TABLE `phong` (
   `mucdich` varchar(255) DEFAULT NULL,
   `nguoidaidien` int(11) DEFAULT NULL,
   PRIMARY KEY (`idphong`)
-) ENGINE=InnoDB AUTO_INCREMENT=119 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -224,6 +223,7 @@ CREATE TABLE `phong` (
 
 LOCK TABLES `phong` WRITE;
 /*!40000 ALTER TABLE `phong` DISABLE KEYS */;
+INSERT INTO `phong` VALUES (1,1,'11:11:00','11:11:00','2018-05-10',3,4,'đawadưa',1),(3,1,'11:11:00','11:11:00','2018-05-20',4,4,'qweqwe',2);
 /*!40000 ALTER TABLE `phong` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -260,4 +260,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-05-10  1:08:02
+-- Dump completed on 2018-05-18 22:09:36

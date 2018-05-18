@@ -18,8 +18,8 @@
 <div class="container" style="margin-top: 5%">
     <div class="row">
         <div class="col-md-12 text-center">
-            <h5 id="homePageTitle" style="padding-bottom: 17px;margin-top: 2px">Các sự kiện đã đang và sắp diễn ra tại thư viện được hiện ở đây</h5>
-            <p>*Hiện theo từng card</p>
+            <h5 style="padding-bottom: 17px;margin-top: 2px">TRANG THEO DÕI CÁC SỰ KIỆN MỚI NHẤT CỦA TRƯỜNG ĐẠI HỌC CÔNG NGHỆ ĐỒNG NAI</h5>
+            <button class="btn btn-red"><b>Coming soon... </b>&nbsp;<i class="fa fa-history"></i></button>
         </div>
     </div>
 </div>
