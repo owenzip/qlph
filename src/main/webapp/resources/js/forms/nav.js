@@ -250,22 +250,20 @@ $(function () {
                     }, {
                         "targets": 3,
                         "sWidth": "10%",
-                        "data": "gioBatDau"
+                        render: function (data, type, row) {
+                            return row.gioBatDau +" - "+ row.gioKetThuc
+                        }
                     }, {
                         "targets": 4,
                         "sWidth": "10%",
-                        "data": "gioKetThuc"
-                    }, {
-                        "targets": 5,
-                        "sWidth": "10%",
                         "data": "trangThai"
                     }, {
-                        "targets": 6,
+                        "targets": 5,
                         "sWidth": "5%",
                         "data": "soNguoi"
                     }, {
-                        "targets": 7,
-                        "sWidth": "20%",
+                        "targets": 6,
+                        "sWidth": "50%",
                         "data": "mucDich"
                     },
                 ],

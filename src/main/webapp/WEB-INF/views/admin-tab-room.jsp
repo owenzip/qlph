@@ -7,18 +7,17 @@
 <div>
     <input id="trangThai" type="hidden" value="">
     <h5>Danh sách phòng</h5>
-    <table id="tblRoomAdmin" class="table table-hover table-responsive" style="width: 100%">
+    <table id="tblRoomAdmin" class="table table-hover table-responsive" style="width: 100%;cursor: pointer">
         <thead>
         <tr>
             <th>#</th>
-            <th><i class="fa fa-columns"></i>&nbsp;&nbsp;Tên phòng</th>
-            <th><i class="fa fa-address-card"></i>&nbsp;&nbsp;Người đăng ký</th>
-            <th><i class="fa fa-calendar"></i>&nbsp;&nbsp;Ngày</th>
-            <th><i class="fa fa-clock-o"></i>&nbsp;&nbsp;Giờ bắt đầu</th>
-            <th><i class="fa fa-clock-o"></i>&nbsp;&nbsp;Giờ kết thúc</th>
-            <th><i class="fa fa-link"></i>&nbsp;&nbsp;Trạng thái</th>
-            <th><i class="fa fa-user"></i>&nbsp;&nbsp;Số người</th>
-            <th><i class="fa fa-user"></i>&nbsp;&nbsp;Mục đích</th>
+            <th><i class="fa fa-columns"></i></th>
+            <th><i class="fa fa-address-card"></i></th>
+            <th><i class="fa fa-calendar"></i></th>
+            <th><i class="fa fa-clock-o"></i></th>
+            <th><i class="fa fa-link"></i></th>
+            <th><i class="fa fa-user"></i></th>
+            <th><i class="fa fa-dot-circle-o"></i></th>
         </tr>
         </thead>
     </table>
@@ -49,11 +48,13 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button id="btnDeleteRoomAdmin" type="button" class="btn btn-red" data-dismiss="modal">Xóa phòng&nbsp;&nbsp;<i class="fa fa-trash-o"></i></button>
-                <button id="btnBookedRoomAdmin" type="button" class="btn btn-red" data-dismiss="modal">Đang đặt &nbsp;&nbsp;<i class="fa fa-bell"></i></button>
-                <button id="btnLiveRoomAdmin" type="button" class="btn btn-red" data-dismiss="modal">Đang hoạt động &nbsp;&nbsp;<i class="fa fa-wifi"></i></button>
-                <button id="btnEndRoomAdmin" type="button" class="btn btn-red" data-dismiss="modal">Đã kết thúc &nbsp;&nbsp;<i class="fa fa-check-square"></i></button>
-                <button id="btnCanceledRoomAdmin" type="button" class="btn btn-red" data-dismiss="modal">Hủy phòng &nbsp;&nbsp;<i class="fa fa-ban"></i></button>
+                <div class="btn-group" role="group">
+                    <button id="btnBookedRoomAdmin" type="button" class="btn btn-red">Đang đặt &nbsp;&nbsp;<i class="fa fa-bell"></i></button>
+                    <button id="btnLiveRoomAdmin" type="button" class="btn btn-red">Hoạt động &nbsp;&nbsp;<i class="fa fa-wifi"></i></button>
+                    <button id="btnEndRoomAdmin" type="button" class="btn btn-red">Kết thúc &nbsp;&nbsp;<i class="fa fa-check-square"></i></button>
+                    <button id="btnCanceledRoomAdmin" type="button" class="btn btn-red">Hủy phòng&nbsp;&nbsp;<i class="fa fa-ban"></i></button>
+                    <button id="btnDeleteRoomAdmin" type="button" class="btn btn-red">Xóa phòng&nbsp;&nbsp;<i class="fa fa-trash-o"></i></button>
+                </div>
             </div>
         </div>
     </div>

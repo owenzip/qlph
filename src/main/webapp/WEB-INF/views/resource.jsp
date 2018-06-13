@@ -18,6 +18,8 @@
 <link href="<c:url value="../../resources/css/datatables.css"/>" rel="stylesheet">
 <link href="<c:url value="../../resources/css/font-awesome.css"/>" rel="stylesheet">
 <link href="<c:url value="../../resources/css/font-awesome.min.css"/>" rel="stylesheet">
+<link href="<c:url value="../../resources/css/bootstrap-datepicker.css"/>" rel="stylesheet">
+
 <script type="text/javascript" src="<c:url value="../../resources/js/others/jquery-3.3.1.min.js"/>"></script>
 <script type="text/javascript" src="<c:url value="../../resources/js/others/jquery-confirm.js"/>"></script>
 <script type="text/javascript" src="<c:url value="../../resources/js/others/jquery.validate.js"/>"></script>
@@ -26,6 +28,7 @@
 <script type="text/javascript" src="<c:url value="../../resources/js/others/bootstrap.js"/>"></script>
 <script type="text/javascript" src="<c:url value="../../resources/js/others/mdb.js"/>"></script>
 <script type="text/javascript" src="<c:url value="../../resources/js/others/datatables.js"/>"></script>
+<script type="text/javascript" src="<c:url value="../../resources/js/others/bootstrap-datepicker.min.js"/>"></script>
 <head>
     <link rel="icon" href="<c:url value='../../resources/img/logo.png'/>" />
 </head>

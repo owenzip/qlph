@@ -32,12 +32,12 @@ public class PageController {
         return "login";
     }
 
-    @RequestMapping(value = "/event.do", method = RequestMethod.GET)
+    /*@RequestMapping(value = "/event.do", method = RequestMethod.GET)
     public String event() {
         return "event";
-    }
+    }*/
 
-    @RequestMapping(value = "/search.do", method = RequestMethod.GET)
+    /*@RequestMapping(value = "/search.do", method = RequestMethod.GET)
     public String search(HttpServletRequest request) {
         try {
             HttpSession session = request.getSession();
@@ -49,7 +49,7 @@ public class PageController {
         } catch (Exception e) {
             return "401";
         }
-    }
+    }*/
 
     @RequestMapping(value = "/room.do", method = RequestMethod.GET)
     public String room(HttpServletRequest request) {

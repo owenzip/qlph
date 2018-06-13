@@ -11,10 +11,29 @@
         <result property="sdt" column="sdt"/>
         <result property="noiDung" column="noidung"/>
         <result property="email" column="email"/>
+        <result property="ten" column="ten"/>
+        <result property="vanDe" column="vande"/>
+        <result property="ngay" column="ngay"/>
+        <result property="gio" column="gio"/>
     </resultMap>
 
     <insert id="insertContact" parameterType="ContactVO">
-      INSERT INTO lienhe (idvande,sdt,noidung,email,ngay,gio)
-      VALUES (#{idVanDe},#{sdt},#{noiDung},#{email},NOW(),NOW())
+      INSERT INTO lienhe (idvande,sdt,noidung,email,ngay,gio,ten)
+      VALUES (#{idVanDe},#{sdt},#{noiDung},#{email},NOW(),NOW(),#{ten})
     </insert>
+
+    <select id="selectListContact" resultMap="ContactVO">
+        SELECT
+            lh.ten,
+            vd.vande,
+            lh.sdt,
+            lh.email,
+            lh.noidung,
+            IFNULL(DATE_FORMAT( lh.ngay,'%d/%m/%Y'),'') AS ngay,
+            TIME_FORMAT(lh.gio,'%H:%i') AS gio
+        FROM lienhe lh
+        LEFT JOIN dmvande vd ON vd.idvande = lh.idvande
+        ORDER BY lh.ngay
+        DESC
+    </select>
 </mapper>

@@ -22,7 +22,7 @@
 </div>
 <div class="center-contaniner">
     <div class="parent-container">
-        <h2 style="color: #B73030;text-align: center;font-weight: bold;margin-top: 10px">PHẦN MỀM QUẢN LÝ THƯ VIỆN</h2>
+        <h2 style="color: #B73030;text-align: center;font-weight: bold;margin-top: 10px">Phần mềm quản lý phòng học nhóm thư viện DNTU</h2>
         <br/>
     </div>
 </div>
@@ -51,6 +51,7 @@
                 <div class="card">
                     <div class="card-body">
                         <label style="color: #B73030"><b>LIÊN HỆ</b></label>
+                        <input style="margin-top: 5px" id="ten" name="ten" type="text" class="form-control" placeholder="Nhập họ tên">
                         <select style="margin-top: 5px" id="selProblem" name="selProblem" type="text" class="form-control">
                             <option value="-1">Chọn vấn đề</option>
                         </select>

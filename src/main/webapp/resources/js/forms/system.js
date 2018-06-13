@@ -7,13 +7,16 @@ $(function () {
 
     let tblRoomAdmin = $('#tblRoomAdmin');
     let tblMemberRoomAdmin = $('#tblMemberRoomAdmin');
+    let tblContactAdmin = $('#tblContactAdmin');
     let tblRoomAdminFunction = undefined;
     let tblMemberRoomAdminFunction = undefined;
+    let tblContactAdminFunction = undefined;
     let idPhong = 0;
 
     let setup = function () {
         onClickConvertTab();
         tblRoomAdminFunction = configTableRoomAdmin;
+        tblContactAdminFunction = configTableContactAdmin;
         onClickTableRoomAdmin();
         onClickMenuRoom();
     }
@@ -55,7 +58,6 @@ $(function () {
                 class: "text-center",
             }, {
                 "targets": 0,
-                "sWidth": "5%",
                 render: function (data, type, row, meta) {
                     let rowIndex = parseInt(meta.row);
                     let startAt = parseInt(meta.settings._iDisplayStart);
@@ -75,24 +77,74 @@ $(function () {
                 "data": "ngay",
             }, {
                 "targets": 4,
-                "sWidth": "10%",
-                "data": "gioBatDau"
+                "sWidth": "15%",
+                render: function (data, type, row) {
+                    return row.gioBatDau +" - "+ row.gioKetThuc
+                }
             }, {
                 "targets": 5,
                 "sWidth": "10%",
-                "data": "gioKetThuc"
-            }, {
-                "targets": 6,
-                "sWidth": "10%",
                 "data": "trangThai"
             }, {
-                "targets": 7,
+                "targets": 6,
                 "sWidth": "5%",
                 "data": "soNguoi"
             }, {
-                "targets": 8,
+                "targets": 7,
                 "sWidth": "15%",
                 "data": "mucDich"
+            },
+        ],
+    });
+
+    let configTableContactAdmin = tblContactAdmin.dataTable ({
+        "autoWidth": false,
+        "serverSide": true,
+        "processing": true,
+        "ajax": {
+            "url": "/selectListContact.do",
+            "data": {},
+            "dataSrc": "",
+        },
+        "columnDefs": [
+            {
+                "targets": "_all",
+                class: "text-center",
+            }, {
+                "targets": 0,
+                render: function (data, type, row, meta) {
+                    let rowIndex = parseInt(meta.row);
+                    let startAt = parseInt(meta.settings._iDisplayStart);
+                    return rowIndex + startAt + 1;
+                }
+            }, {
+                "targets": 1,
+                "sWidth": "15%",
+                "data": "ten",
+            }, {
+                "targets": 2,
+                "sWidth": "15%",
+                "data": "vanDe",
+            }, {
+                "targets": 3,
+                "sWidth": "10%",
+                "data": "sdt",
+            }, {
+                "targets": 4,
+                "sWidth": "10%",
+                "data": "email"
+            }, {
+                "targets": 5,
+                "sWidth": "25%",
+                "data": "noiDung"
+            }, {
+                "targets": 6,
+                "sWidth": "10%",
+                "data": "ngay"
+            }, {
+                "targets": 7,
+                "sWidth": "10%",
+                "data": "gio"
             },
         ],
     });
@@ -116,6 +168,10 @@ $(function () {
         })
         $('#btnCancelledRoom').on('click', function () {
             $('#trangThai').val("4");
+            tblRoomAdminFunction.ajax.reload();
+        })
+        $('#btnWaitRoom').on('click', function () {
+            $('#trangThai').val("5");
             tblRoomAdminFunction.ajax.reload();
         })
     };
@@ -368,6 +424,67 @@ $(function () {
                                 data: {
                                     'idPhong': idPhong,
                                     'trangThai': 1
+                                },
+                                type: "POST",
+                                success: function (data) {
+                                    if (data) {
+                                        $.confirm({
+                                            title: 'Chuyển trạng thái thành công',
+                                            content: '',
+                                            type: 'red',
+                                            typeAnimated: true,
+                                            buttons: {
+                                                cancel: {
+                                                    text: 'Xác nhận',
+                                                    btnClass: 'btn-red',
+                                                    action: function () {
+                                                        tblRoomAdminFunction.ajax.reload();
+                                                    }
+                                                },
+                                            }
+                                        });
+                                    } else {
+                                        $.confirm({
+                                            title: 'Chuyển trạng thái thất bại',
+                                            content: 'Xin vui lòng thử lại hoặc liên hệ ban quản trị',
+                                            type: 'red',
+                                            typeAnimated: true,
+                                            buttons: {
+                                                cancel: {
+                                                    text: 'Thử lại',
+                                                    btnClass: 'btn-red',
+                                                },
+                                            }
+                                        });
+                                    }
+                                }
+                            });
+                        }
+                    },
+                }
+            });
+        })
+
+        $('#btnEndRoomAdmin').on('click', function () {
+            $.confirm({
+                title: 'Chuyển trạng thái phòng này sang KẾT THÚC',
+                content: '* Lưu ý kiểm tra lại trang thiết bị đầy đủ',
+                type: 'red',
+                typeAnimated: true,
+                buttons: {
+                    cancel: {
+                        text: 'Không',
+                        btnClass: 'btn-red',
+                    },
+                    confirm: {
+                        text: 'Có',
+                        btnClass: 'btn-red',
+                        action: function () {
+                            $.ajax({
+                                url: "/updateStatus.do",
+                                data: {
+                                    'idPhong': idPhong,
+                                    'trangThai': 3
                                 },
                                 type: "POST",
                                 success: function (data) {

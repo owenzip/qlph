@@ -23,8 +23,9 @@ $(function () {
         textChangeInpSoNguoi();
         onClickCancelRegisterRoom();
         validateFormRegisterRoom();
-        //validateMembers();
-        //onChangeSelRoom();
+        $('.datepicker').datepicker({
+            format: 'dd/mm/yyyy',
+        })
     }
 
     let nofiticationRegisterRoomSuccess = function () {
@@ -194,17 +195,15 @@ $(function () {
             }, {
                 "targets": 3,
                 "sWidth": "10%",
-                "data": "gioBatDau"
+                render: function (data, type, row) {
+                    return row.gioBatDau + " - " + row.gioKetThuc
+                }
             }, {
                 "targets": 4,
-                "sWidth": "10%",
-                "data": "gioKetThuc"
-            }, {
-                "targets": 5,
                 "sWidth": "15%",
                 "data": "trangThai"
             }, {
-                "targets": 6,
+                "targets": 5,
                 "sWidth": "5%",
                 "data": "soNguoi"
             },
@@ -233,7 +232,8 @@ $(function () {
                 /**Rèn buộc trường hợp ngày đặt*/
                 let dateNow = new Date();
                 let dayNow = parseInt(dateNow.getDate());
-                let monthNow = parseInt(dateNow.getMonth() + 1); /**Tháng 1 bắt đầu từ 0*/
+                let monthNow = parseInt(dateNow.getMonth() + 1);
+                /**Tháng 1 bắt đầu từ 0*/
                 let yearNow = parseInt(dateNow.getFullYear());
                 let dateRoom = $('#ngay').val();
                 let dayRoom = parseInt(dateRoom.slice(0, 2), 10);
@@ -250,11 +250,11 @@ $(function () {
                                 tableRoomFunction.ajax.reload();
                                 nofiticationRegisterRoomSuccess();
                             } else {
-                                nofiticationRegisterRoomFalse("Đặt phòng không thành công","Xin vui lòng kiểm tra lại");
+                                nofiticationRegisterRoomFalse("Đặt phòng không thành công", "Xin vui lòng kiểm tra lại");
                             }
                         },
                         error: function () {
-                            nofiticationRegisterRoomFalse("Đặt phòng không thành công","Xin vui lòng kiểm tra lại");
+                            nofiticationRegisterRoomFalse("Đặt phòng không thành công", "Xin vui lòng kiểm tra lại");
                         }
                     });
                 } else if (dayNow > dayRoom && monthNow === monthRoom && yearNow === yearRoom) {
@@ -263,7 +263,7 @@ $(function () {
                     nofiticationRegisterRoomFalse("Ngày đặt không hợp lệ", "Xin vui lòng thử lại");
                 }
             } else {
-                nofiticationRegisterRoomFalse("Đặt phòng không thành công","Xin vui lòng kiểm tra lại");
+                nofiticationRegisterRoomFalse("Đặt phòng không thành công", "Xin vui lòng kiểm tra lại");
             }
         })
     };
@@ -286,98 +286,6 @@ $(function () {
         }
         return s;
     };
-
-    /*let onChangeSelRoom = function () {
-        $('#soNguoi').attr("readonly", true);
-        $('#selRoom').on('change',function () {
-            if ($('#selRoom').val() == -1) {
-                $('#soNguoi').attr("readonly", true);
-            } else {
-                $('#soNguoi').attr("readonly",false);
-                //validateMembers();
-            }
-        })
-    };*/
-
-    /*let validateMembers = function () {
-        if ($('#selRoom').val() >= 1 && $('#selRoom').val() <= 7) {
-            $('#frmRegisterRoom').validate({
-                rules: {
-                    soNguoi: {
-                        required: true,
-                        number: true,
-                        min: 4,
-                        max: 20,
-                    }
-                },
-                messages: {
-                    soNguoi: {
-                        required: "* Vui lòng nhập số người",
-                        number: "* Số người phải là chữ số",
-                        min: "* Phòng học nhóm phải từ 4 đến 20 người",
-                        max: "* Phòng học nhóm phải từ 4 đến 20 người",
-                    }
-                }
-            })
-        } else if ($('#selRoom').val() == 8) {
-            $('#frmRegisterRoom').validate({
-                rules: {
-                    soNguoi: {
-                        required: true,
-                        number: true,
-                        min: 10,
-                        max: 20,
-                    }
-                },
-                messages: {
-                    soNguoi: {
-                        required: "* Vui lòng nhập số người",
-                        number: "* Số người phải là chữ số",
-                        min: "* Phòng hội thảo phải từ 10 đến 20 người",
-                        max: "* Phòng hội thảo phải từ 10 đến 20 người",
-                    }
-                }
-            })
-        } else if ($('#selRoom').val() == 9) {
-            $('#frmRegisterRoom').validate({
-                rules: {
-                    soNguoi: {
-                        required: true,
-                        number: true,
-                        min: 20,
-                        max: 30,
-                    }
-                },
-                messages: {
-                    soNguoi: {
-                        required: "* Vui lòng nhập số người",
-                        number: "* Số người phải là chữ số",
-                        min: "* Phòng sau đại học phải từ 20 đến 30 người",
-                        max: "* Phòng sau đại học phải từ 20 đến 30 người",
-                    }
-                }
-            })
-        } else {
-            $('#frmRegisterRoom').validate({
-                rules: {
-                    soNguoi: {
-                        required: true,
-                        number: true,
-                        min: 5,
-                        max: 30,
-                    }
-                },
-                messages: {
-                    soNguoi: {
-                        required: "* Vui lòng nhập số người",
-                        number: "* Số người phải là chữ số",
-                        min: "* Khu vực đọc sách phải từ 5 đến 30 người",
-                        max: "* Khu vực đọc sách phải từ 5 đến 30 người",
-                    }
-                }
-            })
-        }
-    };*/
 
     let validateFormRegisterRoom = function () {
         $('#frmRegisterRoom').validate({

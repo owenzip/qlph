@@ -19,17 +19,16 @@
     <div class="row form-group">
         <div class="col-md-12 text-center">
             <h4 style="padding-bottom: 30px"><b>Lịch sử đặt phòng của bạn</b></h4>
-            <table id="tblRoomById" class="table table-hover table-responsive" style="width: 100%">
+            <table id="tblRoomById" class="table table-hover" style="width: 100%; cursor: pointer">
                 <thead>
                 <tr>
                     <th>#</th>
-                    <th><i class="fa fa-columns"></i>&nbsp;&nbsp;Tên phòng</th>
-                    <th><i class="fa fa-calendar"></i>&nbsp;&nbsp;Ngày</th>
-                    <th><i class="fa fa-clock-o"></i>&nbsp;&nbsp;Giờ bắt đầu</th>
-                    <th><i class="fa fa-clock-o"></i>&nbsp;&nbsp;Giờ kết thúc</th>
-                    <th><i class="fa fa-link"></i>&nbsp;&nbsp;Trạng thái</th>
-                    <th><i class="fa fa-user"></i>&nbsp;&nbsp;Số người</th>
-                    <th><i class="fa fa-user"></i>&nbsp;&nbsp;Mục đích</th>
+                    <th><i class="fa fa-columns"></i></th>
+                    <th><i class="fa fa-calendar"></i></th>
+                    <th><i class="fa fa-clock-o"></i></th>
+                    <th><i class="fa fa-link"></i></th>
+                    <th><i class="fa fa-user"></i></th>
+                    <th><i class="fa fa-dot-circle-o"></i></th>
                 </tr>
                 </thead>
             </table>

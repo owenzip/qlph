@@ -103,6 +103,7 @@ Html, body {
     color: #B73030 !important;
     font-weight: bold !important;
     margin-bottom: 0px;
+    padding: 2px;
 }
 
 .ver-menu-a:hover {

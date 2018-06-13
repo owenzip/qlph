@@ -19,9 +19,7 @@
                     <div class="row">
                         <div class="col-md-5 col-xl-3 sub-menu mt-5 mb-5">
                             <ol class="list-unstyled ml-4 mr-md-0 mr-4">
-                                <li class="sub-title text-uppercase mt-sm"><a class="menu-item-2" href="<c:url value="/index.do"/>">Giới thiệu</a></li>
-                                <li class="sub-title text-uppercase"><a class="menu-item-2" href="<c:url value="/search.do"/>">Tra cứu sách</a></li>
-                                <li class="sub-title text-uppercase"><a class="menu-item-2" href="<c:url value="/event.do"/>">Sự kiện</a></li>
+                                <li class="sub-title text-uppercase mt-sm"><a class="menu-item-2" href="<c:url value="/index.do"/>">Hướng dẫn sử dụng</a></li>
                                 <li class="sub-title text-uppercase"><a class="menu-item-2" href="<c:url value="/room.do"/>">Đăng ký phòng học</a></li>
                                 <li class="sub-title text-uppercase"><a class="menu-item-2" href="<c:url value="/admin.do"/>">Hệ thống</a></li>
                                 <li><a style="color: white" href="https://www.facebook.com/NhukAlleo"><i class="fa fa-copyright"></i>&nbsp;&nbsp;<b>DEV-K14</b> trường <b>DNTU</b> năm 2018</a></li>
@@ -34,7 +32,7 @@
                                         <img src="<c:url value="../../resources/img/library_03.JPG"/>" class="img-fluid">
                                         <div class="mask flex-center"><p></p></div>
                                     </div>
-                                    <h4 class="mb-2"><a class="news-title-2" href="<c:url value="/index.do"/>">Giới thiệu trung tâm thư viện</a></h4>
+                                    <h4 class="mb-2"><a class="news-title-2" href="http://tv.dntu.edu.vn/index.php/category/gioi-thieu/">Giới thiệu trung tâm thư viện</a></h4>
                                     <a class="text-white">Xem giới thiệu</a>
                                 </div>
                                 <div class="col-xl-4 mt-5 mb-4 clearfix d-none d-xl-block">

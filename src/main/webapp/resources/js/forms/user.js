@@ -112,13 +112,15 @@ $(function () {
                 let sdt = $('#sdt').val();
                 let noiDung = $('#noiDung').val();
                 let email = $('#email').val();
+                let ten = $('#ten').val();
                 $.ajax({
                     url: "/insertContact.do",
                     data: {
                         'idVanDe': idVanDe,
                         'sdt': sdt,
                         'noiDung': noiDung,
-                        'email': email
+                        'email': email,
+                        'ten': ten
                     },
                     type: "POST",
                     success: function (data) {
@@ -149,7 +151,6 @@ $(function () {
                     required: true,
                     number: true,
                     minlength: 7,
-                    maxlength: 7,
                 },
                 matKhau: {
                     required: true,
@@ -179,8 +180,7 @@ $(function () {
                 mssv: {
                     required: "* Vui lòng nhập mã số sinh viên",
                     number: "* Mã số sinh viên phải là 7 chữ số",
-                    minlength: "* Mã số sinh viên phải là 7 chữ số",
-                    maxlength: "* Mã số sinh viên phải là 7 chữ số"
+                    minlength: "* Mã số sinh viên phải từ 7 chữ số",
                 },
                 matKhau: {
                     required: "* Vui lòng nhập mật khẩu",
@@ -211,6 +211,9 @@ $(function () {
     let validateFormContact = function () {
         $('#frmContact').validate({
             rules: {
+                ten: {
+                    required: true,
+                },
                 selProblem: {
                     min: 1,
                 },
@@ -231,6 +234,9 @@ $(function () {
                 }
             },
             messages: {
+                ten: {
+                    required: "* Vui lòng nhập đầy đủ họ tên",
+                },
                 selProblem: {
                     min: "* Vui lòng chọn vấn đề",
                 },

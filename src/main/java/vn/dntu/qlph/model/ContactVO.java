@@ -15,6 +15,42 @@ public class ContactVO {
     private int sdt;
     private String noiDung;
     private String email;
+    private String ten;
+    private String vanDe;
+    private String ngay;
+    private String gio;
+
+    public String getNgay() {
+        return ngay;
+    }
+
+    public void setNgay(String ngay) {
+        this.ngay = ngay;
+    }
+
+    public String getGio() {
+        return gio;
+    }
+
+    public void setGio(String gio) {
+        this.gio = gio;
+    }
+
+    public String getVanDe() {
+        return vanDe;
+    }
+
+    public void setVanDe(String vanDe) {
+        this.vanDe = vanDe;
+    }
+
+    public String getTen() {
+        return ten;
+    }
+
+    public void setTen(String ten) {
+        this.ten = ten;
+    }
 
     public String getEmail() {
         return email;
