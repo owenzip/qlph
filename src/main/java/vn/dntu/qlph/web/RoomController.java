@@ -109,4 +109,16 @@ public class RoomController {
             return null;
         }
     }
+
+    @RequestMapping(value = "/checkRoomExists.do")
+    @ResponseBody
+    public List<RoomVO> checkRoomExists(@RequestParam("ngay") String ngay,@RequestParam("gioBatDau") String gioBatDau,@RequestParam("gioKetThuc") String gioKetThuc, @RequestParam("idDmPhong") int idDmPhong) {
+        try {
+            List<RoomVO> roomVO = roomImpl.checkRoomExists(ngay, gioBatDau, gioKetThuc, idDmPhong);
+            return roomVO;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 }

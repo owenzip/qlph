@@ -242,19 +242,36 @@ $(function () {
 
                 if (dayNow <= dayRoom && monthNow === monthRoom && yearNow === yearRoom) {
                     $.ajax({
-                        url: "/insertRoom.do",
+                        url: "/checkRoomExists.do",
                         type: "POST",
-                        data: $("#frmRegisterRoom").serialize(),
-                        success: function (data) {
-                            if (data) {
-                                tableRoomFunction.ajax.reload();
-                                nofiticationRegisterRoomSuccess();
-                            } else {
-                                nofiticationRegisterRoomFalse("Đặt phòng không thành công", "Xin vui lòng kiểm tra lại");
-                            }
+                        data: {
+                            ngay: $('#ngay').val(),
+                            gioBatDau: $('#gioBatDau').val(),
+                            gioKetThuc: $('#gioKetThuc').val(),
+                            idDmPhong: $('#selRoom').val()
                         },
-                        error: function () {
-                            nofiticationRegisterRoomFalse("Đặt phòng không thành công", "Xin vui lòng kiểm tra lại");
+                        success: function (data) {
+                            /**Nếu không trùng thời gian đặt*/
+                            if(Object.keys(data).length == 0) {
+                                $.ajax({
+                                    url: "/insertRoom.do",
+                                    type: "POST",
+                                    data: $("#frmRegisterRoom").serialize(),
+                                    success: function (data) {
+                                        if (data) {
+                                            tableRoomFunction.ajax.reload();
+                                            nofiticationRegisterRoomSuccess();
+                                        } else {
+                                            nofiticationRegisterRoomFalse("Đặt phòng không thành công", "Xin vui lòng kiểm tra lại");
+                                        }
+                                    },
+                                    error: function () {
+                                        nofiticationRegisterRoomFalse("Đặt phòng không thành công", "Xin vui lòng kiểm tra lại");
+                                    }
+                                });
+                            } else {
+                                nofiticationRegisterRoomFalse("Đã có người đặt thời gian này", "Xin vui lòng chọn thời gian khác");
+                            }
                         }
                     });
                 } else if (dayNow > dayRoom && monthNow === monthRoom && yearNow === yearRoom) {

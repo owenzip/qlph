@@ -48,6 +48,25 @@
         )
     </insert>
 
+    <select id="checkRoomExists" resultMap="RoomVO">
+        SELECT ph.idphong
+        FROM  phong ph
+        WHERE (
+            ph.ngay = STR_TO_DATE(#{ngay}, '%d/%m/%Y')
+            AND CAST(#{gioBatDau} AS time) > CAST(ph.giobatdau AS time)
+            AND CAST(ph.gioketthuc AS time) > CAST(#{gioBatDau} AS time)
+            AND ph.trangthai != 4
+            AND ph.iddmphong = #{idDmPhong}
+        )
+        OR (
+            ph.ngay = STR_TO_DATE(#{ngay}, '%d/%m/%Y')
+            AND CAST(#{gioKetThuc} AS time) > CAST(ph.giobatdau AS time)
+            AND CAST(ph.gioketthuc AS time) > CAST(#{gioKetThuc} AS time)
+            AND ph.trangthai != 4
+            AND ph.iddmphong = #{idDmPhong}
+        )
+    </select>
+
     <insert id="insertMember" parameterType="DetailRoomVO">
         INSERT INTO chitietphong (
         idphong,

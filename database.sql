@@ -1,3 +1,5 @@
+CREATE DATABASE  IF NOT EXISTS `qlph` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `qlph`;
 -- MySQL dump 10.13  Distrib 5.7.17, for Win64 (x86_64)
 --
 -- Host: localhost    Database: qlph
@@ -29,7 +31,7 @@ CREATE TABLE `chitietphong` (
   `mssv` int(11) DEFAULT NULL,
   `lop` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`idchitietphong`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -38,7 +40,7 @@ CREATE TABLE `chitietphong` (
 
 LOCK TABLES `chitietphong` WRITE;
 /*!40000 ALTER TABLE `chitietphong` DISABLE KEYS */;
-INSERT INTO `chitietphong` VALUES (1,1,'dă',321,'213'),(2,1,'dưa',321,'123'),(3,1,'dưa',321,'123'),(4,1,'dă',312,'123'),(9,3,'qwe',890,'098'),(10,3,'qwe',890,'098'),(11,3,'qwe',890,'098'),(12,3,'qwe',890,'098');
+INSERT INTO `chitietphong` VALUES (1,1,'Tên thành viên',1234567,'Mã lớp'),(2,1,'Tên thành viên',1234567,'Mã lớp'),(3,1,'Tên thành viên',1234567,'Mã lớp'),(4,1,'Tên thành viên',1234567,'Mã lớp'),(9,3,'Tên thành viên',1234567,'Mã lớp'),(10,3,'Tên thành viên',1234567,'Mã lớp'),(11,3,'Tên thành viên',1234567,'Mã lớp'),(12,3,'Tên thành viên',1234567,'Mã lớp'),(13,4,'Tên thành viên',1234567,'Mã lớp'),(14,4,'Tên thành viên',1234567,'Mã lớp'),(15,4,'Tên thành viên',1234567,'Mã lớp'),(16,4,'Tên thành viên',1234567,'Mã lớp'),(17,5,'Tên thành viên',1234567,'Mã lớp'),(18,5,'Tên thành viên',1234567,'Mã lớp'),(19,5,'Tên thành viên',1234567,'Mã lớp'),(20,5,'Tên thành viên',1234567,'Mã lớp'),(21,6,'Tên thành viên',1234567,'Mã lớp'),(22,6,'Tên thành viên',1234567,'Mã lớp'),(23,6,'Tên thành viên',1234567,'Mã lớp'),(24,6,'Tên thành viên',1234567,'Mã lớp'),(25,7,'Nguyễn Quốc Thái',1406652,'14DTH1'),(26,7,'Nguyễn Hải Đăng',1402527,'14DTH2'),(27,7,'Phạm Ái Bảo',1403816,'14DTH3'),(28,7,'Lương Xuân Trường',1356924,'13DTH1'),(29,8,'qwe',123,'123'),(30,8,'qwe',123,'123'),(31,8,'qwe',123,'123'),(32,8,'qwe',123,'123');
 /*!40000 ALTER TABLE `chitietphong` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -62,7 +64,7 @@ CREATE TABLE `dmphong` (
 
 LOCK TABLES `dmphong` WRITE;
 /*!40000 ALTER TABLE `dmphong` DISABLE KEYS */;
-INSERT INTO `dmphong` VALUES (1,'Phòng học nhóm 1'),(2,'Phòng học nhóm 2'),(3,'Phòng học nhóm 3'),(4,'Phòng học nhóm 4'),(5,'Phòng học nhóm 5'),(6,'Phòng học nhóm 6'),(7,'Phòng học nhóm 7'),(8,'Phòng hội thảo'),(9,'Phòng học sau Đại Học'),(10,'Khu vực phòng đọc sách 1'),(11,'Khu vực phòng đọc sách 2'),(12,'Khu vực phòng đọc sách 3'),(13,'Khu vực phòng đọc sách 4'),(14,'Khu vực phòng đọc sách 5');
+INSERT INTO `dmphong` VALUES (1,'Học nhóm 1'),(2,'Học nhóm 2'),(3,'Học nhóm 3'),(4,'Học nhóm 4'),(5,'Học nhóm 5'),(6,'Học nhóm 6'),(7,'Học nhóm 7'),(8,'Hội thảo'),(9,'Sau Đại Học'),(10,'KV đọc sách 1'),(11,'KV đọc sách 2'),(12,'KV đọc sách 3'),(13,'KV đọc sách 4'),(14,'KV đọc sách 5');
 /*!40000 ALTER TABLE `dmphong` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -77,7 +79,7 @@ CREATE TABLE `dmtrangthai` (
   `idtrangthai` int(11) NOT NULL AUTO_INCREMENT,
   `trangthai` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`idtrangthai`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -86,7 +88,7 @@ CREATE TABLE `dmtrangthai` (
 
 LOCK TABLES `dmtrangthai` WRITE;
 /*!40000 ALTER TABLE `dmtrangthai` DISABLE KEYS */;
-INSERT INTO `dmtrangthai` VALUES (1,'Đang đặt'),(2,'Đang hoạt động'),(3,'Đã kết thúc'),(4,'Đã hủy');
+INSERT INTO `dmtrangthai` VALUES (1,'Đang đặt'),(2,'Hoạt động'),(3,'Kết thúc'),(4,'Đã hủy'),(5,'Chờ duyệt');
 /*!40000 ALTER TABLE `dmtrangthai` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -129,8 +131,9 @@ CREATE TABLE `lienhe` (
   `email` varchar(255) DEFAULT NULL,
   `ngay` date DEFAULT NULL,
   `gio` time DEFAULT NULL,
+  `ten` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`idlienhe`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -139,7 +142,7 @@ CREATE TABLE `lienhe` (
 
 LOCK TABLES `lienhe` WRITE;
 /*!40000 ALTER TABLE `lienhe` DISABLE KEYS */;
-INSERT INTO `lienhe` VALUES (8,2,313131311,'Noi dung','dwadwad','2018-04-30','22:43:45'),(9,1,90909099,'TEST','DWADAWDAD','2018-04-30','22:45:53'),(10,1,123123123,'ddawddadwadwad 213','ddawdwa@gmail.com','2018-05-06','01:48:30');
+INSERT INTO `lienhe` VALUES (8,2,1234567890,'Nội dung','example@email.com','2018-04-30','22:43:45','Tên'),(9,1,1234567890,'Nội dung','example@email.com','2018-04-30','22:45:53','Tên'),(10,3,1234567890,'Nội dung','example@email.com','2018-05-06','01:48:30','Tên'),(11,4,1234567890,'Nội dung','example@email.com','2018-06-13','23:36:33','Tên');
 /*!40000 ALTER TABLE `lienhe` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -209,12 +212,12 @@ CREATE TABLE `phong` (
   `giobatdau` varchar(45) DEFAULT NULL,
   `gioketthuc` varchar(45) DEFAULT NULL,
   `ngay` date DEFAULT NULL,
-  `trangthai` int(11) NOT NULL DEFAULT '1',
+  `trangthai` int(11) NOT NULL DEFAULT '5',
   `songuoi` int(11) DEFAULT NULL,
   `mucdich` varchar(255) DEFAULT NULL,
   `nguoidaidien` int(11) DEFAULT NULL,
   PRIMARY KEY (`idphong`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -223,7 +226,7 @@ CREATE TABLE `phong` (
 
 LOCK TABLES `phong` WRITE;
 /*!40000 ALTER TABLE `phong` DISABLE KEYS */;
-INSERT INTO `phong` VALUES (1,1,'11:11:00','11:11:00','2018-05-10',3,4,'đawadưa',1),(3,1,'11:11:00','11:11:00','2018-05-20',4,4,'qweqwe',2);
+INSERT INTO `phong` VALUES (1,1,'11:11:00','11:11:00','2018-05-10',2,4,'Học nhóm',1),(3,1,'11:11:00','11:11:00','2018-05-20',3,4,'Học nhóm',2),(4,1,'11:50:00','13:20:00','2018-06-23',1,4,'Học nhóm',1),(5,1,'11:11:00','11:11:00','2018-06-20',4,4,'Học nhóm',1),(6,1,'11:00:00','12:00:00','2018-06-29',1,4,'Học nhóm',1),(7,1,'11:00:00','13:00:00','2018-06-30',5,4,'Học nhóm',1),(8,1,'13:30:00','14:00:00','2018-06-23',5,4,'dawdwadawdw',1);
 /*!40000 ALTER TABLE `phong` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -250,6 +253,14 @@ LOCK TABLES `quyen` WRITE;
 INSERT INTO `quyen` VALUES (1,'ADMIN'),(2,'USER');
 /*!40000 ALTER TABLE `quyen` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Dumping events for database 'qlph'
+--
+
+--
+-- Dumping routines for database 'qlph'
+--
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -260,4 +271,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-05-18 22:09:36
+-- Dump completed on 2018-06-15 22:41:41

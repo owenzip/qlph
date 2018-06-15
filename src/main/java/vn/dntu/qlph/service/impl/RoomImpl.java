@@ -59,4 +59,8 @@ public class RoomImpl implements RoomService {
         return roomService.selectAllRoom(trangThai);
     }
 
+    @Override
+    public List<RoomVO> checkRoomExists(String ngay, String gioBatDau, String gioKetThuc, int idDmPhong) {
+        return roomService.checkRoomExists(ngay, gioBatDau, gioKetThuc, idDmPhong);
+    }
 }

@@ -40,12 +40,12 @@
                                         <img src="<c:url value="../../resources/img/library_01.JPG"/>" class="img-fluid">
                                         <div class="mask flex-center"><p></p></div>
                                     </div>
-                                    <h4 class="mb-2"><a class="news-title-2" href="<c:url value="/index.do"/>">Nội quy thư viện</a></h4>
+                                    <h4 class="mb-2"><a class="news-title-2" href="<c:url value="/index.do"/>">Hướng dẫn sử dụng</a></h4>
                                     <a class="white-text">Cập nhật ngày 26/04/2018</a>
                                 </div>
                                 <div class="col-xl-4 mt-5 mb-4 clearfix d-none d-xl-block">
                                     <div class="view overlay hm-white-slight mb-3 z-depth-1">
-                                        <img src="<c:url value="../../resources/img/library_01.JPG"/>" class="img-fluid">
+                                        <img src="<c:url value="../../resources/img/library_02.JPG"/>" class="img-fluid">
                                         <div class="mask flex-center"><p></p></div>
                                     </div>
                                     <h4 class="mb-2"><a class="news-title-2" href="<c:url value="/index.do"/>">Thời gian mở cửa</a></h4>

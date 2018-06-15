@@ -12,14 +12,14 @@ import vn.dntu.qlph.model.RoomVO;
 import java.util.List;
 
 public interface RoomService {
-    
+
     void insertRoom(RoomVO roomVO);
 
     void insertMember(DetailRoomVO detailRoomVO);
 
     void deleteRoom(@Param("idPhong") int idPhong);
 
-    void updateStatus(@Param("idPhong") int idPhong,@Param("trangThai") int trangThai);
+    void updateStatus(@Param("idPhong") int idPhong, @Param("trangThai") int trangThai);
 
     List<RoomVO> selectRoomToDay(@Param("idDmPhong") int idDmPhong);
 
@@ -29,4 +29,5 @@ public interface RoomService {
 
     List<RoomVO> selectAllRoom(@Param("trangThai") String trangThai);
 
+    List<RoomVO> checkRoomExists(@Param("ngay") String ngay, @Param("gioBatDau") String gioBatDau, @Param("gioKetThuc") String gioKetThuc, @Param("idDmPhong") int idDmPhong);
 }
