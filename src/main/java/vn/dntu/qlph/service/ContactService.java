@@ -15,4 +15,6 @@ public interface ContactService {
     void insertContact(@Param("idVanDe") int idVanDe, @Param("sdt") int sdt, @Param("noiDung") String noiDung, @Param("email") String email, @Param("ten") String ten);
 
     ArrayList<ContactVO> selectListContact();
+
+    void deleteContact(@Param("idLienHe") int idLienHe);
 }

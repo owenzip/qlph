@@ -33,7 +33,7 @@
             </div>
             <div class="modal-body">
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-9">
                         <table id="tblMemberRoomAdmin" class="table table-hover table-responsive" style="width: 100%">
                             <thead>
                             <tr>
@@ -45,15 +45,13 @@
                             </thead>
                         </table>
                     </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <div class="btn-group" role="group">
-                    <button id="btnBookedRoomAdmin" type="button" class="btn btn-red">Đang đặt &nbsp;&nbsp;<i class="fa fa-bell"></i></button>
-                    <button id="btnLiveRoomAdmin" type="button" class="btn btn-red">Hoạt động &nbsp;&nbsp;<i class="fa fa-wifi"></i></button>
-                    <button id="btnEndRoomAdmin" type="button" class="btn btn-red">Kết thúc &nbsp;&nbsp;<i class="fa fa-check-square"></i></button>
-                    <button id="btnCanceledRoomAdmin" type="button" class="btn btn-red">Hủy phòng&nbsp;&nbsp;<i class="fa fa-ban"></i></button>
-                    <button id="btnDeleteRoomAdmin" type="button" class="btn btn-red">Xóa phòng&nbsp;&nbsp;<i class="fa fa-trash-o"></i></button>
+                    <div class="col-md-3">
+                        <button id="btnBookedRoomAdmin" style="width: 100%" type="button" class="btn btn-red">Đang đặt &nbsp;&nbsp;<i class="fa fa-bell"></i></button>
+                        <button id="btnLiveRoomAdmin" style="width: 100%" type="button" class="btn btn-red">Hoạt động &nbsp;&nbsp;<i class="fa fa-wifi"></i></button>
+                        <button id="btnEndRoomAdmin" style="width: 100%" type="button" class="btn btn-red">Kết thúc &nbsp;&nbsp;<i class="fa fa-check-square"></i></button>
+                        <button id="btnCanceledRoomAdmin" style="width: 100%" type="button" class="btn btn-red">Hủy phòng&nbsp;&nbsp;<i class="fa fa-ban"></i></button>
+                        <button id="btnDeleteRoomAdmin" style="width: 100%" type="button" class="btn btn-red">Xóa phòng&nbsp;&nbsp;<i class="fa fa-trash-o"></i></button>
+                    </div>
                 </div>
             </div>
         </div>

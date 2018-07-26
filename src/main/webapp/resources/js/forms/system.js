@@ -7,19 +7,19 @@ $(function () {
 
     let tblRoomAdmin = $('#tblRoomAdmin');
     let tblMemberRoomAdmin = $('#tblMemberRoomAdmin');
-    let tblContactAdmin = $('#tblContactAdmin');
     let tblRoomAdminFunction = undefined;
     let tblMemberRoomAdminFunction = undefined;
-    let tblContactAdminFunction = undefined;
     let idPhong = 0;
 
     let setup = function () {
         onClickConvertTab();
         tblRoomAdminFunction = configTableRoomAdmin;
-        tblContactAdminFunction = configTableContactAdmin;
         onClickTableRoomAdmin();
         onClickMenuRoom();
-    }
+        configTableContactAdmin();
+        //deleteContact();
+
+    };
 
     let onClickConvertTab = function () {
         $('#formTabRoom,#formTabCategory,#formTabStatis').hide();
@@ -79,7 +79,7 @@ $(function () {
                 "targets": 4,
                 "sWidth": "15%",
                 render: function (data, type, row) {
-                    return row.gioBatDau +" - "+ row.gioKetThuc
+                    return row.gioBatDau + " - " + row.gioKetThuc
                 }
             }, {
                 "targets": 5,
@@ -97,7 +97,91 @@ $(function () {
         ],
     });
 
-    let configTableContactAdmin = tblContactAdmin.dataTable ({
+    let configTableContactAdmin = function () {
+        $.ajax({
+            url: "/selectListContact.do",
+            data: {},
+            type: "POST",
+            success: function (data) {
+                if (data) {
+                    let html = '';
+                    $.each(data, function (index, item) {
+                        html += '<tr>';
+                        html += '<td class="text-center">' + (index + 1) + '</td>'
+                        html += '<td class="text-center">' + item.ten + '</td>';
+                        html += '<td class="text-center">' + item.vanDe + '</td>';
+                        html += '<td class="text-center">' + item.sdt + '</td>';
+                        html += '<td class="text-center">' + item.email + '</td>';
+                        html += '<td class="text-center">' + item.noiDung + '</td>';
+                        html += '<td class="text-center">' + item.ngay + '</td>';
+                        html += '<td class="text-center">' + item.gio + '</td>';
+                        html += '<td class="text-center" style="padding: 0"><button data-id="' + item.idLienHe + '" onclick="deleteContact(' + item.idLienHe + ');" class="btn btn-red btnDeleteContact" style="padding: 11px 13px 11px 13px;"><i class="fa fa-trash"></i></td>'
+                        html += '</tr>';
+                    })
+                    $('#tblContactAdmin').html(html);
+                }
+            }
+        })
+    };
+
+    this.deleteContact = function (idLienHe) {
+        $.confirm({
+            title: 'Bạn có chắc chắn muốn xóa liên hệ này ?', content: '', type: 'red', typeAnimated: true,
+            buttons: {
+                cancel: {
+                    text: 'Không',
+                    btnClass: 'btn-red',
+                },
+                confirm: {
+                    text: 'Có',
+                    btnClass: 'btn-red',
+                    action: function () {
+                        $.ajax({
+                            url: "/deleteContact.do",
+                            data: {
+                                'idLienHe': idLienHe
+                            },
+                            type: "POST",
+                            success: function (data) {
+                                if (data) {
+                                    $.confirm({
+                                        title: 'Xóa liên hệ thành công',
+                                        content: '',
+                                        type: 'red',
+                                        typeAnimated: true,
+                                        buttons: {
+                                            cancel: {
+                                                text: 'Xác nhận',
+                                                btnClass: 'btn-red',
+                                                action: function () {
+                                                    configTableContactAdmin();
+                                                }
+                                            },
+                                        }
+                                    });
+                                } else {
+                                    $.confirm({
+                                        title: 'Xóa liên hệ thất bại',
+                                        content: 'Xin vui lòng thử lại hoặc liên hệ ban quản trị',
+                                        type: 'red',
+                                        typeAnimated: true,
+                                        buttons: {
+                                            cancel: {
+                                                text: 'Thử lại',
+                                                btnClass: 'btn-red',
+                                            },
+                                        }
+                                    });
+                                }
+                            }
+                        })
+                    }
+                },
+            }
+        });
+    }
+
+    /*let configTableContactAdmin = tblContactAdmin.dataTable({
         "autoWidth": false,
         "serverSide": true,
         "processing": true,
@@ -147,7 +231,7 @@ $(function () {
                 "data": "gio"
             },
         ],
-    });
+    });*/
 
     let onClickMenuRoom = function () {
         $('#btnAllRoom').on('click', function () {
@@ -344,7 +428,7 @@ $(function () {
                     },
                 }
             });
-        })
+        });
 
         $('#btnEndRoomAdmin').on('click', function () {
             $.confirm({

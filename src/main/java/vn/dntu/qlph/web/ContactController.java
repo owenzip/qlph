@@ -44,4 +44,17 @@ public class ContactController {
             return null;
         }
     }
+
+    @RequestMapping(value = "/deleteContact.do")
+    @ResponseBody
+    public boolean deleteContact(@RequestParam("idLienHe") int idLienHe) {
+        try {
+            contactImpl.deleteContact(idLienHe);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
 }

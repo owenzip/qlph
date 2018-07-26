@@ -27,4 +27,9 @@ public class ContactImpl implements ContactService {
     public ArrayList<ContactVO> selectListContact() {
         return contactService.selectListContact();
     }
+
+    @Override
+    public void deleteContact(int idLienHe) {
+        contactService.deleteContact(idLienHe);
+    }
 }

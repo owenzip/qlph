@@ -24,6 +24,7 @@
 
     <select id="selectListContact" resultMap="ContactVO">
         SELECT
+            lh.idlienhe,
             lh.ten,
             vd.vande,
             lh.sdt,
@@ -36,4 +37,8 @@
         ORDER BY lh.ngay
         DESC
     </select>
+
+    <delete id="deleteContact" parameterType="ContactVO">
+        DELETE FROM lienhe WHERE idlienhe = #{idLienHe}
+    </delete>
 </mapper>

@@ -6,18 +6,20 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <div class="col-md-12">
     <h5>Danh sách liên hệ</h5>
-    <table id="tblContactAdmin" class="table table-hover table-responsive" style="width: 100%;cursor: pointer">
+    <table class="table table-hover table-responsive" style="width: 100%">
         <thead>
         <tr>
-            <th>#</th>
-            <th><i class="fa fa-user"></i></th>
-            <th><i class="fa fa-bug"></i></th>
-            <th><i class="fa fa-phone"></i></th>
-            <th><i class="fa fa-envelope-o"></i></th>
-            <th><i class="fa fa-commenting-o"></i></th>
-            <th><i class="fa fa-calendar"></i></th>
-            <th><i class="fa fa-clock-o"></i></th>
+            <th class="text-center">#</th>
+            <th style="width: 15%" class="text-center"><i class="fa fa-user"></i></th>
+            <th style="width: 10%" class="text-center"><i class="fa fa-bug"></i></th>
+            <th style="width: 10%" class="text-center"><i class="fa fa-phone"></i></th>
+            <th style="width: 10%" class="text-center"><i class="fa fa-envelope-o"></i></th>
+            <th style="width: 25%" class="text-center"><i class="fa fa-commenting-o"></i></th>
+            <th style="width: 10%" class="text-center"><i class="fa fa-calendar"></i></th>
+            <th style="width: 10%" class="text-center"><i class="fa fa-clock-o"></i></th>
+            <th style="width: 5%" class="text-center"><i class="fa fa-trash"></i></th>
         </tr>
         </thead>
+        <tbody id="tblContactAdmin"></tbody>
     </table>
 </div>
