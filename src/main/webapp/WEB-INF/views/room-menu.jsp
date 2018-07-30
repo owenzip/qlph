@@ -9,7 +9,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
-<div class="col-md-3 text-center">
+<div class="col-md-2 text-center">
     <a id="btnRegisterRoom" class="btn btn-red" style="margin-left: 6px;width: 200px" data-toggle="modal" data-target="#modalRegisterRoom"><b>ĐĂNG KÝ PHÒNG
         <i class="fa fa-bookmark float-right"></i></b></a>
     <a class="btn btn-red btn-menu" data-toggle="collapse" data-target="#navbar1"><b>Phòng Học nhóm
@@ -64,7 +64,7 @@
                                     </select>
                                 </div>
                                 <label class="mrg"><b>Thời gian</b></label>
-                                <input id="ngay" name="ngay" type="text" class="clr form-control datepicker" placeholder="Chọn ngày">
+                                <input id="ngay" name="ngay" type="text" class="clr form-control datepicker" style="padding-left: 12px;" placeholder="Chọn ngày">
                                 <input id="gioBatDau" name="gioBatDau" type="text" class="clr form-control mrg" placeholder="Giờ bắt đầu">
                                 <input id="gioKetThuc" name="gioKetThuc" type="text" class="clr form-control mrg" placeholder="Giờ kết thúc">
                                 <label class="mrg"><b>Xem quy nội quy thư viện</b></label>

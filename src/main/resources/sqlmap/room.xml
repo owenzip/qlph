@@ -96,7 +96,7 @@
         LEFT JOIN dmtrangthai tt ON ph.trangthai = tt.idtrangthai
         LEFT JOIN nguoidung nd ON ph.nguoidaidien = nd.idnguoidung
         WHERE ph.iddmphong = #{idDmPhong}
-        AND ph.ngay >= now()
+        AND ph.ngay >= now() - 1
         ORDER BY ph.ngay
     </select>
 

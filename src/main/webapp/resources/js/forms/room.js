@@ -5,16 +5,16 @@
  */
 $(function () {
 
-    const colUsername = '<input type="text" name="detailRoomVO[{0}].tenNguoiDungDetails" class="form-control-tbl form-control">';
-    const colClass = '<input type="text" name="detailRoomVO[{0}].lopDetails" class="form-control-tbl form-control">';
-    const colCode = '<input type="text" name="detailRoomVO[{0}].mssvDetails" class="form-control-tbl form-control">';
+    const colUsername = '<input type="text" name="detailRoomVO[{0}].tenNguoiDungDetails" class="form-control-tbl form-control tenNguoiDung">';
+    const colClass = '<input type="text" name="detailRoomVO[{0}].lopDetails" class="form-control-tbl form-control lop">';
+    const colCode = '<input type="text" name="detailRoomVO[{0}].mssvDetails" class="form-control-tbl form-control mssv">';
     let tableMember = $('#tblMembers');
     let tableRoom = $('#tblRoom');
     let tableMembersFunction = undefined;
     let tableRoomFunction = undefined;
 
     let setup = function () {
-        selSoNguoi();
+        validDatePicker();
         clickShowTable();
         clickVerMenu();
         selectCategory();
@@ -23,10 +23,29 @@ $(function () {
         textChangeInpSoNguoi();
         onClickCancelRegisterRoom();
         validateFormRegisterRoom();
-        $('.datepicker').datepicker({
-            format: 'dd/mm/yyyy',
+        onChangeSelMember();
+        selectCategory();
+    };
+
+    let onChangeSelMember = function () {
+        $('#selRoom').on('change', function () {
+            configTableMembers.rows().remove().draw();
+            switch ($(this).val()) {
+                case '1': case '2': case '3': case '4': case '5': case '6': case '7':
+                    selSoNguoi(4, 20);
+                    break;
+                case '8':
+                    selSoNguoi(10, 20);
+                    break;
+                case '9':
+                    selSoNguoi(20, 30);
+                    break;
+                case '10': case '11': case '12': case '13': case '14':
+                    selSoNguoi(5, 30);
+                    break;
+            }
         })
-    }
+    };
 
     let nofiticationRegisterRoomSuccess = function () {
         $.confirm({
@@ -61,13 +80,13 @@ $(function () {
         });
     };
 
-    let selSoNguoi = function () {
-        let maxMember = 30;
-        let minMember = 4;
+    let selSoNguoi = function (minMember, maxMember) {
+        let html = '<option>Chọn số người</option>';
         for (minMember; minMember <= maxMember; minMember++) {
-            $('#soNguoi').append('<option value="' + minMember + '">' + minMember + '</option>');
+            html += '<option value="' + minMember + '">' + minMember + '</option>';
         }
-    }
+        $('#soNguoi').html(html);
+    };
 
     let textChangeInpSoNguoi = function () {
         $('#soNguoi').on('change', function () {
@@ -75,14 +94,14 @@ $(function () {
             let soNguoi = $('#soNguoi').val();
             for (let i = 0; i < soNguoi; i++) {
                 tableMembersFunction.row.add(" ", " ", " ", " ").draw();
-            }
-            ;
+            };
         })
     }
 
     let clickShowTable = function () {
         $('#btnRegisterRoom').on('click', function () {
             tableMembersFunction = configTableMembers;
+            $('#ngay').val(getDateCurrent());
         })
     }
 
@@ -103,7 +122,6 @@ $(function () {
     });
 
     let configTableMembers = tableMember.DataTable({
-
         "bAutoWidth": false,
         "columnDefs": [
             {
@@ -200,85 +218,67 @@ $(function () {
                 }
             }, {
                 "targets": 4,
-                "sWidth": "15%",
-                "data": "trangThai"
-            }, {
-                "targets": 5,
                 "sWidth": "5%",
                 "data": "soNguoi"
+            }, {
+                "targets": 5,
+                "sWidth": "15%",
+                "data": "trangThai"
             },
         ],
     });
 
     let selectCategory = function () {
-        $("#btnRegisterRoom").on('click', function () {
-            $.ajax({
-                url: "/selectListRoom.do",
-                type: "POST",
-                success: function (data) {
-                    if (data) {
-                        $.each(data, function (i) {
-                            $('#selRoom').append('<option value="' + data[i]["idDmPhong"] + '">' + data[i]["tenPhong"] + '</option>');
-                        })
-                    }
+        $.ajax({
+            url: "/selectListRoom.do",
+            type: "POST",
+            success: function (data) {
+                if (data) {
+                    let html = '<option>Chọn phòng</option>';
+                    $.each(data, function (i) {
+                        html += '<option value="' + data[i]["idDmPhong"] + '">' + data[i]["tenPhong"] + '</option>';
+                    })
+                    $('#selRoom').html(html);
                 }
-            });
-        })
+            }
+        });
     };
 
     let insertRoom = function () {
         $('#btnAcceptRoom').on('click', function () {
             if ($('#frmRegisterRoom').valid()) {
-                /**Rèn buộc trường hợp ngày đặt*/
-                let dateNow = new Date();
-                let dayNow = parseInt(dateNow.getDate());
-                let monthNow = parseInt(dateNow.getMonth() + 1);
-                /**Tháng 1 bắt đầu từ 0*/
-                let yearNow = parseInt(dateNow.getFullYear());
-                let dateRoom = $('#ngay').val();
-                let dayRoom = parseInt(dateRoom.slice(0, 2), 10);
-                let monthRoom = parseInt(dateRoom.slice(3, 5), 10);
-                let yearRoom = parseInt(dateRoom.slice(6, 10), 10);
-
-                if (dayNow <= dayRoom && monthNow === monthRoom && yearNow === yearRoom) {
-                    $.ajax({
-                        url: "/checkRoomExists.do",
-                        type: "POST",
-                        data: {
-                            ngay: $('#ngay').val(),
-                            gioBatDau: $('#gioBatDau').val(),
-                            gioKetThuc: $('#gioKetThuc').val(),
-                            idDmPhong: $('#selRoom').val()
-                        },
-                        success: function (data) {
-                            /**Nếu không trùng thời gian đặt*/
-                            if(Object.keys(data).length == 0) {
-                                $.ajax({
-                                    url: "/insertRoom.do",
-                                    type: "POST",
-                                    data: $("#frmRegisterRoom").serialize(),
-                                    success: function (data) {
-                                        if (data) {
-                                            tableRoomFunction.ajax.reload();
-                                            nofiticationRegisterRoomSuccess();
-                                        } else {
-                                            nofiticationRegisterRoomFalse("Đặt phòng không thành công", "Xin vui lòng kiểm tra lại");
-                                        }
-                                    },
-                                    error: function () {
+                $.ajax({
+                    url: "/checkRoomExists.do",
+                    type: "POST",
+                    data: {
+                        ngay: $('#ngay').val(),
+                        gioBatDau: $('#gioBatDau').val(),
+                        gioKetThuc: $('#gioKetThuc').val(),
+                        idDmPhong: $('#selRoom').val()
+                    },
+                    success: function (data) {
+                        if (Object.keys(data).length == 0) {
+                            $.ajax({
+                                url: "/insertRoom.do",
+                                type: "POST",
+                                data: $("#frmRegisterRoom").serialize(),
+                                success: function (data) {
+                                    if (data) {
+                                        tableRoomFunction.ajax.reload();
+                                        nofiticationRegisterRoomSuccess();
+                                    } else {
                                         nofiticationRegisterRoomFalse("Đặt phòng không thành công", "Xin vui lòng kiểm tra lại");
                                     }
-                                });
-                            } else {
-                                nofiticationRegisterRoomFalse("Đã có người đặt thời gian này", "Xin vui lòng chọn thời gian khác");
-                            }
+                                },
+                                error: function () {
+                                    nofiticationRegisterRoomFalse("Đặt phòng không thành công", "Xin vui lòng kiểm tra lại");
+                                }
+                            });
+                        } else {
+                            nofiticationRegisterRoomFalse("Đã có người đặt thời gian này", "Xin vui lòng chọn thời gian khác");
                         }
-                    });
-                } else if (dayNow > dayRoom && monthNow === monthRoom && yearNow === yearRoom) {
-                    nofiticationRegisterRoomFalse("Ngày đặt không hợp lệ", "Xin vui lòng thử lại");
-                } else {
-                    nofiticationRegisterRoomFalse("Ngày đặt không hợp lệ", "Xin vui lòng thử lại");
-                }
+                    }
+                });
             } else {
                 nofiticationRegisterRoomFalse("Đặt phòng không thành công", "Xin vui lòng kiểm tra lại");
             }
@@ -304,7 +304,65 @@ $(function () {
         return s;
     };
 
+    let getDateCurrent = function () {
+        var today = new Date();
+        var dd = today.getDate();
+        var mm = today.getMonth() + 1; //January is 0!
+        var yyyy = today.getFullYear();
+        if (dd < 10) {
+            dd = '0' + dd;
+        }
+        if (mm < 10) {
+            mm = '0' + mm;
+        }
+        var today = dd + '/' + mm + '/' + yyyy;
+        return today;
+    };
+    let validDatePicker = function () {
+        var date = new Date();
+        var year = date.getFullYear();
+        var month = date.getMonth() + 2;
+        var day = date.getDate();
+        $('.datepicker').datepicker({
+            format: 'dd/mm/yyyy',
+            startDate: new Date(),
+            endDate: new Date(year, month, day ),
+        })
+    };
+
     let validateFormRegisterRoom = function () {
+
+        jQuery.extend(jQuery.validator.messages, {
+            required: "* Trường này là bắt buộc",
+            number: "* Vui lòng nhập số",
+            maxlength: jQuery.validator.format("* Vui lòng nhập không quá {0} ký tự"),
+            minlength: jQuery.validator.format("* Vui lòng nhập ít nhất {0} ký tự"),
+            max: jQuery.validator.format("* Vui lòng nhập giá trị nhỏ hơn {0}"),
+            min: jQuery.validator.format("* Vui lòng nhập giá trị lớn hơn {0}")
+        });
+
+        jQuery.validator.addClassRules("tenNguoiDung", {
+            required: true,
+            minlength: 5,
+            maxlength: 50,
+            noScript: true
+        });
+
+        jQuery.validator.addClassRules("lop", {
+            required: true,
+            minlength: 4,
+            maxlength: 10,
+            noScript: true
+        });
+
+        jQuery.validator.addClassRules("mssv", {
+            required: true,
+            number: true,
+            minlength: 6,
+            maxlength: 11,
+            noScript: true
+        });
+
         $('#frmRegisterRoom').validate({
             rules: {
                 soNguoi: {
@@ -317,6 +375,7 @@ $(function () {
                     required: true,
                     minlength: 5,
                     maxlength: 20,
+                    noScript: true
                 },
                 idDmPhong: {
                     min: 1,

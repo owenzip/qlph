@@ -5,27 +5,31 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <div>
-    <input id="trangThai" type="hidden" value="">
+    <input id="trangThai" type="hidden">
     <h5>Danh sách phòng</h5>
-    <table id="tblRoomAdmin" class="table table-hover table-responsive" style="width: 100%;cursor: pointer">
+    <table class="table table-hover" style="width: 100%">
         <thead>
         <tr>
-            <th>#</th>
-            <th><i class="fa fa-columns"></i></th>
-            <th><i class="fa fa-address-card"></i></th>
-            <th><i class="fa fa-calendar"></i></th>
-            <th><i class="fa fa-clock-o"></i></th>
-            <th><i class="fa fa-link"></i></th>
-            <th><i class="fa fa-user"></i></th>
-            <th><i class="fa fa-dot-circle-o"></i></th>
+            <th class="text-center font-weight-bold">#</th>
+            <th class="font-weight-bold">Tên phòng</th>
+            <th class="font-weight-bold">Người đại diện</th>
+            <th class="text-center font-weight-bold">Ngày</th>
+            <th class="text-center font-weight-bold">Giờ</th>
+            <th class="text-center font-weight-bold">Số người</th>
+            <th class="font-weight-bold">Mục đích</th>
+            <th class="font-weight-bold">Trạng thái</th>
         </tr>
         </thead>
+        <tbody id="tblRoomAdmin" style="cursor: pointer">
+
+        </tbody>
     </table>
 </div>
 <div class="modal fade" id="modalSelectRoom" tabindex="-1" role="dialog" aria-labelledby="modalSelectRoomAdmin" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
+                <input id="idPhong" type="hidden">
                 <h5 class="modal-title text-title" id="modalSelectRoomAdmin">Danh sách thành viên</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -34,15 +38,18 @@
             <div class="modal-body">
                 <div class="row">
                     <div class="col-md-9">
-                        <table id="tblMemberRoomAdmin" class="table table-hover table-responsive" style="width: 100%">
+                        <table class="table table-hover" style="width: 100%">
                             <thead>
                             <tr>
-                                <th>#</th>
-                                <th><i class="fa fa-address-card"></i>&nbsp;&nbsp;Tên thành viên</th>
-                                <th><i class="fa fa-black-tie"></i>&nbsp;&nbsp;Lớp</th>
-                                <th><i class="fa fa-paperclip"></i>&nbsp;&nbsp;MSSV</th>
+                                <th class="text-center font-weight-bold">#</th>
+                                <th class="font-weight-bold">Tên thành viên</th>
+                                <th class="font-weight-bold">Lớp</th>
+                                <th class="text-center font-weight-bold">MSSV</th>
                             </tr>
                             </thead>
+                            <tbody id="tblMemberRoomAdmin">
+
+                            </tbody>
                         </table>
                     </div>
                     <div class="col-md-3">

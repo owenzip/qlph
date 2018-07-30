@@ -35,6 +35,10 @@
         return this.optional(element) || valueStripped.match(regex).length >= params[0] && valueStripped.match(regex).length <= params[1];
     }, jQuery.validator.format("Please enter between {0} and {1} words."));
 
+    jQuery.validator.addMethod("noScript", function(value, element) {
+        return this.optional(element) || /^[a-z0-9áàảãạăắặằẳẵâấầẩẫậđéèẻẽẹêếềểễệíìỉĩịóòỏõọôốồổỗộơớờởỡợúùủũụưứừửữựýỳỷỹỵÁÀẢÃẠĂẮẶẰẲẴÂẤẦẨẪẬĐÉÈẺẼẸÊẾỀỂỄỆÍÌỈĨỊÓÒỎÕỌÔỐỒỔỖỘƠỚỜỞỠỢÚÙỦŨỤƯỨỪỬỮỰÝỲỶỸỴ\s]+$/i.test(value);
+    }, "* Không được chứa ký tự đặt biệt");
+
 }());
 
 jQuery.validator.addMethod("letterswithbasicpunc", function(value, element) {

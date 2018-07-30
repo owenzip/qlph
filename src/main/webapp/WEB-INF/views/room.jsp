@@ -15,21 +15,21 @@
 </head>
 <body>
 <jsp:include page="nav-menu.jsp"/>
-<div style="padding: 5%">
+<div style="padding: 5% 1% 5% 1%">
     <div class="row">
         <jsp:include page="room-menu.jsp"/>
-        <div id="divTblRoom" class="col-md-9">
+        <div id="divTblRoom" class="col-md-10" style="padding-left: 30px; padding-right: 30px">
             <input type="hidden" id="getIdDmPhong" value="1">
             <h5 id="homePageTitle" style="padding-bottom: 17px;margin-top: 2px">&nbsp;Lịch đăng ký phòng học nhóm 1</h5>
-            <table id="tblRoom" class="table table-responsive" style="width: 100%">
+            <table id="tblRoom" class="table table-hover" style="width: 100%">
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th><i class="fa fa-address-card"></i></th>
-                        <th><i class="fa fa-calendar"></i></th>
-                        <th><i class="fa fa-clock-o"></i></th>
-                        <th><i class="fa fa-link"></i></th>
-                        <th><i class="fa fa-user"></i></th>
+                        <th>Người đại diện</th>
+                        <th>Ngày</th>
+                        <th>Giờ</th>
+                        <th>Số người</th>
+                        <th>Trạng thái</th>
                     </tr>
                 </thead>
             </table>

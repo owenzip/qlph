@@ -15,10 +15,10 @@
 </head>
 <body class="bg-white">
 <jsp:include page="nav-menu.jsp"/>
-<div style="padding: 5%">
+<div style="padding: 5% 1% 5% 1%">
     <div class="row">
         <jsp:include page="admin-menu.jsp"/>
-        <div class="col-md-9">
+        <div class="col-md-10">
             <from id="formTabMail"><jsp:include page="admin-tab-mail.jsp"/></from>
             <from id="formTabRoom"><jsp:include page="admin-tab-room.jsp"/></from>
             <from id="formTabStatis"><jsp:include page="admin-tab-statis.jsp"/></from>

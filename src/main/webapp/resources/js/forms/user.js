@@ -151,6 +151,7 @@ $(function () {
                     required: true,
                     number: true,
                     minlength: 7,
+                    maxlength: 11
                 },
                 matKhau: {
                     required: true,
@@ -174,13 +175,15 @@ $(function () {
                     required: true,
                     minlength: 10,
                     maxlength: 50,
+                    alphanumeric: true
                 }
             },
             messages: {
                 mssv: {
                     required: "* Vui lòng nhập mã số sinh viên",
-                    number: "* Mã số sinh viên phải là 7 chữ số",
+                    number: "* Mã số sinh viên phải là 11 chữ số",
                     minlength: "* Mã số sinh viên phải từ 7 chữ số",
+                    maxlength: "* Mã số sinh viên tối đa 11 chữ số",
                 },
                 matKhau: {
                     required: "* Vui lòng nhập mật khẩu",
@@ -203,6 +206,7 @@ $(function () {
                     required: "* Vui lòng nhập nội dung",
                     minlength: "* Nội dung phải từ 10 đến 50 ký tự",
                     maxlength: "* Nội dung phải từ 10 đến 50 ký tự",
+                    alphanumeric: "* Nội dung không được chứa ký tự đặt biệt"
                 }
             },
         })
@@ -213,6 +217,7 @@ $(function () {
             rules: {
                 ten: {
                     required: true,
+                    noScript: true
                 },
                 selProblem: {
                     min: 1,
@@ -231,6 +236,7 @@ $(function () {
                     required: true,
                     minlength: 10,
                     maxlength: 50,
+                    noScript: true
                 }
             },
             messages: {

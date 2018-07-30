@@ -9,7 +9,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
-<div class="col-md-3 text-center">
+<div class="col-md-2 text-center">
     <a class="btnTabMail btn btn-red btn-menu"><b>Hộp thư liên hệ<i class="fa fa-envelope float-right"></i></b></a><br/>
     <a class="btn btn-red btn-menu" data-toggle="collapse" data-target="#navbar2"><b>Quản lý phòng<i class="fa fa-desktop float-right"></i></b></a><br/>
     <div class="collapse div-menu-dropdown" id="navbar2">

@@ -9,7 +9,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="dataSource" class="com.jolbox.bonecp.BoneCPDataSource" destroy-method="close">
+<!--    <bean id="dataSource" class="com.jolbox.bonecp.BoneCPDataSource" destroy-method="close">
 	   <property name="driverClass" value="com.mysql.jdbc.Driver" />
 	   <property name="jdbcUrl"  value="jdbc:mysql://localhost:3306/qlph" />
 	   <property name="username" value="root"/>
@@ -19,6 +19,13 @@
 	   <property name="partitionCount" value="3"/>
 	   <property name="acquireIncrement" value="5"/>
 	   <property name="statementsCacheSize" value="100"/>
+	</bean>-->
+
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost:3306/qlph" />
+		<property name="username" value="root" />
+		<property name="password" value="root" />
 	</bean>
 
 <!--	<bean id="dataSource" class="com.jolbox.bonecp.BoneCPDataSource" destroy-method="close">
