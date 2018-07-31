@@ -64,7 +64,7 @@
                                     </select>
                                 </div>
                                 <label class="mrg"><b>Thời gian</b></label>
-                                <input id="ngay" name="ngay" type="text" class="clr form-control datepicker" style="padding-left: 12px;" placeholder="Chọn ngày">
+                                <input id="ngay" name="ngay" type="text" class="clr form-control datepicker" style="padding-left: 13px;" placeholder="Chọn ngày">
                                 <input id="gioBatDau" name="gioBatDau" type="text" class="clr form-control mrg" placeholder="Giờ bắt đầu">
                                 <input id="gioKetThuc" name="gioKetThuc" type="text" class="clr form-control mrg" placeholder="Giờ kết thúc">
                                 <label class="mrg"><b>Xem quy nội quy thư viện</b></label>
@@ -74,15 +74,15 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-8">
+                            <div class="col-md-8" style="padding-left: 0; padding-right: 5px">
                                 <label><b>Thành viên</b></label>
-                                <table id="tblMembers" class="table table-hover table-responsive" style="width: 96%">
+                                <table id="tblMembers" class="table table-hover table-responsive" style="width: 100%">
                                     <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th><i class="fa fa-address-card"></i>&nbsp;&nbsp;Họ và tên</th>
-                                        <th><i class="fa fa-black-tie"></i>&nbsp;&nbsp;Lớp</th>
-                                        <th><i class="fa fa-paperclip"></i>&nbsp;&nbsp;MSSV</th>
+                                        <th>Họ và tên</th>
+                                        <th>Lớp</th>
+                                        <th>MSSV</th>
                                     </tr>
                                     </thead>
                                 </table>
@@ -100,7 +100,7 @@
         </div>
     </form>
     <div class="modal fade" id="modalNoiQuy" tabindex="-1" role="dialog" aria-labelledby="exampleModalNoiQuy" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-sm">
+        <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title text-title">Nội quy thư viện DNTU</h5>
@@ -109,10 +109,11 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <div class="row" style="padding-left: 10px; padding-right: 10px">
-                        Sử dụng phòng đúng mục đích, đúng số lượng  người và thời gian đã đăng ký.<br/>
-                        Chấp hành sự sắp xếp phòng học của nhân viên TV. Trong quá trình học tuyệt đối không xâm hại các thiết bị và tài sản trong phòng học của nhóm mình. <br/>
-                        Nếu tài sản phòng học bị hư hại, nhóm phải chịu hoàn toàn trách nhiệm.<br/>
+                    <div class="row" style="padding-left: 20px; padding-right: 20px">
+                        1. Sử dụng phòng đúng mục đích, đúng số lượng  người và thời gian đã đăng ký.<br/>
+                        2. Chấp hành sự sắp xếp phòng học của nhân viên thư viện.<br/>
+                        3. Trong quá trình học tuyệt đối không xâm hại, cố tình làm hư hỏng các thiết bị và tài sản trong phòng học của nhóm mình.<br/>
+                        4. Nếu tài sản phòng học bị hư hại, nhóm phải chịu hoàn toàn trách nhiệm.<br/>
                     </div>
                 </div>
                 <div class="modal-footer">

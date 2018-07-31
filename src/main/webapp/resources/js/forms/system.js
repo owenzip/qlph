@@ -9,6 +9,16 @@ $(function () {
         onClickMenuRoom();
         configTableContactAdmin();
         configTableRoomAdmin();
+        onClickTabEffect();
+        reportToday();
+    };
+
+    let onClickTabEffect = function () {
+        $('#formTabStatis .nav-item').find('.active').addClass('btn btn-red');
+        $('#formTabStatis .nav-item').on('click', function () {
+            $('#formTabStatis').find('.active').removeClass('btn btn-red');
+            $(this).find('a').addClass('btn btn-red');
+        })
     };
 
     let onClickConvertTab = function () {
@@ -16,10 +26,6 @@ $(function () {
         $('.btnTabRoom').on('click', function () {
             $('#formTabRoom').show();
             $('#formTabCategory,#formTabStatis,#formTabMail').hide();
-        })
-        $('.btnTabCategory').on('click', function () {
-            $('#formTabCategory').show();
-            $('#formTabRoom,#formTabStatis,#formTabMail').hide();
         })
         $('.btnTabStatis').on('click', function () {
             $('#formTabStatis').show();
@@ -46,6 +52,7 @@ $(function () {
                         html += '<td class="text-center">' + (index + 1) + '</td>'
                         html += '<td>' + item.tenPhong + '</td>';
                         html += '<td>' + item.tenNguoiDaiDien + '</td>';
+                        html += '<td class="text-center">' + item.dienThoai + '</td>';
                         html += '<td class="text-center">' + item.ngay + '</td>';
                         html += '<td class="text-center">' + item.gioBatDau + " - " + item.gioKetThuc + '</td>';
                         html += '<td class="text-center">' + item.soNguoi + '</td>';
@@ -393,7 +400,7 @@ $(function () {
                 },
             }
         });
-    })
+    });
 
     $('#btnBookedRoomAdmin').on('click', function () {
         $.confirm({
@@ -452,7 +459,7 @@ $(function () {
                 },
             }
         });
-    })
+    });
 
     $('#btnEndRoomAdmin').on('click', function () {
         $.confirm({
@@ -514,7 +521,7 @@ $(function () {
                 },
             }
         });
-    })
+    });
 
     $('#btnDeleteRoomAdmin').on('click', function () {
         $.confirm({
@@ -572,7 +579,34 @@ $(function () {
                 },
             }
         });
-    })
+    });
+
+    /**
+     * REPORT BUSINESS LOGIC
+     * @Create 31/07/2018
+     * @Auth Nhựt nguyễn
+     * */
+
+    let reportToday = function () {
+        $.ajax({
+            url: "/selectReportToday.do",
+            data: { },
+            type: "POST",
+            success: function (data) {
+                if (data) {
+                    $.each(data, function (index, item) {
+                        $('#roomRegisted').text(item.soLanDangKyPhong);
+                        $('#roomWaited').text(item.soPhongDangChoDuyet);
+                        $('#roomFinished').text(item.soPhongDaKetThuc);
+                        $('#roomActive').text(item.soPhongDangHoatDong);
+                        $('#roomCanceled').text(item.soPhongDaHuy);
+                        $('#roomPopular').text('Phòng ' + item.phongSuDungNhieu + ' (' + item.soLanDangKyPhongSuDungNhieu + ' lần)');
+                        $('#userUsings').text(item.tongSoNguoiSuDung);
+                    });
+                }
+            }
+        })
+    };
 
     return setup();
 });

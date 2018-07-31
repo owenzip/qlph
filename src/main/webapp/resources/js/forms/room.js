@@ -126,7 +126,7 @@ $(function () {
         "columnDefs": [
             {
                 "targets": 0,
-                "sWidth": "3%",
+                "sWidth": "2%",
                 class: "align-middle text-center",
                 render: function (data, type, row, meta) {
                     let rowIndex = parseInt(meta.row);
@@ -135,7 +135,7 @@ $(function () {
                 }
             }, {
                 "targets": 1,
-                "sWidth": "55%",
+                "sWidth": "50%",
                 "data": function (data, type, row, meta) {
                     return colUsername.f(meta.row)
                 }
@@ -147,7 +147,7 @@ $(function () {
                 }
             }, {
                 "targets": 3,
-                "sWidth": "22%",
+                "sWidth": "27%",
                 "data": function (data, type, row, meta) {
                     return colCode.f(meta.row)
                 }
@@ -321,7 +321,7 @@ $(function () {
     let validDatePicker = function () {
         var date = new Date();
         var year = date.getFullYear();
-        var month = date.getMonth() + 2;
+        var month = date.getMonth() + 1;
         var day = date.getDate();
         $('.datepicker').datepicker({
             format: 'dd/mm/yyyy',

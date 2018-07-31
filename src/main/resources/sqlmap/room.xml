@@ -17,6 +17,7 @@
         <result property="idNguoiDung" column="idnguoidung"/>
         <result property="tenNguoiDaiDien" column="tennguoidaidien"/>
         <result property="nguoiDaiDien" column="nguoidaidien"/>
+        <result property="dienThoai" column="dienthoai"/>
         <result property="tenPhong" column="tenphong"/>
     </resultMap>
 
@@ -149,7 +150,8 @@
         ph.songuoi,
         ph.mucdich,
         dmp.tenphong,
-        nd.ten AS tennguoidaidien
+        nd.ten AS tennguoidaidien,
+        nd.dienthoai
         FROM phong ph
         LEFT JOIN dmtrangthai tt ON ph.trangthai = tt.idtrangthai
         LEFT JOIN nguoidung nd ON ph.nguoidaidien = nd.idnguoidung

@@ -13,6 +13,7 @@
             <th class="text-center font-weight-bold">#</th>
             <th class="font-weight-bold">Tên phòng</th>
             <th class="font-weight-bold">Người đại diện</th>
+            <th class="text-center font-weight-bold">Điện thoại</th>
             <th class="text-center font-weight-bold">Ngày</th>
             <th class="text-center font-weight-bold">Giờ</th>
             <th class="text-center font-weight-bold">Số người</th>

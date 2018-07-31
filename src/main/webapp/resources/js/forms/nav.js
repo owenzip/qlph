@@ -108,11 +108,11 @@ $(function () {
                 title: 'Bạn có chắc chắn muốn thoát', content: '', type: 'red', typeAnimated: true,
                 buttons: {
                     cancel: {
-                        text: 'Quay lại',
+                        text: 'Không',
                         btnClass: 'btn-red',
                     },
                     confirm: {
-                        text: 'Thoát',
+                        text: 'Có',
                         btnClass: 'btn-red',
                         action: function () {
                             window.location.href = "/login.do";

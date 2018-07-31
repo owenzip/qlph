@@ -22,13 +22,13 @@
             <table id="tblRoomById" class="table table-hover" style="width: 100%; cursor: pointer">
                 <thead>
                 <tr>
-                    <th>#</th>
-                    <th><i class="fa fa-columns"></i></th>
-                    <th><i class="fa fa-calendar"></i></th>
-                    <th><i class="fa fa-clock-o"></i></th>
-                    <th><i class="fa fa-link"></i></th>
-                    <th><i class="fa fa-user"></i></th>
-                    <th><i class="fa fa-dot-circle-o"></i></th>
+                    <th class="font-weight-bold">#</th>
+                    <th class="font-weight-bold">Phòng</th>
+                    <th class="font-weight-bold">Ngày</th>
+                    <th class="font-weight-bold">Giờ</th>
+                    <th class="font-weight-bold">Trạng thái</th>
+                    <th class="font-weight-bold">Số người</th>
+                    <th class="font-weight-bold">Mục đích</th>
                 </tr>
                 </thead>
             </table>
@@ -50,10 +50,10 @@
                         <table id="tblMemberHistory" class="table table-hover table-responsive" style="width: 100%">
                             <thead>
                             <tr>
-                                <th>#</th>
-                                <th><i class="fa fa-address-card"></i>&nbsp;&nbsp;Tên thành viên</th>
-                                <th><i class="fa fa-black-tie"></i>&nbsp;&nbsp;Lớp</th>
-                                <th><i class="fa fa-paperclip"></i>&nbsp;&nbsp;MSSV</th>
+                                <th class="font-weight-bold">#</th>
+                                <th class="font-weight-bold">Tên</th>
+                                <th class="font-weight-bold">Lớp</th>
+                                <th class="font-weight-bold">MSSV</th>
                             </tr>
                             </thead>
                         </table>

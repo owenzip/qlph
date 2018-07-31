@@ -68,9 +68,9 @@
         <div id="navUser">
             <ul class="navbar-nav">
                 <li class="nav-item dropdown">
-                    <a class="text-white">Xin chào,&nbsp;&nbsp;&nbsp;<b><%=session.getAttribute("TENNGUOIDUNG")%></b></a>
-                    <a class="btn btn-red" data-toggle="dropdown">
-                        <i class="fa fa-cog"></i>&nbsp;&nbsp;<i class="fa fa-caret-down"></i>
+                    <%--<a class="text-white">Xin chào,&nbsp;&nbsp;&nbsp;<b><%=session.getAttribute("TENNGUOIDUNG")%></b></a>--%>
+                    <a style="color: white" data-toggle="dropdown">
+                        Xin chào,&nbsp;&nbsp;<b><%=session.getAttribute("TENNGUOIDUNG")%></b>&nbsp; <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu" style="margin-left:110px;background: #B73030">
                         <li><a href="<c:url value="/history.do"/>" id="btnHistory" class="text-white"><i class="fa fa-history"></i>&nbsp;&nbsp;Lịch sử</a></li>

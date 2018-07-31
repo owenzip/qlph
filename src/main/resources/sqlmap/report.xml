@@ -1,0 +1,51 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+ - @DNTU-LIBRARY application
+ - @author Nhựt Nguyễn
+ - @since 15/04/2018
+ -/-->
+<mapper namespace="vn.dntu.qlph.service.ReportService">
+    <resultMap id="ReportVO" type="ReportVO">
+        <result property="soLanDangKyPhong" column="solandangkyphong"/>
+        <result property="soPhongDaKetThuc" column="sophongdaketthuc"/>
+        <result property="soPhongDangChoDuyet" column="sophongdangchoduyet"/>
+        <result property="soPhongDangHoatDong" column="sophongdanghoatdong"/>
+        <result property="soPhongDaHuy" column="sophongdahuy"/>
+        <result property="phongSuDungNhieu" column="phongsudungnhieu"/>
+        <result property="soLanDangKyPhongSuDungNhieu" column="solandangkyphongsudungnhieu"/>
+        <result property="tongSoNguoiSuDung" column="tongsonguoisudung"/>
+    </resultMap>
+
+    <select id="selectReportToday" resultMap="ReportVO">
+        SELECT *
+        FROM (
+            SELECT (COUNT(*)) AS solandangkyphong
+            FROM phong
+            WHERE DATE_FORMAT(phong.ngay, '%d/%m/%Y') = DATE_FORMAT(NOW(), '%d/%m/%Y')
+        ) AS solandangky, (
+            SELECT (COUNT(*)) AS sophongdaketthuc
+            FROM phong
+            WHERE DATE_FORMAT(phong.ngay, '%d/%m/%Y') = DATE_FORMAT(NOW(), '%d/%m/%Y') AND trangthai = 3
+        ) AS sophongdaketthuc, (
+            SELECT (COUNT(*)) AS sophongdangchoduyet
+            FROM phong
+            WHERE DATE_FORMAT(phong.ngay, '%d/%m/%Y') = DATE_FORMAT(NOW(), '%d/%m/%Y') AND trangthai = 5
+        ) AS sophongdangchoduyet, (
+            SELECT (COUNT(*)) AS sophongdanghoatdong
+            FROM phong
+            WHERE DATE_FORMAT(phong.ngay, '%d/%m/%Y') = DATE_FORMAT(NOW(), '%d/%m/%Y') AND trangthai = 2
+        ) AS sophongdanghoatdong, (
+            SELECT (COUNT(*)) AS sophongdahuy
+            FROM phong
+            WHERE DATE_FORMAT(phong.ngay, '%d/%m/%Y') = DATE_FORMAT(NOW(), '%d/%m/%Y') AND trangthai = 4
+        ) AS sophongdahuy, (
+            SELECT dmphong.tenphong AS phongsudungnhieu ,COUNT(phong.iddmphong) AS solandangkyphongsudungnhieu FROM phong LEFT JOIN dmphong ON phong.iddmphong = dmphong.iddmphong
+            WHERE  DATE_FORMAT(phong.ngay, '%d/%m/%Y') =  DATE_FORMAT(NOW(), '%d/%m/%Y')
+            GROUP BY(phong.iddmphong) ORDER BY COUNT(phong.iddmphong) DESC LIMIT 1
+        ) AS sophongsudungnhieu, (
+            SELECT SUM(songuoi) AS tongsonguoisudung
+            FROM phong
+            WHERE DATE_FORMAT(phong.ngay, '%d/%m/%Y') = DATE_FORMAT(NOW(), '%d/%m/%Y')
+        ) AS tongsonguoisudung
+    </select>
+</mapper>

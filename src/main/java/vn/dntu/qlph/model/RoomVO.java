@@ -23,11 +23,20 @@ public class RoomVO {
     private String tenNguoiDaiDien;
     private int nguoiDaiDien;
     private int idNguoiDung;
+    private String dienThoai;
     private String tenPhong;
     List<DetailRoomVO> detailRoomVO;
 
     public String getTenPhong() {
         return tenPhong;
+    }
+
+    public String getDienThoai() {
+        return dienThoai;
+    }
+
+    public void setDienThoai(String dienThoai) {
+        this.dienThoai = dienThoai;
     }
 
     public void setTenPhong(String tenPhong) {
