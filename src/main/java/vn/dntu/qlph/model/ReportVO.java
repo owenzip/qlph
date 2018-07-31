@@ -18,6 +18,69 @@ public class ReportVO {
     private String phongSuDungNhieu;
     private int soLanDangKyPhongSuDungNhieu;
     private int tongSoNguoiSuDung;
+    private int tongSoLanSuDung;
+    private String tenPhong;
+    private String gioBatDau;
+    private String gioKetThuc;
+    private String ngay;
+    private String trangThai;
+    private int soNguoi;
+
+    public String getGioBatDau() {
+        return gioBatDau;
+    }
+
+    public void setGioBatDau(String gioBatDau) {
+        this.gioBatDau = gioBatDau;
+    }
+
+    public String getGioKetThuc() {
+        return gioKetThuc;
+    }
+
+    public void setGioKetThuc(String gioKetThuc) {
+        this.gioKetThuc = gioKetThuc;
+    }
+
+    public String getNgay() {
+        return ngay;
+    }
+
+    public void setNgay(String ngay) {
+        this.ngay = ngay;
+    }
+
+    public String getTrangThai() {
+        return trangThai;
+    }
+
+    public void setTrangThai(String trangThai) {
+        this.trangThai = trangThai;
+    }
+
+    public int getSoNguoi() {
+        return soNguoi;
+    }
+
+    public void setSoNguoi(int soNguoi) {
+        this.soNguoi = soNguoi;
+    }
+
+    public String getTenPhong() {
+        return tenPhong;
+    }
+
+    public void setTenPhong(String tenPhong) {
+        this.tenPhong = tenPhong;
+    }
+
+    public int getTongSoLanSuDung() {
+        return tongSoLanSuDung;
+    }
+
+    public void setTongSoLanSuDung(int tongSoLanSuDung) {
+        this.tongSoLanSuDung = tongSoLanSuDung;
+    }
 
     public int getSoLanDangKyPhong() {
         return soLanDangKyPhong;

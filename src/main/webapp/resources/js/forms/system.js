@@ -5,12 +5,19 @@
  */
 $(function () {
     let setup = function () {
+        datePicker();
+        getCurrentDate();
         onClickConvertTab();
         onClickMenuRoom();
         configTableContactAdmin();
         configTableRoomAdmin();
         onClickTabEffect();
-        reportToday();
+        selectCategoryRoom();
+        $('#btnFilterDate').trigger('click');
+
+        $('#btnCustom').on('click', function () {
+            $('#tblExport caption').find('button').trigger('click');
+        })
     };
 
     let onClickTabEffect = function () {
@@ -63,7 +70,7 @@ $(function () {
                     if (html != '') {
                         $('#tblRoomAdmin').html(html);
                     } else {
-                        $('#tblRoomAdmin').html('<tr><td colspan="8" class="text-center">Không tìm thấy dữ liệu</td></tr>')
+                        $('#tblRoomAdmin').html('<tr><td colspan="9" class="text-center">Không tìm thấy dữ liệu</td></tr>')
                     }
                 }
             }
@@ -587,25 +594,207 @@ $(function () {
      * @Auth Nhựt nguyễn
      * */
 
-    let reportToday = function () {
+    let datePicker = function () {
+        $('.datepicker').datepicker({
+            format: 'dd/mm/yyyy',
+        })
+    };
+
+    let getCurrentDate = function () {
+        var today = new Date();
+        var dd = today.getDate();
+        var mm = today.getMonth() + 1; //January is 0!
+        var yyyy = today.getFullYear();
+        if (dd < 10) {
+            dd = '0' + dd;
+        }
+        if (mm < 10) {
+            mm = '0' + mm;
+        }
+        var today = dd + '/' + mm + '/' + yyyy;
+        $('#dateStartRoom, #dateEndRoom, #dateStartDate, #dateEndDate').val(today);
+    };
+
+    this.onClickFilterDate = function () {
         $.ajax({
             url: "/selectReportToday.do",
-            data: { },
+            data: {
+                ngayBatDau: $('#dateStartDate').val(),
+                ngayKetThuc: $('#dateEndDate').val()
+            },
             type: "POST",
             success: function (data) {
                 if (data) {
                     $.each(data, function (index, item) {
-                        $('#roomRegisted').text(item.soLanDangKyPhong);
-                        $('#roomWaited').text(item.soPhongDangChoDuyet);
-                        $('#roomFinished').text(item.soPhongDaKetThuc);
-                        $('#roomActive').text(item.soPhongDangHoatDong);
-                        $('#roomCanceled').text(item.soPhongDaHuy);
+                        $('#roomRegisted, #tblRoomRegisted').text(item.soLanDangKyPhong);
+                        $('#roomWaited, #tblRoomWaited').text(item.soPhongDangChoDuyet);
+                        $('#roomFinished, #tblRoomFinished').text(item.soPhongDaKetThuc);
+                        $('#roomActive, #tblRoomActive').text(item.soPhongDangHoatDong);
+                        $('#roomCanceled, #tblRoomCanceled').text(item.soPhongDaHuy);
                         $('#roomPopular').text('Phòng ' + item.phongSuDungNhieu + ' (' + item.soLanDangKyPhongSuDungNhieu + ' lần)');
-                        $('#userUsings').text(item.tongSoNguoiSuDung);
+                        $('#userUsings, #tblUserUsings').text(item.tongSoNguoiSuDung);
+                        $('#tblRoomPopular').text('Phòng ' + item.phongSuDungNhieu + ' [' + item.soLanDangKyPhongSuDungNhieu + ' lần]')
+                        return false;
                     });
                 }
+                $('#tblCloneReportToday').tableExport({}).reset();
+                $('#tblCloneReportToday caption').find('button').css('display', 'none');
             }
         })
+    };
+
+    this.onClickExportExcelToday = function () {
+        $('#tblCloneReportToday caption').find('button').trigger('click');
+    };
+
+    let selectCategoryRoom = function () {
+        $.ajax({
+            url: "/selectListRoom.do",
+            type: "POST",
+            success: function (data) {
+                if (data) {
+                    let html = '<option value="0">Tất cả</option>';
+                    $.each(data, function (i) {
+                        html += '<option value="' + data[i]["idDmPhong"] + '">Phòng ' + data[i]["tenPhong"] + '</option>';
+                    })
+                    $('#selRoom').html(html);
+                }
+            }
+        });
+    };
+
+    this.onClickFilterRoom = function () {
+        $('#bodyReportRoom tr').remove();
+        let ngayBatDau = $('#dateStartRoom').val();
+        let ngayKetThuc = $('#dateEndRoom').val();
+        let idDmPhong = $('#selRoom option:selected').val();
+        if (idDmPhong != 0) {
+            $.ajax({
+                url: "/selectReportRoom.do",
+                data: {
+                    idDmPhong: idDmPhong,
+                    ngayBatDau: ngayBatDau,
+                    ngayKetThuc: ngayKetThuc,
+                },
+                type: "POST",
+                success: function (data) {
+                    if (data) {
+                        let html = '';
+                        $.each(data, function (index, item) {
+                            if (item.tenPhong) {
+                                html += '<tr>';
+                                html += '<td>' + item.tenPhong + '</td>'
+                                html += '<td class="text-center">' + item.soLanDangKyPhong + '</td>'
+                                html += '<td class="text-center">' + item.tongSoLanSuDung + '</td>'
+                                html += '<td class="text-center">' + item.soPhongDaHuy + '</td>'
+                                html += '<td class="text-center">' + item.tongSoNguoiSuDung + '</td>'
+                                html += '</tr>';
+                                $('#bodyReportRoom').html(html);
+                                $.ajax({
+                                    url: "/selectReportRoomDetail.do",
+                                    data: {
+                                        idDmPhong: idDmPhong,
+                                        ngayBatDau: ngayBatDau,
+                                        ngayKetThuc: ngayKetThuc,
+                                    },
+                                    type: "POST",
+                                    success: function (data) {
+                                        if (data) {
+                                            let htmlDetail = '';
+                                            $.each(data, function (index, item) {
+                                                htmlDetail += '<tr>';
+                                                htmlDetail += '<td>' + (index + 1) + '</td>'
+                                                htmlDetail += '<td class="text-center">' + item.tenPhong + '</td>'
+                                                htmlDetail += '<td class="text-center">' + item.ngay + '</td>'
+                                                htmlDetail += '<td class="text-center">' + item.gioBatDau + '</td>'
+                                                htmlDetail += '<td class="text-center">' + item.gioKetThuc + '</td>'
+                                                htmlDetail += '<td class="text-center">' + item.trangThai + '</td>'
+                                                htmlDetail += '<td class="text-center">' + item.soNguoi + '</td>'
+                                                htmlDetail += '</tr>';
+                                                $('#bodyReportRoomDetail').html(htmlDetail);
+                                            })
+                                        }
+                                    }
+                                });
+                            } else {
+                                $('#bodyReportRoom').html('<tr><td class="text-center" colspan="5">Không có dữ liệu</td></tr>');
+                                $('#bodyReportRoomDetail').html('<tr><td class="text-center" colspan="7">Không có dữ liệu</td></tr>');
+                            }
+                            return false;
+                        })
+                    }
+                }
+            });
+        } else {
+            $.ajax({
+                url: "/selectReportRoomDetailAll.do",
+                data: {
+                    ngayBatDau: ngayBatDau,
+                    ngayKetThuc: ngayKetThuc,
+                },
+                type: "POST",
+                success: function (data) {
+                    if (data) {
+                        let htmlDetail = '';
+                        $.each(data, function (index, item) {
+                            htmlDetail += '<tr>';
+                            htmlDetail += '<td>' + (index + 1) + '</td>'
+                            htmlDetail += '<td class="text-center">' + item.tenPhong + '</td>'
+                            htmlDetail += '<td class="text-center">' + item.ngay + '</td>'
+                            htmlDetail += '<td class="text-center">' + item.gioBatDau + '</td>'
+                            htmlDetail += '<td class="text-center">' + item.gioKetThuc + '</td>'
+                            htmlDetail += '<td class="text-center">' + item.trangThai + '</td>'
+                            htmlDetail += '<td class="text-center">' + item.soNguoi + '</td>'
+                            htmlDetail += '</tr>';
+                            $('#bodyReportRoomDetail').html(htmlDetail);
+                        })
+                    }
+                }
+            });
+            $.ajax({
+                url: "/selectListRoom.do",
+                type: "POST",
+                success: function (data) {
+                    if (data) {
+                        $.each(data, function (index, item) {
+                            let idDmPhong = item.idDmPhong;
+                            let tenPhong = item.tenPhong;
+                            let htmlReportRoomAll = '';
+                            $.ajax({
+                                url: "/selectReportRoom.do",
+                                data: {
+                                    idDmPhong: idDmPhong,
+                                    ngayBatDau: ngayBatDau,
+                                    ngayKetThuc: ngayKetThuc,
+                                },
+                                type: "POST",
+                                success: function (data) {
+                                    if (data) {
+                                        $.each(data, function (ind, ite) {
+                                            htmlReportRoomAll += '<tr>';
+                                            htmlReportRoomAll += '<td>'+ tenPhong +'</td>'
+                                            if (ite.tenPhong) {
+                                                htmlReportRoomAll += '<td class="text-center">' + ite.soLanDangKyPhong + '</td>'
+                                                htmlReportRoomAll += '<td class="text-center">' + ite.tongSoLanSuDung + '</td>'
+                                                htmlReportRoomAll += '<td class="text-center">' + ite.soPhongDaHuy + '</td>'
+                                                htmlReportRoomAll += '<td class="text-center">' + ite.tongSoNguoiSuDung + '</td>'
+                                            } else {
+                                                htmlReportRoomAll += '<td class="text-center">0</td>'
+                                                htmlReportRoomAll += '<td class="text-center">0</td>'
+                                                htmlReportRoomAll += '<td class="text-center">0</td>'
+                                                htmlReportRoomAll += '<td class="text-center">0</td>'
+                                            }
+                                            htmlReportRoomAll += '</tr>';
+                                            $('#bodyReportRoom').append(htmlReportRoomAll);
+                                        })
+                                    }
+                                }
+                            })
+                        })
+                    }
+                }
+            });
+        }
     };
 
     return setup();

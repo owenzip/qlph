@@ -5,8 +5,8 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <div class="col-md-12">
-    <h5>Danh sách liên hệ</h5>
-    <table class="table table-hover table-responsive" style="width: 100%">
+    <label><b>Danh sách liên hệ</b></label>
+    <table id="tblExport" class="table table-hover" style="width: 100%">
         <thead>
         <tr>
             <th class="text-center font-weight-bold">#</th>
@@ -16,8 +16,7 @@
             <th style="width: 10%" class="text-center font-weight-bold">Email</th>
             <th style="width: 15%" class="text-center font-weight-bold">Ngày</th>
             <th style="width: 10%" class="text-center font-weight-bold">Giờ</th>
-            <th style="width: auto" class="text-center font-weight-bold"></th>
-            <th style="width: auto" class="text-center font-weight-bold"></th>
+            <th style="width: auto" class="text-center font-weight-bold" colspan="2">Tùy chọn</th>
         </tr>
         </thead>
         <tbody id="tblContactAdmin" style="cursor: pointer"></tbody>

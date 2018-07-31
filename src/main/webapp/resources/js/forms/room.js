@@ -318,6 +318,7 @@ $(function () {
         var today = dd + '/' + mm + '/' + yyyy;
         return today;
     };
+
     let validDatePicker = function () {
         var date = new Date();
         var year = date.getFullYear();

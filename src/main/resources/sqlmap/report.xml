@@ -6,6 +6,7 @@
  -/-->
 <mapper namespace="vn.dntu.qlph.service.ReportService">
     <resultMap id="ReportVO" type="ReportVO">
+        <result property="tenPhong" column="tenphong"/>
         <result property="soLanDangKyPhong" column="solandangkyphong"/>
         <result property="soPhongDaKetThuc" column="sophongdaketthuc"/>
         <result property="soPhongDangChoDuyet" column="sophongdangchoduyet"/>
@@ -14,6 +15,12 @@
         <result property="phongSuDungNhieu" column="phongsudungnhieu"/>
         <result property="soLanDangKyPhongSuDungNhieu" column="solandangkyphongsudungnhieu"/>
         <result property="tongSoNguoiSuDung" column="tongsonguoisudung"/>
+        <result property="tongSoLanSuDung" column="tongsolansudung"/>
+        <result property="gioBatDau" column="giobatdau"/>
+        <result property="gioKetThuc" column="gioketthuc"/>
+        <result property="ngay" column="ngay"/>
+        <result property="trangThai" column="trangthai"/>
+        <result property="soNguoi" column="songuoi"/>
     </resultMap>
 
     <select id="selectReportToday" resultMap="ReportVO">
@@ -21,31 +28,78 @@
         FROM (
             SELECT (COUNT(*)) AS solandangkyphong
             FROM phong
-            WHERE DATE_FORMAT(phong.ngay, '%d/%m/%Y') = DATE_FORMAT(NOW(), '%d/%m/%Y')
+            WHERE phong.ngay BETWEEN STR_TO_DATE(#{ngayBatDau}, '%d/%m/%Y') AND STR_TO_DATE(#{ngayKetThuc}, '%d/%m/%Y')
         ) AS solandangky, (
             SELECT (COUNT(*)) AS sophongdaketthuc
             FROM phong
-            WHERE DATE_FORMAT(phong.ngay, '%d/%m/%Y') = DATE_FORMAT(NOW(), '%d/%m/%Y') AND trangthai = 3
+            WHERE phong.ngay BETWEEN STR_TO_DATE(#{ngayBatDau}, '%d/%m/%Y') AND STR_TO_DATE(#{ngayKetThuc}, '%d/%m/%Y') AND trangthai = 3
         ) AS sophongdaketthuc, (
             SELECT (COUNT(*)) AS sophongdangchoduyet
             FROM phong
-            WHERE DATE_FORMAT(phong.ngay, '%d/%m/%Y') = DATE_FORMAT(NOW(), '%d/%m/%Y') AND trangthai = 5
+            WHERE phong.ngay BETWEEN STR_TO_DATE(#{ngayBatDau}, '%d/%m/%Y') AND STR_TO_DATE(#{ngayKetThuc}, '%d/%m/%Y') AND trangthai = 5
         ) AS sophongdangchoduyet, (
             SELECT (COUNT(*)) AS sophongdanghoatdong
             FROM phong
-            WHERE DATE_FORMAT(phong.ngay, '%d/%m/%Y') = DATE_FORMAT(NOW(), '%d/%m/%Y') AND trangthai = 2
+            WHERE phong.ngay BETWEEN STR_TO_DATE(#{ngayBatDau}, '%d/%m/%Y') AND STR_TO_DATE(#{ngayKetThuc}, '%d/%m/%Y') AND trangthai = 2
         ) AS sophongdanghoatdong, (
             SELECT (COUNT(*)) AS sophongdahuy
             FROM phong
-            WHERE DATE_FORMAT(phong.ngay, '%d/%m/%Y') = DATE_FORMAT(NOW(), '%d/%m/%Y') AND trangthai = 4
+            WHERE phong.ngay BETWEEN STR_TO_DATE(#{ngayBatDau}, '%d/%m/%Y') AND STR_TO_DATE(#{ngayKetThuc}, '%d/%m/%Y') AND trangthai = 4
         ) AS sophongdahuy, (
             SELECT dmphong.tenphong AS phongsudungnhieu ,COUNT(phong.iddmphong) AS solandangkyphongsudungnhieu FROM phong LEFT JOIN dmphong ON phong.iddmphong = dmphong.iddmphong
-            WHERE  DATE_FORMAT(phong.ngay, '%d/%m/%Y') =  DATE_FORMAT(NOW(), '%d/%m/%Y')
+            WHERE  phong.ngay BETWEEN STR_TO_DATE(#{ngayBatDau}, '%d/%m/%Y') AND STR_TO_DATE(#{ngayKetThuc}, '%d/%m/%Y')
             GROUP BY(phong.iddmphong) ORDER BY COUNT(phong.iddmphong) DESC LIMIT 1
         ) AS sophongsudungnhieu, (
             SELECT SUM(songuoi) AS tongsonguoisudung
             FROM phong
-            WHERE DATE_FORMAT(phong.ngay, '%d/%m/%Y') = DATE_FORMAT(NOW(), '%d/%m/%Y')
+            WHERE phong.ngay BETWEEN STR_TO_DATE(#{ngayBatDau}, '%d/%m/%Y') AND STR_TO_DATE(#{ngayKetThuc}, '%d/%m/%Y')
         ) AS tongsonguoisudung
+    </select>
+
+    <select id="selectReportRoom" resultMap="ReportVO">
+        SELECT *
+        FROM (
+            SELECT dmphong.tenphong AS tenphong, COUNT(phong.trangthai) AS solandangkyphong
+            FROM phong
+            LEFT JOIN dmphong ON phong.iddmphong = dmphong.iddmphong
+            WHERE phong.iddmphong = #{idDmPhong}
+            AND phong.ngay BETWEEN STR_TO_DATE(#{ngayBatDau}, '%d/%m/%Y') AND STR_TO_DATE(#{ngayKetThuc}, '%d/%m/%Y')
+        ) AS solandangkyphong, (
+            SELECT COUNT(phong.trangthai) AS tongsolansudung
+            FROM phong
+            LEFT JOIN dmphong ON phong.iddmphong = dmphong.iddmphong
+            WHERE phong.iddmphong = #{idDmPhong}
+            AND (phong.trangthai = 2 OR phong.trangthai = 3)
+            AND phong.ngay BETWEEN STR_TO_DATE(#{ngayBatDau}, '%d/%m/%Y') AND STR_TO_DATE(#{ngayKetThuc}, '%d/%m/%Y')
+        ) AS tongsolansudung, (
+            SELECT COUNT(phong.trangthai) AS sophongdahuy
+            FROM phong
+            LEFT JOIN dmphong ON phong.iddmphong = dmphong.iddmphong
+            WHERE phong.iddmphong = #{idDmPhong}
+            AND phong.trangthai = 4
+            AND phong.ngay BETWEEN STR_TO_DATE(#{ngayBatDau}, '%d/%m/%Y') AND STR_TO_DATE(#{ngayKetThuc}, '%d/%m/%Y')
+        ) AS sophongdahuy, (
+            SELECT SUM(phong.songuoi) AS tongsonguoisudung
+            FROM phong
+            LEFT JOIN dmphong ON phong.iddmphong = dmphong.iddmphong
+            WHERE phong.iddmphong = #{idDmPhong}
+            AND phong.ngay BETWEEN STR_TO_DATE(#{ngayBatDau}, '%d/%m/%Y') AND STR_TO_DATE(#{ngayKetThuc}, '%d/%m/%Y')
+        ) AS tongsonguoisudung
+    </select>
+
+    <select id="selectReportRoomDetail" resultMap="ReportVO">
+        SELECT dmphong.tenphong, phong.giobatdau, phong.gioketthuc, DATE_FORMAT(phong.ngay,'%d/%m/%Y') AS ngay, dmtrangthai.trangthai AS trangthai, phong.songuoi
+        FROM phong
+        LEFT JOIN dmphong ON phong.iddmphong = dmphong.iddmphong
+        LEFT JOIN dmtrangthai ON phong.trangthai = dmtrangthai.idtrangthai
+        WHERE phong.iddmphong = #{idDmPhong} AND phong.ngay BETWEEN STR_TO_DATE(#{ngayBatDau}, '%d/%m/%Y') AND STR_TO_DATE(#{ngayKetThuc}, '%d/%m/%Y')
+    </select>
+
+    <select id="selectReportRoomDetailAll" resultMap="ReportVO">
+        SELECT dmphong.tenphong, phong.giobatdau, phong.gioketthuc, DATE_FORMAT(phong.ngay,'%d/%m/%Y') AS ngay, dmtrangthai.trangthai AS trangthai, phong.songuoi
+        FROM phong
+        LEFT JOIN dmphong ON phong.iddmphong = dmphong.iddmphong
+        LEFT JOIN dmtrangthai ON phong.trangthai = dmtrangthai.idtrangthai
+        WHERE phong.ngay BETWEEN STR_TO_DATE(#{ngayBatDau}, '%d/%m/%Y') AND STR_TO_DATE(#{ngayKetThuc}, '%d/%m/%Y')
     </select>
 </mapper>

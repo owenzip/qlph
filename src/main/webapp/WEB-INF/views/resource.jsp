@@ -29,6 +29,10 @@
 <script type="text/javascript" src="<c:url value="../../resources/js/others/mdb.js"/>"></script>
 <script type="text/javascript" src="<c:url value="../../resources/js/others/datatables.js"/>"></script>
 <script type="text/javascript" src="<c:url value="../../resources/js/others/bootstrap-datepicker.min.js"/>"></script>
+
+<script type="text/javascript" src="<c:url value="../../resources/js/others/xlsx.core.js"/>"></script>
+<script type="text/javascript" src="<c:url value="../../resources/js/others/FileSaver.js"/>"></script>
+<script type="text/javascript" src="<c:url value="../../resources/js/others/tableexport.js"/>"></script>
 <head>
     <link rel="icon" href="<c:url value='../../resources/img/logo.png'/>" />
 </head>
