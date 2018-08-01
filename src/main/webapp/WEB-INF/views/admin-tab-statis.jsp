@@ -12,16 +12,7 @@
                 THEO NGÀY</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#pane2" role="tab"><i class="fa fa-desktop"></i>&nbsp; THEO
-                PHÒNG</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#pane3" role="tab"><i class="fa fa-university"></i>&nbsp; THEO
-                KHOA</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#pane4" role="tab"><i class="fa fa-users"></i>&nbsp; THEO NGƯỜI
-                DÙNG</a>
+            <a class="nav-link" data-toggle="tab" href="#pane2" role="tab"><i class="fa fa-desktop"></i>&nbsp; THEO PHÒNG</a>
         </li>
     </ul>
 
@@ -65,6 +56,18 @@
                 <table id="tblCloneReportToday" style="display: none">
                     <thead>
                     <tr>
+                        <th colspan="7">BÁO CÁO TỔNG THỂ TÌNH HÌNH ĐẶT PHÒNG</th>
+                    </tr>
+                    <tr></tr>
+                    <tr>
+                        <th>Từ ngày :</th>
+                        <th class="text-center font-weight-bold" id="reportRoomStartDay"></th>
+                        <th></th>
+                        <th>Đến ngày</th>
+                        <th id="reportRoomEnDay"></th>
+                        <th colspan="2"></th>
+                    </tr>
+                    <tr>
                         <th>Số lần đăng ký phòng</th>
                         <th>Số phòng đang chờ duyệt</th>
                         <th>Số phòng đã kết thúc</th>
@@ -106,8 +109,12 @@
                            style="padding: 6px 0px 6px 13px" placeholder="Chọn ngày">
                 </div>
                 <div class="col-md-4">
-                    <button onclick="onClickFilterRoom()" class="btn btn-red" style="margin-top: 31.5px"><i class="fa fa-filter"></i>&nbsp; Bộ lọc</button>
-                    <button onclick="onClickExportExcelRoom()" class="btn btn-red" style="margin-top: 31.5px"><i class="fa fa-download"></i>&nbsp; Xuất Excel</button>
+                    <button onclick="onClickFilterRoom()" class="btn btn-red" style="margin-top: 31.5px"><i
+                            class="fa fa-filter"></i>&nbsp; Bộ lọc
+                    </button>
+                    <button id="btnExportExcelRoom" class="btn btn-red" style="margin-top: 31.5px"><i
+                            class="fa fa-download"></i>&nbsp; Xuất Excel
+                    </button>
                 </div>
             </div>
             <hr>
@@ -156,12 +163,49 @@
                     </table>
                 </div>
             </div>
-        </div>
-        <div class="tab-pane fade" id="pane3" role="tabpanel">
-            tab3
-        </div>
-        <div class="tab-pane fade" id="pane4" role="tabpanel">
-            tab4
+            <table id="tblExportExcelByRoom" style="display: none">
+                <thead id="headTblExportExcelByRoom">
+                <tr>
+                    <th colspan="7">BÁO CÁO CHI TIẾT TÌNH TRẠNG ĐẶT PHÒNG</th>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <th>Tên phòng :</th>
+                    <th id="nameExportRoom"></th>
+                    <th colspan="5"></th>
+                </tr>
+                <tr>
+                    <th>Từ ngày :</th>
+                    <th id="dayStartExportByRoom"></th>
+                    <th>Đến ngày :</th>
+                    <th id="dayEndExportByRoom"></th>
+                    <th colspan="3"></th>
+                </tr>
+                <tr></tr>
+                <tr><td colspan="7">Thông tin chung</td></tr>
+                <tr>
+                    <th>Tên phòng</th>
+                    <th>Số lần đăng ký</th>
+                    <th>Số lần sử dụng</th>
+                    <th>Số lần hủy phòng</th>
+                    <th>Số người sử dụng</th>
+                    <th colspan="2"></th>
+                </tr>
+                </thead>
+                <tbody id="bodyTblExportExcelByRoom">
+                    <tr><td colspan="7">Thông tin chi tiết</td></tr>
+                    <tr>
+                        <td>#</td>
+                        <td>Tên phòng</td>
+                        <td>Ngày</td>
+                        <td>Giờ bắt đầu</td>
+                        <td>Giờ kết thúc</td>
+                        <td>Trạng thái</td>
+                        <td>Số người</td>
+                    </tr>
+                </tbody>
+            </table>
+
         </div>
     </div>
 </div>

@@ -17,7 +17,11 @@ $(function () {
 
         $('#btnCustom').on('click', function () {
             $('#tblExport caption').find('button').trigger('click');
-        })
+        });
+
+        $('#btnExportExcelRoom').on('click', function () {
+            $('#tblExportExcelByRoom caption').find('button').trigger('click');
+        });
     };
 
     let onClickTabEffect = function () {
@@ -633,7 +637,9 @@ $(function () {
                         $('#roomCanceled, #tblRoomCanceled').text(item.soPhongDaHuy);
                         $('#roomPopular').text('Phòng ' + item.phongSuDungNhieu + ' (' + item.soLanDangKyPhongSuDungNhieu + ' lần)');
                         $('#userUsings, #tblUserUsings').text(item.tongSoNguoiSuDung);
-                        $('#tblRoomPopular').text('Phòng ' + item.phongSuDungNhieu + ' [' + item.soLanDangKyPhongSuDungNhieu + ' lần]')
+                        $('#tblRoomPopular').text('Phòng ' + item.phongSuDungNhieu + ' [' + item.soLanDangKyPhongSuDungNhieu + ' lần]');
+                        $('#reportRoomStartDay').text($('#dateStartDate').val());
+                        $('#reportRoomEnDay').text($('#dateEndDate').val());
                         return false;
                     });
                 }
@@ -665,9 +671,14 @@ $(function () {
 
     this.onClickFilterRoom = function () {
         $('#bodyReportRoom tr').remove();
+        $('#headTblExportExcelByRoom tr.row-new, #bodyTblExportExcelByRoom tr.row-new').remove();
         let ngayBatDau = $('#dateStartRoom').val();
         let ngayKetThuc = $('#dateEndRoom').val();
         let idDmPhong = $('#selRoom option:selected').val();
+        $('#nameExportRoom').text($('#selRoom option:selected').text())
+        $('#dayStartExportByRoom').text(ngayBatDau);
+        $('#dayEndExportByRoom').text(ngayKetThuc);
+
         if (idDmPhong != 0) {
             $.ajax({
                 url: "/selectReportRoom.do",
@@ -682,14 +693,15 @@ $(function () {
                         let html = '';
                         $.each(data, function (index, item) {
                             if (item.tenPhong) {
-                                html += '<tr>';
-                                html += '<td>' + item.tenPhong + '</td>'
+                                html += '<tr class="row-new">';
+                                html += '<td>[' + item.tenPhong + ']</td>'
                                 html += '<td class="text-center">' + item.soLanDangKyPhong + '</td>'
                                 html += '<td class="text-center">' + item.tongSoLanSuDung + '</td>'
                                 html += '<td class="text-center">' + item.soPhongDaHuy + '</td>'
                                 html += '<td class="text-center">' + item.tongSoNguoiSuDung + '</td>'
                                 html += '</tr>';
                                 $('#bodyReportRoom').html(html);
+                                $('#headTblExportExcelByRoom').append(html);
                                 $.ajax({
                                     url: "/selectReportRoomDetail.do",
                                     data: {
@@ -702,9 +714,9 @@ $(function () {
                                         if (data) {
                                             let htmlDetail = '';
                                             $.each(data, function (index, item) {
-                                                htmlDetail += '<tr>';
-                                                htmlDetail += '<td>' + (index + 1) + '</td>'
-                                                htmlDetail += '<td class="text-center">' + item.tenPhong + '</td>'
+                                                htmlDetail += '<tr class="row-new">';
+                                                htmlDetail += '<td class="text-center">' + (index + 1) + '</td>'
+                                                htmlDetail += '<td class="text-center">[' + item.tenPhong + ']</td>'
                                                 htmlDetail += '<td class="text-center">' + item.ngay + '</td>'
                                                 htmlDetail += '<td class="text-center">' + item.gioBatDau + '</td>'
                                                 htmlDetail += '<td class="text-center">' + item.gioKetThuc + '</td>'
@@ -713,6 +725,8 @@ $(function () {
                                                 htmlDetail += '</tr>';
                                                 $('#bodyReportRoomDetail').html(htmlDetail);
                                             })
+                                            $('#bodyTblExportExcelByRoom').append(htmlDetail);
+                                            $('#tblExportExcelByRoom').tableExport({}).reset();
                                         }
                                     }
                                 });
@@ -737,9 +751,9 @@ $(function () {
                     if (data) {
                         let htmlDetail = '';
                         $.each(data, function (index, item) {
-                            htmlDetail += '<tr>';
+                            htmlDetail += '<tr class="row-new">';
                             htmlDetail += '<td>' + (index + 1) + '</td>'
-                            htmlDetail += '<td class="text-center">' + item.tenPhong + '</td>'
+                            htmlDetail += '<td class="text-center">[' + item.tenPhong + ']</td>'
                             htmlDetail += '<td class="text-center">' + item.ngay + '</td>'
                             htmlDetail += '<td class="text-center">' + item.gioBatDau + '</td>'
                             htmlDetail += '<td class="text-center">' + item.gioKetThuc + '</td>'
@@ -748,6 +762,7 @@ $(function () {
                             htmlDetail += '</tr>';
                             $('#bodyReportRoomDetail').html(htmlDetail);
                         })
+                        $('#bodyTblExportExcelByRoom').append(htmlDetail);
                     }
                 }
             });
@@ -771,8 +786,8 @@ $(function () {
                                 success: function (data) {
                                     if (data) {
                                         $.each(data, function (ind, ite) {
-                                            htmlReportRoomAll += '<tr>';
-                                            htmlReportRoomAll += '<td>'+ tenPhong +'</td>'
+                                            htmlReportRoomAll += '<tr class="row-new">';
+                                            htmlReportRoomAll += '<td>[' + tenPhong + ']</td>'
                                             if (ite.tenPhong) {
                                                 htmlReportRoomAll += '<td class="text-center">' + ite.soLanDangKyPhong + '</td>'
                                                 htmlReportRoomAll += '<td class="text-center">' + ite.tongSoLanSuDung + '</td>'
@@ -786,6 +801,8 @@ $(function () {
                                             }
                                             htmlReportRoomAll += '</tr>';
                                             $('#bodyReportRoom').append(htmlReportRoomAll);
+                                            $('#headTblExportExcelByRoom').append(htmlReportRoomAll);
+                                            $('#tblExportExcelByRoom').tableExport({}).reset();
                                         })
                                     }
                                 }
